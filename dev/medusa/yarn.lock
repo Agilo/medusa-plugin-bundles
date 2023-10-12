@@ -13123,7 +13123,7 @@ __metadata:
 
 "medusa-plugin-bundles@file:../../medusa-plugin::locator=medusa%40workspace%3A.":
   version: 0.0.1
-  resolution: "medusa-plugin-bundles@file:../../medusa-plugin#../../medusa-plugin::hash=167948&locator=medusa%40workspace%3A."
+  resolution: "medusa-plugin-bundles@file:../../medusa-plugin#../../medusa-plugin::hash=1a4f7b&locator=medusa%40workspace%3A."
   dependencies:
     axios: ^0.24.0
     medusa-core-utils: ^1.2.0
@@ -13135,7 +13135,7 @@ __metadata:
     react-i18next: ^12.3.1
     react-router-dom: ^6.13.0
     typeorm: ^0.3.16
-  checksum: 3792c48099489e473bea36457766908a548d3ba81d278ced478f3a6082e88a4e411c45a82541b80490202f995708d816c098c453b1d3eb972300d4305593965b
+  checksum: 774d8cde0d6fefe0ccff9b721397008ff35da2de3d83548d90a31ff84d2dbb78432a14006a096c07828bb2e9bf29198491f01a6804648c4bbe74caec09b2bd0c
   languageName: node
   linkType: hard
 

@@ -13,8 +13,16 @@
 2. `docker-compose up`
 3. Open a new terminal tab
 4. `yarn install && cd medusa-plugin && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..`
-5. `cd dev/medusa && yarn run seed && cd ../..`
+5. `cd dev/medusa && yarn run seed --migrate && cd ../..`
 6. `yarn run start`
+7. Medusa Admin is now available at http://localhost:7001 and Medusa Storefront at http://localhost:8000
+
+Default credentials for Medusa Admin are:
+
+```
+admin@medusa-test.com
+supersecret
+```
 
 ### Migration workflow
 
@@ -42,12 +50,3 @@ Unfortunately DX when generating migrations which extend or relate to core entit
 6. `medusa develop`
 7. In a new terminal tab run `cd dev/medusa-storefront`
 8. `npm run dev` -->
-
-Medusa Admin is now available at http://localhost:7001 and Medusa Storefront at http://localhost:8000
-
-Default credentials for Medusa Admin are:
-
-```
-ivo@agilo.co
-admin
-```

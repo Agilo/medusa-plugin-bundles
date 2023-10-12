@@ -13,9 +13,10 @@
 2. `docker-compose up`
 3. Open a new terminal tab
 4. Install dependencies in all packages (this will take a few minutes): `yarn install && cd medusa-plugin && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..`
-5. Run the migrations and seed the database: `cd dev/medusa && yarn run seed --migrate && cd ../..`
-6. `yarn run start`
-7. Medusa Admin is now available at http://localhost:7001 and Medusa Storefront at http://localhost:8000
+5. Seed the database: `cd dev/medusa && yarn run seed && cd ../..`
+6. Run the migrations: `cd dev/medusa && medusa migrations run && cd ../..`
+7. `yarn run start`
+8. Medusa Admin is now available at http://localhost:7001 and Medusa Storefront at http://localhost:8000
 
 Default credentials for Medusa Admin are:
 

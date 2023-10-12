@@ -9,11 +9,12 @@
 
 ## Getting started
 
-1. `docker-compose up`
-2. Open a new terminal tab
-3. `yarn install && cd medusa-plugin && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..`
-4. `cd dev/medusa && yarn run seed && cd ../..`
-5. `yarn run start`
+1. Copy `.env.example` to `.env`
+2. `docker-compose up`
+3. Open a new terminal tab
+4. `yarn install && cd medusa-plugin && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..`
+5. `cd dev/medusa && yarn run seed && cd ../..`
+6. `yarn run start`
 
 ### Migration workflow
 

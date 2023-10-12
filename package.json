@@ -1,0 +1,14 @@
+{
+  "name": "medusa-bundles",
+  "packageManager": "yarn@3.6.3",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^8.2.1",
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "rsync": "rsync -aP --delete --exclude=node_modules medusa-plugin/ dev/medusa/node_modules/medusa-plugin-bundles/",
+    "watch": "nodemon -e js,jsx,ts,tsx --watch \"medusa-plugin/src\" --spawn --exec \"cd medusa-plugin && yarn run prepare && cd .. && yarn run rsync && cd dev/medusa && yarn run dev\" --delay 1 --verbose",
+    "start": "cd medusa-plugin && yarn run prepare && cd .. && yarn run rsync && cd dev/medusa && yarn run build && cd ../.. && concurrently \"yarn run watch\" \"cd dev/medusa-storefront && yarn run dev\" --timings --prefix \"[{index}] [{time}] =>\""
+  }
+}

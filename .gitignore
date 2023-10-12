@@ -1,0 +1,31 @@
+# system
+*~
+.DS_Store
+.svn
+.cvs
+*.bak
+*.swp
+*.tmp
+*.log
+Thumbs.db
+
+# node
+node_modules
+
+# npm
+npm-debug.log*
+
+# vscode
+.vscode/settings.json
+
+# env
+.env*
+!.env.example
+!dev/medusa/.env
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

@@ -9,7 +9,7 @@
 
 ## Getting started
 
-1. Copy `.env.example` to `.env`
+1. Copy `.env.example` to `.env` and edit if needed
 2. `docker-compose up`
 3. Open a new terminal tab
 4. Install dependencies in all packages (this will take a few minutes): `yarn install && cd medusa-plugin && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..`
@@ -30,11 +30,12 @@ supersecret
 Unfortunately DX when generating migrations which extend or relate to core entities is not great, so here's a workflow that works for me:
 
 1. Make sure `yarn run start` is running
-2. Edit/create migration files in `medusa-plugin/src/migrations`
-3. `npx typeorm migration:generate -d datasource.js src/migrations/BundleCreate` - this will auto generate a bunch of migrations in `src/migrations/xyz-BundleCreate.ts` file for you, the migration file will contain migrations for both core medusa entities + your plugin entities
-4. `npx typeorm migration:create src/migrations/BundleCreate` - this will generate an empty migration file for you, you can then cherry pick the migrations you want to run from the previously auto generated file and copy them over to this file, after that you can delete the auto generated file
-5. `yarn workspace medusa medusa migrations run`
-6. ... ???
+2. If needed, copy and edit `medusa-plugin/.env.example` to `medusa-plugin/.env`
+3. Edit/create migration files in `medusa-plugin/src/migrations`
+4. `npx typeorm migration:generate -d datasource.js src/migrations/BundleCreate` - this will auto generate a bunch of migrations in `src/migrations/xyz-BundleCreate.ts` file for you, the migration file will contain migrations for both core medusa entities + your plugin entities
+5. `npx typeorm migration:create src/migrations/BundleCreate` - this will generate an empty migration file for you, you can then cherry pick the migrations you want to run from the previously auto generated file and copy them over to this file, after that you can delete the auto generated file
+6. `yarn workspace medusa medusa migrations run`
+7. ... ???
 
 <!-- 1. `docker-compose up`
 2. Open a new terminal tab

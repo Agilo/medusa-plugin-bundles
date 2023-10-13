@@ -1,16 +1,12 @@
-import {
-  BeforeInsert,
-  Column,
-  Entity,
-  JoinColumn,
-  JoinTable,
-  OneToOne,
-  ManyToMany,
-  PrimaryColumn,
-} from "typeorm";
+import { BeforeInsert, Column, Entity, JoinTable, ManyToMany } from "typeorm";
 import { BaseEntity } from "@medusajs/medusa";
-import { generateEntityId } from "@medusajs/medusa/dist/utils";
+import { DbAwareColumn, generateEntityId } from "@medusajs/medusa/dist/utils";
 import { Product } from "./product";
+
+export enum BundleStatus {
+  DRAFT = "draft",
+  PUBLISHED = "published",
+}
 
 @Entity()
 export class Bundle extends BaseEntity {
@@ -23,6 +19,9 @@ export class Bundle extends BaseEntity {
   @ManyToMany(() => Product, (product) => product.bundles)
   @JoinTable()
   products: Product[];
+
+  @DbAwareColumn({ type: "enum", enum: BundleStatus, default: "draft" })
+  status: BundleStatus;
 
   // @OneToOne(() => Product)
   // @JoinColumn()

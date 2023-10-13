@@ -32,9 +32,9 @@ Unfortunately DX when generating migrations which extend or relate to core entit
 1. Make sure `yarn run start` is running
 2. If needed, copy and edit `medusa-plugin/.env.example` to `medusa-plugin/.env`
 3. Edit/create migration files in `medusa-plugin/src/migrations`
-4. `npx typeorm migration:generate -d datasource.js src/migrations/BundleCreate` - this will auto generate a bunch of migrations in `src/migrations/xyz-BundleCreate.ts` file for you, the migration file will contain migrations for both core medusa entities + your plugin entities
-5. `npx typeorm migration:create src/migrations/BundleCreate` - this will generate an empty migration file for you, you can then cherry pick the migrations you want to run from the previously auto generated file and copy them over to this file, after that you can delete the auto generated file
-6. `yarn workspace medusa medusa migrations run`
+4. `npx typeorm migration:generate -d datasource.js src/migrations/BundleUpdate` - this will auto generate a bunch of migrations in `src/migrations/<timestamp>-BundleUpdate.ts` file for you, the migration file will contain migrations for both core medusa entities + your plugin entities
+5. `npx typeorm migration:create src/migrations/BundleUpdate` - this will generate an empty migration file for you, you can then cherry pick the migrations you want to run from the previously auto generated file and copy them over to this file, after that you can delete the auto generated file
+6. In the `dev/medusa` dir run `medusa migrations run`
 7. ... ???
 
 <!-- 1. `docker-compose up`

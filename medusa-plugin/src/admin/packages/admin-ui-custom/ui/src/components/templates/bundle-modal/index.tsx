@@ -227,8 +227,6 @@ const BundleModal: React.FC<BundleModalProps> = ({
               />
               <p className="inter-base-regular text-grey-50">
                 Give your bundle a short and clear description.
-                <br />
-                120-160 characters is the recommended length for search engines.
               </p>
             </div>
             {/* <div className="mt-xlarge">

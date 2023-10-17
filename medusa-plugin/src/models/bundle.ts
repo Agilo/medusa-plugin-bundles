@@ -23,12 +23,57 @@ export class Bundle extends BaseEntity {
   @DbAwareColumn({ type: "enum", enum: BundleStatus, default: "draft" })
   status: BundleStatus;
 
-  // @OneToOne(() => Product)
-  // @JoinColumn()
-  // product: Product;
-
   @BeforeInsert()
   private beforeInsert(): void {
     this.id = generateEntityId(this.id, "bundle");
   }
 }
+
+/**
+ * @schema Bundle
+ * title: "Bundle"
+ * description: "A bundle is a group of products."
+ * type: object
+ * required:
+ *   - created_at
+ *   - description
+ *   - id
+ *   - products
+ *   - status
+ *   - title
+ *   - updated_at
+ * properties:
+ *   id:
+ *     description: The bundle's ID
+ *     type: string
+ *     example: bundle_01G1G5V2MBA328390B5AXJ610F
+ *   title:
+ *     description: A title that can be displayed for easy identification of the Bundle.
+ *     type: string
+ *     example: Medusa Coffee Mug Set
+ *   description:
+ *     description: A short description of the Bundle.
+ *     nullable: true
+ *     type: string
+ *     example: Every programmer's best friends.
+ *   products:
+ *     description: The details of the products used in this bundle.
+ *     type: array
+ *     items:
+ *       $ref: "#/components/schemas/Product"
+ *   status:
+ *     description: The status of the bundle
+ *     type: string
+ *     enum:
+ *       - draft
+ *       - published
+ *     default: draft
+ *   created_at:
+ *     description: The date with timezone at which the resource was created.
+ *     type: string
+ *     format: date-time
+ *   updated_at:
+ *     description: The date with timezone at which the resource was updated.
+ *     type: string
+ *     format: date-time
+ */

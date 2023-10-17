@@ -23,3 +23,6 @@ build
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+/generated/
+/src/admin/packages/generated/

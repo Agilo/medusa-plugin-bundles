@@ -1,7 +1,7 @@
 import { IsString, IsNumber, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { Request, Response } from "express";
-import BundleService from "../../../services/bundle";
+import BundleService from "../../../../services/bundle";
 
 export default async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -14,7 +14,7 @@ export default async (req: Request, res: Response) => {
       bundle_id: id,
       ...req.filterableFields,
     },
-    req.listConfig
+    // req.listConfig
   );
 
   res.status(200).json({
@@ -39,5 +39,5 @@ export class AdminListBundleProductsParams {
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  limit?: number = 50;
+  limit?: number = 10;
 }

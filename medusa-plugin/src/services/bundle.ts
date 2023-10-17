@@ -1,11 +1,10 @@
 import {
   EventBusService,
   FindConfig,
-  Selector,
   TransactionBaseService,
   buildQuery,
 } from "@medusajs/medusa";
-import { Bundle } from "../models/bundle";
+import { Bundle, BundleStatus } from "../models/bundle";
 import { Product } from "../models/product";
 import ProductRepository from "@medusajs/medusa/dist/repositories/product";
 import BundleRepository from "../repositories/bundle";
@@ -16,25 +15,6 @@ type InjectedDependencies = {
   eventBusService: EventBusService;
   productRepository: typeof ProductRepository;
   bundleRepository: typeof BundleRepository;
-};
-
-type ListAndCountSelector = {
-  q?: string;
-};
-
-type ListAndCountFindConfig = {
-  skip: number;
-  take: number;
-};
-
-type ListAndCountProductsSelector = {
-  bundle_id: string;
-  q?: string;
-};
-
-type ListAndCountProductsFindConfig = {
-  skip?: number;
-  take?: number;
 };
 
 export default class BundleService extends TransactionBaseService {
@@ -55,21 +35,24 @@ export default class BundleService extends TransactionBaseService {
   }
 
   async listAndCount(
-    selector: ListAndCountSelector = {},
-    config: ListAndCountFindConfig = {
+    selector: { q?: string; status?: "draft" | "published" } = {},
+    config: {
+      skip: number;
+      take: number;
+    } = {
       skip: 0,
       take: 10,
     }
   ): Promise<[Bundle[], number]> {
     const bundleRepo = this.activeManager_.getRepository(Bundle);
 
-    let queryBuilder = bundleRepo
+    let qb = bundleRepo
       .createQueryBuilder(`bundle`)
       .skip(config.skip)
       .take(config.take);
 
     if (selector.q) {
-      queryBuilder.where(
+      qb.andWhere(
         new Brackets((qb) => {
           qb.where(`bundle.title ILIKE :q`, {
             q: `%${escapeLikeString(selector.q)}%`,
@@ -80,7 +63,17 @@ export default class BundleService extends TransactionBaseService {
       );
     }
 
-    return queryBuilder.getManyAndCount();
+    if (selector.status) {
+      qb.andWhere("bundle.status = :status", {
+        status: selector.status,
+      });
+    }
+
+    // console.log("selector", selector);
+    // console.log("qb.getQuery()", qb.getQuery());
+    // console.log("qb.getQueryAndParameters()", qb.getQueryAndParameters());
+
+    return qb.getManyAndCount();
   }
 
   async retrieve(id: string, config?: FindConfig<Bundle>): Promise<Bundle> {
@@ -109,7 +102,7 @@ export default class BundleService extends TransactionBaseService {
 
   async update(
     bundleId: string,
-    data: { title: string; description?: string }
+    data: { title?: string; description?: string; status?: BundleStatus }
   ): Promise<Bundle> {
     return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);
@@ -148,8 +141,14 @@ export default class BundleService extends TransactionBaseService {
   }
 
   async listAndCountProducts(
-    selector: ListAndCountProductsSelector,
-    config: ListAndCountProductsFindConfig = {
+    selector: {
+      bundle_id: string;
+      q?: string;
+    },
+    config: {
+      skip: number;
+      take: number;
+    } = {
       skip: 0,
       take: 10,
     }

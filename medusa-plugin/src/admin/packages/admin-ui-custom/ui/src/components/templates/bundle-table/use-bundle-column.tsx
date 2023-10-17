@@ -13,27 +13,12 @@ const useBundleTableColumn = (/*{ setTileView, setListView, showList }*/) => {
   const { t } = useTranslation();
 
   const getProductStatus = (status) => {
-    status = "published"; // TODO: implement status?
     switch (status) {
-      case "proposed":
-        return (
-          <StatusIndicator
-            title={t("bundle-table-proposed", "Proposed")}
-            variant={"warning"}
-          />
-        );
       case "published":
         return (
           <StatusIndicator
             title={t("bundle-table-published-title", "Published")}
             variant={"success"}
-          />
-        );
-      case "rejected":
-        return (
-          <StatusIndicator
-            title={t("bundle-table-rejected", "Rejected")}
-            variant={"danger"}
           />
         );
       case "draft":

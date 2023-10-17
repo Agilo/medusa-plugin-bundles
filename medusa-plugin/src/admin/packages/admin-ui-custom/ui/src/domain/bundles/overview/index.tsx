@@ -13,42 +13,6 @@ const BundleIndex = () => {
   const { t } = useTranslation();
   const [showNewBundle, setShowNewBundle] = useState(false);
 
-  const handleCreateBundle = async (data /*, colMetadata*/) => {
-    // const metadata = colMetadata
-    //   .filter((m) => m.key && m.value) // remove empty metadata
-    //   .reduce((acc, next) => {
-    //     return {
-    //       ...acc,
-    //       [next.key]: next.value,
-    //     }
-    //   }, {})
-
-    // await createCollection.mutateAsync(
-    //   { ...data, metadata },
-    //   {
-    //     onSuccess: ({ collection }) => {
-    //       notification(
-    //         t("overview-success", "Success"),
-    //         t(
-    //           "overview-successfully-created-collection",
-    //           "Successfully created collection"
-    //         ),
-    //         "success"
-    //       )
-    //       navigate(`/a/collections/${collection.id}`)
-    //       setShowNewCollection(false)
-    //     },
-    //     onError: (err) =>
-    //       notification(
-    //         t("overview-error", "Error"),
-    //         getErrorMessage(err),
-    //         "error"
-    //       ),
-    //   }
-    // )
-    alert("New Bundle");
-  };
-
   return (
     <>
       <div className="gap-y-xsmall flex h-full grow flex-col">
@@ -83,10 +47,7 @@ const BundleIndex = () => {
       </div>
 
       {showNewBundle && (
-        <AddBundleModal
-          onClose={() => setShowNewBundle(!showNewBundle)}
-          onSubmit={handleCreateBundle}
-        />
+        <AddBundleModal onClose={() => setShowNewBundle(!showNewBundle)} />
       )}
     </>
   );

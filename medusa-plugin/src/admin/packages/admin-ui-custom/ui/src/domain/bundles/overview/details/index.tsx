@@ -1,10 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 // import FormValidator from "form-validator"
-import {
-  useAdminCustomQuery,
-  useAdminCustomPost,
-  useAdminCustomDelete,
-} from "medusa-react";
 import Spinner from "../../../../../../../admin-ui/ui/src/components/atoms/spinner";
 import BackButton from "../../../../../../../admin-ui/ui/src/components/atoms/back-button";
 import Section from "../../../../../../../admin-ui/ui/src/components/organisms/section";
@@ -20,20 +15,27 @@ import Medusa from "../../../../../../../admin-ui-custom/ui/src/services/api";
 import ViewProductsTable from "../../../../../../../admin-ui-custom/ui/src/components/templates/bundle-product-table/view-products-table";
 // import { ActionType } from "../../../../../../../admin-ui/ui/src/components/molecules/actionables";
 import TrashIcon from "../../../../../../../admin-ui/ui/src/components/fundamentals/icons/trash-icon";
-import { Bundle } from "../../../../../../../../../models/bundle";
+// import { Bundle, BundleStatus } from "../../../../../../../../../models/bundle";
 import EditBundleModal from "../../../../components/templates/bundle-modal";
 import DeletePrompt from "../../../../../../../admin-ui/ui/src/components/organisms/delete-prompt";
+import {
+  useBundlesDelete,
+  useBundlesRetrieve,
+  useBundlesUpdate,
+} from "../../../../hooks/useBundles";
 
 type BundleGeneralSectionProps = {
   bundle: any;
   setShowEdit: (show: boolean) => void;
   setShowDelete: (show: boolean) => void;
+  handleUpdateStatus: (newStatus: string) => void;
 };
 
 const BundleGeneralSection = ({
   bundle,
   setShowEdit,
   setShowDelete,
+  handleUpdateStatus,
 }: BundleGeneralSectionProps) => {
   const { t } = useTranslation();
 
@@ -57,12 +59,14 @@ const BundleGeneralSection = ({
         // forceDropdown
         status={
           <StatusSelector
-            // isDraft={product?.status === "draft"}
-            isDraft={false}
-            activeState={t("product-general-section-published", "Published")}
-            draftState={t("product-general-section-draft", "Draft")}
-            // onChange={() => onStatusChange(product.status)}
-            onChange={() => alert("onChange")}
+            isDraft={bundle.status === "draft"}
+            activeState={t("bundle-general-section-published", "Published")}
+            draftState={t("bundle-general-section-draft", "Draft")}
+            onChange={() =>
+              handleUpdateStatus(
+                bundle.status === "draft" ? "published" : "draft"
+              )
+            }
           />
         }
       >
@@ -102,15 +106,6 @@ const BundleRawSection = ({ bundle }: BundleRawSectionProps) => {
   );
 };
 
-type AdminBundleReq = {
-  title: string;
-  description?: string;
-};
-
-type AdminBundleRes = {
-  bundle: Bundle;
-};
-
 const BundleDetails = () => {
   const { t } = useTranslation();
   const { id } = useParams();
@@ -122,42 +117,67 @@ const BundleDetails = () => {
 
   const [showAddProducts, setShowAddProducts] = useState(false);
 
-  const { data, isLoading, refetch } = useAdminCustomQuery<any, any>(
-    `/bundles/${id}`,
-    ["bundles", id]
-  );
+  // const { data, isLoading, refetch } = useAdminCustomQuery<any, any>(
+  //   `/bundles/${id}`,
+  //   ["bundles", id]
+  // );
+
+  const { data, isLoading, refetch } = useBundlesRetrieve(id);
 
   const { bundle } = data ?? {};
 
-  const updateBundle = useAdminCustomPost<AdminBundleReq, AdminBundleRes>(
-    `/bundles/${id}`,
-    ["bundles", id]
-  );
+  // const updateBundle = useBundlesUpdate(id, undefined);
+  // const deleteBundle = useBundlesDelete(id);
+  const updateBundle = useBundlesUpdate(id);
+  const deleteBundle = useBundlesDelete(id);
 
-  const deleteBundle = useAdminCustomDelete(`/bundles/${id}`, ["bundles", id]);
+  // const foo: Bundle = {
+  //   created_at: "",
+  //   updated_at: "",
+  //   products: [],
+  //   id: "",
+  //   title: "debug bundle",
+  //   description: "",
+  //   status: "draft",
+  // };
 
-  const handleDelete = () => {
-    deleteBundle.mutate(undefined, {
-      onSuccess: () => navigate(`/a/bundles`),
-    });
+  // console.log(foo);
+  // alert(foo);
+
+  const handleUpdateStatus = (newStatus: string) => {
+    updateBundle.mutate(
+      { status: newStatus === "published" ? "published" : "draft" },
+      {
+        onSuccess: () => {
+          const pastTense = newStatus === "published" ? "published" : "drafted";
+          notification(
+            "Success",
+            `Product ${pastTense} successfully`,
+            "success"
+          );
+        },
+        onError: (err) => {
+          notification("Ooops", getErrorMessage(err), "error");
+        },
+      }
+    );
   };
 
-  const handleUpdateDetails = (data: any) => {
-    const payload: {
-      title: string;
-      // handle?: string
-      description?: string;
-    } = {
-      title: data.title,
-      // handle: data.handle,
-      description: data.description,
-    };
-
-    updateBundle.mutate(payload, {
+  const handleUpdateDetails = (data: {
+    title: string;
+    description?: string;
+  }) => {
+    updateBundle.mutate(data, {
       onSuccess: () => {
         setShowEdit(false);
         refetch();
       },
+    });
+  };
+
+  const handleDelete = () => {
+    deleteBundle.mutate(undefined, {
+      onSuccess: () => navigate(`/a/bundles`),
     });
   };
 
@@ -231,6 +251,7 @@ const BundleDetails = () => {
                 bundle={bundle}
                 setShowEdit={setShowEdit}
                 setShowDelete={setShowDelete}
+                handleUpdateStatus={handleUpdateStatus}
               />
               {/* <ProductVariantsSection product={product} />
             <ProductAttributesSection product={product} /> */}

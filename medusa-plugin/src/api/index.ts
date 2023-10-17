@@ -1,6 +1,6 @@
 import express, { Router } from "express";
-import adminRoutes from "./routes/admin";
-import storeRoutes from "./routes/store";
+import adminRoutes from "./routes/admin/bundles";
+import storeRoutes from "./routes/store/bundles";
 // import { errorHandler } from "@medusajs/medusa";
 
 export default (rootDirectory, options) => {

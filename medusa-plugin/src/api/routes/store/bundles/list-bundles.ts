@@ -1,13 +1,36 @@
 // import { DateComparisonOperator } from "@medusajs/medusa";
-import { IsOptional, ValidateNested, IsNumber } from "class-validator";
+import { IsOptional, IsNumber, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import BundleService from "../../../services/bundle";
+import BundleService from "../../../../services/bundle";
 import { cleanResponseData } from "@medusajs/medusa";
 
+/**
+ * @oas [get] /store/bundles
+ * operationId: GetBundles
+ * summary: List Bundles
+ * description: |
+ *   Retrieves a list of bundles. The bundles can be filtered by `q` field. The bundles can also be paginated.
+ * parameters:
+ *   - (query) q {string} term used to search bundles' title and description.
+ *   - (query) offset=0 {integer} The number of bundles to skip when retrieving the bundles.
+ *   - (query) limit=10 {integer} Limit the number of bundles returned.
+ * responses:
+ *   200:
+ *     description: OK
+ *     content:
+ *       application/json:
+ *         schema:
+ *           $ref: "#/components/schemas/StoreBundlesListRes"
+ */
 export default async (req, res) => {
   const bundleService: BundleService = req.scope.resolve("bundleService");
 
   const validated = req.validatedQuery as StoreGetBundlesParams;
+
+  // get only published bundles for store endpoint
+  req.filterableFields["status"] = "published";
+
+  console.log("req.listConfig", req.listConfig);
 
   const [bundles, count] = await bundleService.listAndCount(
     req.filterableFields,
@@ -39,7 +62,7 @@ export class StoreGetBundlesParams {
   @IsNumber()
   @IsOptional()
   @Type(() => Number)
-  limit?: number = 100;
+  limit?: number = 10;
 
   // @IsString()
   // @IsOptional()
@@ -49,9 +72,9 @@ export class StoreGetBundlesParams {
   // @IsType([String, [String]])
   // id?: string | string[];
 
-  // @IsString()
-  // @IsOptional()
-  // q?: string;
+  @IsString()
+  @IsOptional()
+  q?: string;
 
   // @IsArray()
   // @IsOptional()

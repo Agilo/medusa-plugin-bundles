@@ -2,13 +2,26 @@
   "name": "medusa-bundles",
   "packageManager": "yarn@3.6.3",
   "private": true,
-  "devDependencies": {
-    "concurrently": "^8.2.1",
-    "nodemon": "^3.0.1"
-  },
+  "type": "module",
   "scripts": {
     "rsync": "rsync -aP --delete --exclude=node_modules medusa-plugin/ dev/medusa/node_modules/medusa-plugin-bundles/",
     "watch": "nodemon -e js,jsx,ts,tsx --watch \"medusa-plugin/src\" --spawn --exec \"cd medusa-plugin && yarn run prepare && cd .. && yarn run rsync && cd dev/medusa && yarn run dev\" --delay 1 --verbose",
-    "start": "cd medusa-plugin && yarn run prepare && cd .. && yarn run rsync && cd dev/medusa && yarn run build && cd ../.. && concurrently \"yarn run watch\" \"cd dev/medusa-storefront && yarn run dev\" --timings --prefix \"[{index}] [{time}] =>\""
+    "start": "cd medusa-plugin && yarn run prepare && cd .. && yarn run rsync && cd dev/medusa && yarn run build && cd ../.. && concurrently \"yarn run watch\" \"cd dev/medusa-storefront && yarn run dev\" --timings --prefix \"[{index}] [{time}] =>\"",
+    "generate:medusa-api:admin": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./dev/scripts/generate-medusa-client.ts admin",
+    "generate:medusa-api:store": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./dev/scripts/generate-medusa-client.ts store",
+    "generate:medusa-api": "yarn run generate:medusa-api:admin && yarn run generate:medusa-api:store"
+  },
+  "dependencies": {
+    "@medusajs/medusa-oas-cli": "file:.yalc/@medusajs/medusa-oas-cli",
+    "concurrently": "^8.2.1",
+    "execa": "^8.0.1",
+    "fs-extra": "^11.1.1",
+    "nodemon": "^3.0.1",
+    "openapi-filter": "^3.2.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1"
   }
 }

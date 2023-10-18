@@ -10,6 +10,7 @@ import ImageGallery from "@modules/products/components/image-gallary"
 import MobileActions from "@modules/products/components/mobile-actions"
 import ProductOnboardingCta from "@modules/products/components/product-onboarding-cta"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import RelatedBundles from "@modules/products/components/related-bundles"
 
 type ProductTemplateProps = {
   product: PricedProduct
@@ -41,6 +42,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({ product }) => {
           <ProductInfo product={product} />
           <ProductTabs product={product} />
         </div>
+      </div>
+      <div className="content-container my-16 px-6 small:px-8 small:my-32">
+        <RelatedBundles product={product} />
       </div>
       <div className="content-container my-16 px-6 small:px-8 small:my-32">
         <RelatedProducts product={product} />

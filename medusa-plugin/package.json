@@ -92,5 +92,11 @@
     ],
     "coverageDirectory": "./coverage",
     "testEnvironment": "node"
+  },
+  "exports": {
+    "./store-client": {
+      "import": "./store-client/index.mjs"
+    },
+    "./package.json": "./package.json"
   }
 }

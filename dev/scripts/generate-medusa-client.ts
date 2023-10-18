@@ -72,7 +72,7 @@ const oasOperationIds = {
       "--out-dir",
       type === "admin"
         ? `./medusa-plugin/src/admin/packages/generated/${type}-client`
-        : `./medusa-plugin/generated/${type}-client`,
+        : `./dev/${type}-client/src/generated`,
       "--clean",
     ],
     {

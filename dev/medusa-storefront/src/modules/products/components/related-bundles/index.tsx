@@ -10,7 +10,7 @@ import { useInfiniteQuery } from "@tanstack/react-query"
 import ProductPreview from "../product-preview"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { getProductsList } from "@lib/data"
-import { useDefaultGetBundles } from "medusa-plugin-bundles/store-client"
+import { useBundlesGetBundles } from "medusa-plugin-bundles/store-client"
 
 type RelatedBundlesProps = {
   product: PricedProduct
@@ -39,7 +39,7 @@ const RelatedBundles = ({ product }: RelatedBundlesProps) => {
     return params
   }, [product, cart?.id])
 
-  const bundles = useDefaultGetBundles({})
+  const bundles = useBundlesGetBundles({})
   console.log("bundles", bundles)
 
   const { data, hasNextPage, fetchNextPage, isLoading, isFetchingNextPage } =

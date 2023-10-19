@@ -1,4 +1,5 @@
 import { Router } from "express";
+import cors from "cors";
 import {
   PaginatedResponse,
   transformStoreQuery,
@@ -6,21 +7,19 @@ import {
 } from "@medusajs/medusa";
 import { StoreGetBundlesParams } from "./list-bundles";
 import { Bundle } from "../../../../models/bundle";
+import { parseCorsOrigins } from "medusa-core-utils";
 
 export default function storeRoutes(router: Router, options) {
-  // console.log("options", options);
-
-  // const corsOptions = {
-  //   origin: options.admin_cors.split(","),
-  //   credentials: true,
-  // };
-
   const storeRouter = Router();
 
   router.use("/store/bundles", storeRouter);
 
-  // storeRouter.use(cors(corsOptions));
-  // storeRouter.use(authenticate());
+  storeRouter.use(
+    cors({
+      origin: parseCorsOrigins(options.store_cors || ""),
+      credentials: true,
+    })
+  );
 
   storeRouter.get(
     "/",

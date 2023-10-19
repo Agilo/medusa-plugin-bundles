@@ -1,6 +1,7 @@
 import path from "path";
 import { execa } from "execa";
 import * as url from "url";
+import replace from "replace-in-file";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const rootDir = path.resolve(__dirname, "..", "..");
@@ -80,4 +81,23 @@ const oasOperationIds = {
       stdio: "inherit",
     }
   );
+
+  /**
+   * Replace react-query imports with @tanstack/react-query
+   */
+  try {
+    const results = replace.sync({
+      files:
+        type === "admin"
+          ? [
+              `./medusa-plugin/src/admin/packages/generated/${type}-client/**/*.{ts,tsx}`,
+            ]
+          : [`./dev/${type}-client/src/generated/**/*.{ts,tsx}`],
+      from: / from ("|')react\-query("|');?$/gm,
+      to: " from '@tanstack/react-query';",
+    });
+    // console.log("Replacement results:", results);
+  } catch (error) {
+    // console.error("Error occurred:", error);
+  }
 })();

@@ -14,7 +14,9 @@ import { cleanResponseData } from "@medusajs/medusa";
  *   - (query) q {string} term used to search bundles' title and description.
  *   - (query) offset=0 {integer} The number of bundles to skip when retrieving the bundles.
  *   - (query) limit=10 {integer} Limit the number of bundles returned.
- * responses:
+ * tags:
+ *   - Bundles
+* responses:
  *   200:
  *     description: OK
  *     content:

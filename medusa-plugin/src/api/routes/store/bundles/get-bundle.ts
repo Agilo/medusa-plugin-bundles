@@ -11,7 +11,7 @@ import { cleanResponseData } from "@medusajs/medusa";
  * parameters:
  *   - (path) id=* {string} The ID of the Bundle.
  * tags:
- *   - Products
+ *   - Bundles
  * responses:
  *   200:
  *     description: OK

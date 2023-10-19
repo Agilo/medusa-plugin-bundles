@@ -3,11 +3,12 @@
 /* eslint-disable */
 import {
   StoreBundlesListRes,
+  StoreBundlesRes,
 } from '../models';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
 
-export class DefaultService {
+export class BundlesService {
 
   constructor(public readonly httpRequest: BaseHttpRequest) {}
 
@@ -41,6 +42,28 @@ export class DefaultService {
       url: '/store/bundles',
       headers: customHeaders,
       query: queryParams,
+    });
+  }
+
+  /**
+   * GetBundlesBundle
+   * Get a Bundle
+   * Retrieve a Bundle's details.
+   *
+   * @returns StoreBundlesRes OK
+   * @throws ApiError
+   */
+  public getBundlesBundle(
+    id: string,
+    customHeaders: Record<string, any> = {}
+  ): CancelablePromise<StoreBundlesRes> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/store/bundles/{id}',
+      path: {
+        'id': id,
+      },
+      headers: customHeaders,
     });
   }
 

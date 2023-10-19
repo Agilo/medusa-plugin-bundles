@@ -5,15 +5,13 @@ import type { BaseHttpRequest } from './core/BaseHttpRequest';
 import type { OpenAPIConfig } from './core/OpenAPI';
 import { AxiosHttpRequest } from './core/AxiosHttpRequest';
 
-import { DefaultService } from './services/DefaultService';
-import { ProductsService } from './services/ProductsService';
+import { BundlesService } from './services/BundlesService';
 
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
 
 export class MedusaStore {
 
-  public readonly default: DefaultService;
-  public readonly products: ProductsService;
+  public readonly bundles: BundlesService;
 
   public readonly request: BaseHttpRequest;
 
@@ -30,7 +28,6 @@ export class MedusaStore {
       ENCODE_PATH: config?.ENCODE_PATH,
     });
 
-    this.default = new DefaultService(this.request);
-    this.products = new ProductsService(this.request);
+    this.bundles = new BundlesService(this.request);
   }
 }

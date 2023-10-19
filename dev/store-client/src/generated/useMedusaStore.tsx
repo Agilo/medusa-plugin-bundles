@@ -3,7 +3,7 @@
 /* eslint-disable */
 import React from 'react';
 import { createContext, useContext, ReactNode } from 'react';
-import { QueryClientProvider, QueryClientProviderProps } from 'react-query';
+import { QueryClientProvider, QueryClientProviderProps } from '@tanstack/react-query';
 import { MedusaStore } from './MedusaStore';
 
 interface MedusaStoreContextState {

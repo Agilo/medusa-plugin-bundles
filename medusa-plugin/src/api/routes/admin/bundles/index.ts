@@ -16,16 +16,16 @@ import { AdminPostBundlesBundleReq } from "./update-bundle";
 import { Bundle } from "../../../../models/bundle";
 
 export default function adminRoutes(router: Router, options) {
-  const corsOptions = {
-    origin: options.admin_cors.split(","),
-    credentials: true,
-  };
-
   const adminRouter = Router();
 
   router.use("/admin/bundles", adminRouter);
 
-  adminRouter.use(cors(corsOptions));
+  adminRouter.use(
+    cors({
+      origin: options.admin_cors.split(","),
+      credentials: true,
+    })
+  );
   adminRouter.use(authenticate());
 
   adminRouter.get(

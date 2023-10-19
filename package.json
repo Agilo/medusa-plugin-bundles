@@ -8,7 +8,7 @@
     "rsync:storefront": "rsync -aP --delete --exclude=node_modules medusa-plugin/ dev/medusa-storefront/node_modules/medusa-plugin-bundles/",
     "rsync": "yarn run rsync:medusa && yarn run rsync:storefront",
     "watch": "nodemon -e js,jsx,ts,tsx --watch \"medusa-plugin/src\" --spawn --exec \"cd medusa-plugin && yarn run prepare && cd .. && yarn run rsync && cd dev/medusa && yarn run dev\" --delay 1 --verbose",
-    "start": "yarn run generate:medusa-api && cd medusa-plugin && yarn run prepare && cd .. && yarn run rsync && cd dev/medusa && yarn run build && cd ../.. && concurrently \"yarn run watch\" \"cd dev/medusa-storefront && yarn run dev\" --timings --prefix \"[{index}] [{time}] =>\"",
+    "start": "yarn run generate:medusa-api && cd medusa-plugin && yarn run prepare && cd .. && yarn run rsync && cd dev/medusa && yarn run build && cd ../.. && concurrently \"yarn run watch\" \"cd dev/medusa-storefront && rm -rf .next && yarn run dev\" --timings --prefix \"[{index}] [{time}] =>\"",
     "generate:medusa-api:admin": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./dev/scripts/generate-medusa-client.ts admin",
     "generate:medusa-api:store": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./dev/scripts/generate-medusa-client.ts store && cd dev/store-client && yarn run prepare && cd ../.. && cp -R dev/store-client/dist/ medusa-plugin/store-client/",
     "generate:medusa-api": "yarn run generate:medusa-api:admin && yarn run generate:medusa-api:store"

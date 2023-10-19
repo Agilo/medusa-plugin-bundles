@@ -13,7 +13,6 @@ const config: Options = {
   skipNodeModulesBundle: true,
   tsconfig: "./tsconfig.json",
   external: Object.keys(peerDependencies),
-  noExternal: ["react-query"],
 };
 
 export default config;

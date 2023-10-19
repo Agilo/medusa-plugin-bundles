@@ -3561,7 +3561,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^8.0.3":
+"glob@npm:^8.0.3, glob@npm:^8.1.0":
   version: 8.1.0
   resolution: "glob@npm:8.1.0"
   dependencies:
@@ -4901,6 +4901,7 @@ __metadata:
     fs-extra: ^11.1.1
     nodemon: ^3.0.1
     openapi-filter: ^3.2.3
+    replace-in-file: ^7.0.1
     ts-node: ^10.9.1
     typescript: ^5.2.2
   languageName: unknown
@@ -6610,6 +6611,19 @@ __metadata:
   version: 0.1.1
   resolution: "remove-trailing-slash@npm:0.1.1"
   checksum: dd200c6b7d6f2b49d12b3eff3abc7089917e8a268cefcd5bf67ff23f8c2ad9f866fbe2f3566e1a8dbdc4f4b1171e2941f7dd00852f8de549bb73c3df53b09d96
+  languageName: node
+  linkType: hard
+
+"replace-in-file@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "replace-in-file@npm:7.0.1"
+  dependencies:
+    chalk: ^4.1.2
+    glob: ^8.1.0
+    yargs: ^17.7.2
+  bin:
+    replace-in-file: bin/cli.js
+  checksum: da6115387bf79ac7fb2057a4212da4159cc85889e34212df62d86cc3b5ceb23167a7c22ce0dc0cebfe55c01a08ccd99fd496398375dfa29e30f173013c81579a
   languageName: node
   linkType: hard
 

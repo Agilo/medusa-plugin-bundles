@@ -6,45 +6,29 @@ import { UseQueryOptionsWrapper, UseMutationOptionsWrapper} from '../core/HookUt
 import { useMedusaStore } from '../useMedusaStore';
 import type { StoreBundlesListRes } from '../models/StoreBundlesListRes';
 import type { StoreBundlesRes } from '../models/StoreBundlesRes';
+import type { StoreGetBundlesParams } from '../models/StoreGetBundlesParams';
 
 const { client } = useMedusaStore()
 
-export const useBundlesGetBundles = (
-  queryParams: {
-    /**
-     * term used to search bundles' title and description.
-     */
-    q?: string,
-    /**
-     * The number of bundles to skip when retrieving the bundles.
-     */
-    offset?: number,
-    /**
-     * Limit the number of bundles returned.
-     */
-    limit?: number,
-    /**
-     * Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
-     */
-    product_id?: Array<string>,
-  },
-  options: UseQueryOptionsWrapper<Awaited<ReturnType<typeof client.bundles.getBundles>>> = {}
+export const useBundlesList = (
+  queryParams: StoreGetBundlesParams,
+  options: UseQueryOptionsWrapper<Awaited<ReturnType<typeof client.bundles.list>>> = {}
 ) => {
-  const { data, ...rest } = useQuery<Awaited<ReturnType<typeof client.bundles.getBundles>>>(
-    ['bundles', 'getBundles', queryParams],
-    () => client.bundles.getBundles(queryParams),
+  const { data, ...rest } = useQuery<Awaited<ReturnType<typeof client.bundles.list>>>(
+    ['bundles', 'list', queryParams],
+    () => client.bundles.list(queryParams),
     options
   );
   return { ...data, ...rest } as const
 };
 
-export const useBundlesGetBundlesBundle = (
+export const useBundlesRetrieve = (
   id: string,
-  options: UseQueryOptionsWrapper<Awaited<ReturnType<typeof client.bundles.getBundlesBundle>>> = {}
+  options: UseQueryOptionsWrapper<Awaited<ReturnType<typeof client.bundles.retrieve>>> = {}
 ) => {
-  const { data, ...rest } = useQuery<Awaited<ReturnType<typeof client.bundles.getBundlesBundle>>>(
-    ['bundles', 'getBundlesBundle', id],
-    () => client.bundles.getBundlesBundle(id),
+  const { data, ...rest } = useQuery<Awaited<ReturnType<typeof client.bundles.retrieve>>>(
+    ['bundles', 'retrieve', id],
+    () => client.bundles.retrieve(id),
     options
   );
   return { ...data, ...rest } as const

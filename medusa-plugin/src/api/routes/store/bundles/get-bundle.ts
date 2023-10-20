@@ -10,6 +10,8 @@ import { cleanResponseData } from "@medusajs/medusa";
  *
  * parameters:
  *   - (path) id=* {string} The ID of the Bundle.
+ * x-codegen:
+ *   method: retrieve
  * tags:
  *   - Bundles
  * responses:

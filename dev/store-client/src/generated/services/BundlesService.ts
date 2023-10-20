@@ -4,6 +4,7 @@
 import {
   StoreBundlesListRes,
   StoreBundlesRes,
+  StoreGetBundlesParams,
 } from '../models';
 import type { CancelablePromise } from '../core/CancelablePromise';
 import type { BaseHttpRequest } from '../core/BaseHttpRequest';
@@ -20,25 +21,8 @@ export class BundlesService {
    * @returns StoreBundlesListRes OK
    * @throws ApiError
    */
-  public getBundles(
-    queryParams: {
-      /**
-       * term used to search bundles' title and description.
-       */
-      q?: string,
-      /**
-       * The number of bundles to skip when retrieving the bundles.
-       */
-      offset?: number,
-      /**
-       * Limit the number of bundles returned.
-       */
-      limit?: number,
-      /**
-       * Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
-       */
-      product_id?: Array<string>,
-    },
+  public list(
+    queryParams: StoreGetBundlesParams,
     customHeaders: Record<string, any> = {}
   ): CancelablePromise<StoreBundlesListRes> {
     return this.httpRequest.request({
@@ -57,7 +41,7 @@ export class BundlesService {
    * @returns StoreBundlesRes OK
    * @throws ApiError
    */
-  public getBundlesBundle(
+  public retrieve(
     id: string,
     customHeaders: Record<string, any> = {}
   ): CancelablePromise<StoreBundlesRes> {

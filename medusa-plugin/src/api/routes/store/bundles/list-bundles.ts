@@ -23,6 +23,9 @@ import { cleanResponseData } from "@medusajs/medusa";
  *       type: array
  *       items:
  *         type: string
+ * x-codegen:
+ *   method: list
+ *   queryParams: StoreGetBundlesParams
  * tags:
  *   - Bundles
  * responses:

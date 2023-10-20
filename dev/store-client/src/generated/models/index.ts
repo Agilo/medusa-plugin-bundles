@@ -57,6 +57,7 @@ export type { ShippingOptionRequirement } from './ShippingOptionRequirement';
 export type { ShippingProfile } from './ShippingProfile';
 export type { StoreBundlesListRes } from './StoreBundlesListRes';
 export type { StoreBundlesRes } from './StoreBundlesRes';
+export type { StoreGetBundlesParams } from './StoreGetBundlesParams';
 export type { Swap } from './Swap';
 export type { TaxProvider } from './TaxProvider';
 export type { TaxRate } from './TaxRate';

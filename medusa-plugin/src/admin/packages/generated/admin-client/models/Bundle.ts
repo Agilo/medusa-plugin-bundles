@@ -30,6 +30,10 @@ export interface Bundle {
    */
   status: 'draft' | 'published';
   /**
+   * A URL to an image file that can be used to identify the Bundle.
+   */
+  thumbnail: string | null;
+  /**
    * The date with timezone at which the resource was created.
    */
   created_at: string;

@@ -23,6 +23,9 @@ export class Bundle extends BaseEntity {
   @DbAwareColumn({ type: "enum", enum: BundleStatus, default: "draft" })
   status: BundleStatus;
 
+  @Column({ type: "text", nullable: true })
+  thumbnail: string | null;
+
   @BeforeInsert()
   private beforeInsert(): void {
     this.id = generateEntityId(this.id, "bundle");
@@ -40,6 +43,7 @@ export class Bundle extends BaseEntity {
  *   - id
  *   - products
  *   - status
+ *   - thumbnail
  *   - title
  *   - updated_at
  * properties:
@@ -68,6 +72,11 @@ export class Bundle extends BaseEntity {
  *       - draft
  *       - published
  *     default: draft
+ *   thumbnail:
+ *     description: A URL to an image file that can be used to identify the Bundle.
+ *     nullable: true
+ *     type: string
+ *     format: uri
  *   created_at:
  *     description: The date with timezone at which the resource was created.
  *     type: string

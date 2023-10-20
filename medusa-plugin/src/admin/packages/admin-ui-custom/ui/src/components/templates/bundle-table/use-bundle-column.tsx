@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 // import DelimitedList from "../../../../../../admin-ui/ui/src/molecules/delimited-list";
 // import ListIcon from "../../../../../../admin-ui/ui/src/components/fundamentals/icons/list-icon";
 // import TileIcon from "../../../../../../admin-ui/ui/src/components/fundamentals/icons/tile-icon";
-// import ImagePlaceholder from "../../../../../../admin-ui/ui/src/components/fundamentals/image-placeholder";
+import ImagePlaceholder from "../../../../../../admin-ui/ui/src/components/fundamentals/image-placeholder";
 import StatusIndicator from "../../../../../../admin-ui/ui/src/components/fundamentals/status-indicator";
 
 const useBundleTableColumn = (/*{ setTileView, setListView, showList }*/) => {
@@ -46,19 +46,12 @@ const useBundleTableColumn = (/*{ setTileView, setListView, showList }*/) => {
   const columns = useMemo(
     () => [
       {
-        Header: t("bundle-table-id", "ID"),
-        accessor: "id",
-        Cell: ({ row: { original } }) => {
-          return <div className="flex items-center">{original.id}</div>;
-        },
-      },
-      {
         Header: t("bundle-table-name", "Name"),
         accessor: "title",
         Cell: ({ row: { original } }) => {
           return (
             <div className="flex items-center">
-              {/* <div className="my-1.5 mr-4 flex h-[40px] w-[30px] items-center">
+              <div className="my-1.5 mr-4 flex h-[40px] w-[30px] items-center">
                 {original.thumbnail ? (
                   <img
                     src={original.thumbnail}
@@ -67,7 +60,7 @@ const useBundleTableColumn = (/*{ setTileView, setListView, showList }*/) => {
                 ) : (
                   <ImagePlaceholder />
                 )}
-              </div> */}
+              </div>
               {original.title}
             </div>
           );
@@ -105,6 +98,13 @@ const useBundleTableColumn = (/*{ setTileView, setListView, showList }*/) => {
         Header: t("bundle-table-status", "Status"),
         accessor: "status",
         Cell: ({ cell: { value } }) => getProductStatus(value),
+      },
+      {
+        Header: t("bundle-table-id", "ID"),
+        accessor: "id",
+        Cell: ({ row: { original } }) => {
+          return <div className="flex items-center">{original.id}</div>;
+        },
       },
       // {
       //   Header: t("bundle-table-availability", "Availability"),

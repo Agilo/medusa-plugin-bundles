@@ -74,6 +74,9 @@ export default async (req: Request, res: Response) => {
  *     description: The status of the bundle. The bundle is shown to the customer only if its status is `published`.
  *     type: string
  *     enum: [draft, published]
+ *   thumbnail:
+ *     description: The thumbnail to use for the Bundle. The value is a URL to the thumbnail. You can use the upload endpoints to upload the thumbnail and obtain a URL.
+ *     type: string
  */
 export class AdminPostBundlesBundleReq {
   @IsString()
@@ -88,4 +91,8 @@ export class AdminPostBundlesBundleReq {
   @NotEquals(null)
   @ValidateIf((object, value) => value !== undefined)
   status?: BundleStatus;
+
+  @IsString()
+  @IsOptional()
+  thumbnail?: string;
 }

@@ -23,9 +23,11 @@ import {
   useBundlesRetrieve,
   useBundlesUpdate,
 } from "../../../../hooks/useBundles";
+import BundleThumbnailSection from "../../../../components/organisms/bundle-thumbnail-section";
+import { Bundle } from "../../../../../../../generated/admin-client";
 
 type BundleGeneralSectionProps = {
-  bundle: any;
+  bundle: Bundle;
   setShowEdit: (show: boolean) => void;
   setShowDelete: (show: boolean) => void;
   handleUpdateStatus: (newStatus: string) => void;
@@ -163,17 +165,17 @@ const BundleDetails = () => {
     );
   };
 
-  const handleUpdateDetails = (data: {
-    title: string;
-    description?: string;
-  }) => {
-    updateBundle.mutate(data, {
-      onSuccess: () => {
-        setShowEdit(false);
-        refetch();
-      },
-    });
-  };
+  // const handleUpdateDetails = (data: {
+  //   title: string;
+  //   description?: string;
+  // }) => {
+  //   updateBundle.mutate(data, {
+  //     onSuccess: () => {
+  //       setShowEdit(false);
+  //       refetch();
+  //     },
+  //   });
+  // };
 
   const handleDelete = () => {
     deleteBundle.mutate(undefined, {
@@ -292,6 +294,8 @@ const BundleDetails = () => {
                 )}
               </Section>
 
+              <BundleThumbnailSection bundle={bundle} />
+
               <BundleRawSection bundle={bundle} />
             </div>
             {/* <div className="gap-y-xsmall col-span-4 flex flex-col">
@@ -304,7 +308,7 @@ const BundleDetails = () => {
       {showEdit && (
         <EditBundleModal
           onClose={() => setShowEdit(!showEdit)}
-          onSubmit={handleUpdateDetails}
+          // onSubmit={handleUpdateDetails}
           isEdit
           bundle={bundle}
         />

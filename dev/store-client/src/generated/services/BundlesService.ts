@@ -34,6 +34,10 @@ export class BundlesService {
        * Limit the number of bundles returned.
        */
       limit?: number,
+      /**
+       * Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
+       */
+      product_id?: Array<string>,
     },
     customHeaders: Record<string, any> = {}
   ): CancelablePromise<StoreBundlesListRes> {

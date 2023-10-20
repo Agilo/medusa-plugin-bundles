@@ -23,6 +23,10 @@ export const useBundlesGetBundles = (
      * Limit the number of bundles returned.
      */
     limit?: number,
+    /**
+     * Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
+     */
+    product_id?: Array<string>,
   },
   options: UseQueryOptionsWrapper<Awaited<ReturnType<typeof client.bundles.getBundles>>> = {}
 ) => {

@@ -1,5 +1,5 @@
 // import { DateComparisonOperator } from "@medusajs/medusa";
-import { IsOptional, IsNumber, IsString } from "class-validator";
+import { IsOptional, IsNumber, IsString, IsArray } from "class-validator";
 import { Type } from "class-transformer";
 import BundleService from "../../../../services/bundle";
 import { cleanResponseData } from "@medusajs/medusa";
@@ -14,9 +14,18 @@ import { cleanResponseData } from "@medusajs/medusa";
  *   - (query) q {string} term used to search bundles' title and description.
  *   - (query) offset=0 {integer} The number of bundles to skip when retrieving the bundles.
  *   - (query) limit=10 {integer} Limit the number of bundles returned.
+ *   - in: query
+ *     name: product_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
  * tags:
  *   - Bundles
-* responses:
+ * responses:
  *   200:
  *     description: OK
  *     content:
@@ -32,7 +41,8 @@ export default async (req, res) => {
   // get only published bundles for store endpoint
   req.filterableFields["status"] = "published";
 
-  console.log("req.listConfig", req.listConfig);
+  // console.log("req.filterableFields", req.filterableFields);
+  // console.log("req.listConfig", req.listConfig);
 
   const [bundles, count] = await bundleService.listAndCount(
     req.filterableFields,
@@ -77,6 +87,10 @@ export class StoreGetBundlesParams {
   @IsString()
   @IsOptional()
   q?: string;
+
+  @IsArray()
+  @IsOptional()
+  product_id?: string[];
 
   // @IsArray()
   // @IsOptional()

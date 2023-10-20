@@ -1,6 +1,7 @@
 import {
   EventBusService,
   FindConfig,
+  ProductStatus,
   TransactionBaseService,
   buildQuery,
 } from "@medusajs/medusa";
@@ -9,7 +10,7 @@ import { Product } from "../models/product";
 import ProductRepository from "@medusajs/medusa/dist/repositories/product";
 import BundleRepository from "../repositories/bundle";
 import { escapeLikeString } from "../utils/escape-like-string";
-import { Brackets } from "typeorm";
+import { Brackets, In } from "typeorm";
 
 type InjectedDependencies = {
   eventBusService: EventBusService;
@@ -35,7 +36,11 @@ export default class BundleService extends TransactionBaseService {
   }
 
   async listAndCount(
-    selector: { q?: string; status?: "draft" | "published" } = {},
+    selector: {
+      q?: string;
+      status?: "draft" | "published";
+      product_id?: string[];
+    } = {},
     config: {
       skip: number;
       take: number;
@@ -46,10 +51,31 @@ export default class BundleService extends TransactionBaseService {
   ): Promise<[Bundle[], number]> {
     const bundleRepo = this.activeManager_.getRepository(Bundle);
 
+    let bundle_ids = [];
+    if (selector.product_id && selector.product_id.length) {
+      const productRepo = this.activeManager_.getRepository(Product);
+      const products = await productRepo.find({
+        where: {
+          id: In(selector.product_id),
+          status: ProductStatus.PUBLISHED,
+        },
+        relations: ["bundles"],
+      });
+      bundle_ids = products
+        .map((product) => product.bundles.map((bundle) => bundle.id))
+        .flat();
+      console.log("products", products);
+      console.log("bundle_ids", bundle_ids);
+    }
+
     let qb = bundleRepo
       .createQueryBuilder(`bundle`)
       .skip(config.skip)
       .take(config.take);
+
+    if (bundle_ids.length) {
+      qb.andWhereInIds(bundle_ids);
+    }
 
     if (selector.q) {
       qb.andWhere(
@@ -74,6 +100,8 @@ export default class BundleService extends TransactionBaseService {
     // console.log("qb.getQueryAndParameters()", qb.getQueryAndParameters());
 
     return qb.getManyAndCount();
+
+    // return bundleRepo.findAndCount();
   }
 
   async retrieve(id: string, config?: FindConfig<Bundle>): Promise<Bundle> {

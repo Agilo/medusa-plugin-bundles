@@ -24,5 +24,4 @@ build
 !.yarn/sdks
 !.yarn/versions
 
-/src/admin/packages/generated/
 /store-client/

@@ -22,7 +22,7 @@ export class Bundle extends BaseEntity {
   title: string | null;
 
   @Index({ unique: true })
-  @Column({ nullable: true })
+  @Column({ type: "varchar" })
   handle: string;
 
   @Column({ type: "varchar" })
@@ -74,7 +74,6 @@ export class Bundle extends BaseEntity {
  *     example: Medusa Coffee Mug Set
  *   handle:
  *     description: A unique string that identifies the Product Bundle - can for example be used in slug structures.
- *     nullable: true
  *     type: string
  *     example: drumkit
  *   description:

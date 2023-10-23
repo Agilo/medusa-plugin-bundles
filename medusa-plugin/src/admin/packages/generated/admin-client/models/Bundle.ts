@@ -20,7 +20,7 @@ export interface Bundle {
   /**
    * A unique string that identifies the Product Bundle - can for example be used in slug structures.
    */
-  handle: string | null;
+  handle: string;
   /**
    * A short description of the Bundle.
    */

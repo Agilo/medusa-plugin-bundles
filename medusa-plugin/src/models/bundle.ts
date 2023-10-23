@@ -1,7 +1,15 @@
-import { BeforeInsert, Column, Entity, JoinTable, ManyToMany } from "typeorm";
+import {
+  BeforeInsert,
+  Column,
+  Entity,
+  Index,
+  JoinTable,
+  ManyToMany,
+} from "typeorm";
 import { BaseEntity } from "@medusajs/medusa";
 import { DbAwareColumn, generateEntityId } from "@medusajs/medusa/dist/utils";
 import { Product } from "./product";
+import _ from "lodash";
 
 export enum BundleStatus {
   DRAFT = "draft",
@@ -12,6 +20,10 @@ export enum BundleStatus {
 export class Bundle extends BaseEntity {
   @Column({ type: "varchar" })
   title: string | null;
+
+  @Index({ unique: true })
+  @Column({ nullable: true })
+  handle: string;
 
   @Column({ type: "varchar" })
   description: string | null;
@@ -29,6 +41,10 @@ export class Bundle extends BaseEntity {
   @BeforeInsert()
   private beforeInsert(): void {
     this.id = generateEntityId(this.id, "bundle");
+
+    if (!this.handle) {
+      this.handle = _.kebabCase(this.title);
+    }
   }
 }
 
@@ -40,6 +56,7 @@ export class Bundle extends BaseEntity {
  * required:
  *   - created_at
  *   - description
+ *   - handle
  *   - id
  *   - products
  *   - status
@@ -55,6 +72,11 @@ export class Bundle extends BaseEntity {
  *     description: A title that can be displayed for easy identification of the Bundle.
  *     type: string
  *     example: Medusa Coffee Mug Set
+ *   handle:
+ *     description: A unique string that identifies the Product Bundle - can for example be used in slug structures.
+ *     nullable: true
+ *     type: string
+ *     example: drumkit
  *   description:
  *     description: A short description of the Bundle.
  *     nullable: true

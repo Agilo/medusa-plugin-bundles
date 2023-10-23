@@ -67,6 +67,9 @@ export default async (req: Request, res: Response) => {
  *   title:
  *     description: "The title of the Bundle"
  *     type: string
+ *   handle:
+ *     type: string
+ *     description: An optional handle to be used in slugs. If none is provided, the kebab-case version of the title will be used.
  *   description:
  *     description: "The description of the Bundle."
  *     type: string
@@ -82,6 +85,10 @@ export class AdminPostBundlesBundleReq {
   @IsString()
   @IsOptional()
   title?: string;
+
+  @IsString()
+  @IsOptional()
+  handle?: string;
 
   @IsString()
   @IsOptional()

@@ -67,6 +67,11 @@ const useBundleTableColumn = (/*{ setTileView, setListView, showList }*/) => {
         },
       },
       {
+        Header: t("bundle-table-handle", "Handle"),
+        accessor: "handle",
+        Cell: ({ cell: { value } }) => <div>/{value}</div>,
+      },
+      {
         Header: t("bundle-table-description", "Description"),
         accessor: "description",
         Cell: ({ row: { original } }) => {

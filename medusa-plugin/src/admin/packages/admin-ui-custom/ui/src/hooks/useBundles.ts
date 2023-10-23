@@ -58,38 +58,3 @@ export const useBundlesUpdate = (id: string) => {
 export const useBundlesDelete = (id: string) => {
   return useAdminCustomDelete(`/bundles/${id}`, ["bundles", id]);
 };
-
-// new
-
-// export const useAdminCreateBundle = (
-//   options?: UseMutationOptions<
-//     Response<AdminBundlesRes>,
-//     Error,
-//     AdminPostBundlesReq
-//   >
-// ) => {
-//   const { client } = useMedusa();
-//   const queryClient = useQueryClient();
-//   return useMutation(
-//     (payload: AdminPostBundlesBundleReq) =>
-//       client.admin.products.create(payload),
-//     buildOptions(queryClient, adminProductKeys.lists(), options)
-//   );
-// };
-
-// export const useBundlesCreate = (
-//   requestBody: AdminPostBundlesReq,
-//   options: UseMutationOptionsWrapper<Awaited<ReturnType<typeof client.bundles.create>>, unknown, AdminPostBundlesReq> = {}
-// ) => {
-//   if (!options?.onSuccess) {
-//     const queryClient = useQueryClient()
-//     options.onSuccess = async () => {
-//       await queryClient.invalidateQueries('bundles')
-//     }
-//   }
-//   return useMutation<Awaited<ReturnType<typeof client.bundles.create>>, unknown, AdminPostBundlesReq>(
-//     ['bundles', 'create', requestBody],
-//     () => client.bundles.create(requestBody),
-//     options
-//   );
-// };

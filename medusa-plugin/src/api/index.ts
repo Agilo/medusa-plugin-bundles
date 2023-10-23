@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import adminRoutes from "./routes/admin/bundles";
 import storeRoutes from "./routes/store/bundles";
-// import { errorHandler } from "@medusajs/medusa";
+import { errorHandler } from "@medusajs/medusa";
 
 export default (rootDirectory, options) => {
   const router = Router();
@@ -12,7 +12,7 @@ export default (rootDirectory, options) => {
   adminRoutes(router, options);
   storeRoutes(router, options);
 
-  // router.use(errorHandler());
+  router.use(errorHandler());
 
   return router;
 };

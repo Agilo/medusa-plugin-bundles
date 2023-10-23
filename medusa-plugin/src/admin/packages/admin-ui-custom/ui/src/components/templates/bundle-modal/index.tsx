@@ -10,7 +10,7 @@ import { getErrorMessage } from "../../../../../../admin-ui/ui/src/utils/error-m
 //   MetadataFormType,
 // } from "../../forms/general/metadata-form";
 import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/button";
-// import IconTooltip from "../../../../../../admin-ui/ui/src/components/molecules/icon-tooltip";
+import IconTooltip from "../../../../../../admin-ui/ui/src/components/molecules/icon-tooltip";
 import InputField from "../../../../../../admin-ui/ui/src/components/molecules/input";
 import Modal from "../../../../../../admin-ui/ui/src/components/molecules/modal";
 import TextArea from "../../../../../../admin-ui/ui/src/components/molecules/textarea";
@@ -27,6 +27,7 @@ type BundleModalProps = {
 
 type BundleModalFormData = {
   title: string;
+  handle: string | undefined;
   description: string | undefined;
 };
 
@@ -42,6 +43,7 @@ const BundleModal: React.FC<BundleModalProps> = ({
   const form = useForm<BundleModalFormData>({
     defaultValues: {
       title: bundle?.title,
+      handle: bundle?.handle,
       description: bundle?.description,
     },
   });
@@ -51,6 +53,7 @@ const BundleModal: React.FC<BundleModalProps> = ({
     if (bundle) {
       reset({
         title: bundle.title,
+        handle: bundle.handle,
         description: bundle.description,
       });
     }
@@ -67,6 +70,7 @@ const BundleModal: React.FC<BundleModalProps> = ({
       updateBundle.mutate(
         {
           title: data.title,
+          handle: data.handle,
           description: data.description,
         },
         {
@@ -94,6 +98,7 @@ const BundleModal: React.FC<BundleModalProps> = ({
       createBundle.mutate(
         {
           title: data.title,
+          handle: data.handle,
           description: data.description,
         },
         {
@@ -144,20 +149,33 @@ const BundleModal: React.FC<BundleModalProps> = ({
               <h2 className="inter-base-semibold mb-base">
                 {t("bundle-modal-details", "Details")}
               </h2>
-              <div className="mb-small">
+              <div className="gap-x-base flex items-center mb-small">
                 <InputField
                   label={t("bundle-modal-title-label", "Title")}
                   required
-                  placeholder={t(
-                    "bundle-modal-title-placeholder",
-                    "Sunglasses"
-                  )}
+                  placeholder={t("bundle-modal-title-placeholder", "Drumkit")}
                   {...register("title", { required: true })}
+                />
+                <InputField
+                  label={t("bundle-modal-handle-label", "Handle")}
+                  placeholder={t("bundle-modal-handle-placeholder", "drumkit")}
+                  {...register("handle")}
+                  prefix="/"
+                  tooltip={
+                    <IconTooltip
+                      content={t(
+                        "bundle-modal-slug-description",
+                        "URL Slug for the bundle. Will be auto generated if left blank."
+                      )}
+                    />
+                  }
                 />
               </div>
               <TextArea
                 label="Description"
-                placeholder={"Describe this bundle."}
+                placeholder={
+                  "The ideal first drum kit. Includes everything you need to get started."
+                }
                 rows={3}
                 className="mb-small"
                 {...register("description")}

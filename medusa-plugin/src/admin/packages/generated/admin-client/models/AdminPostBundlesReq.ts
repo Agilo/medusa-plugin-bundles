@@ -9,6 +9,10 @@ export interface AdminPostBundlesReq {
    */
   title: string;
   /**
+   * An optional handle to be used in slugs. If none is provided, the kebab-case version of the title will be used.
+   */
+  handle?: string;
+  /**
    * The description of the Bundle.
    */
   description?: string;

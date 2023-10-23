@@ -116,21 +116,26 @@ export default class BundleService extends TransactionBaseService {
     return bundle;
   }
 
-  async create(data: { title: string; description?: string }): Promise<Bundle> {
+  async create(data: {
+    title: string;
+    handle?: string;
+    description?: string;
+  }): Promise<Bundle> {
     return this.atomicPhase_(async (manager) => {
-      // const postRepo = manager.withRepository(this.postRepository_);
       const bundleRepo = manager.getRepository(Bundle);
-      const bundle = bundleRepo.create();
-      bundle.title = data.title;
-      bundle.description = data.description;
-      const result = await bundleRepo.save(bundle);
-      return result;
+      let bundle = bundleRepo.create(data);
+      return bundleRepo.save(bundle);
     });
   }
 
   async update(
     bundleId: string,
-    data: { title?: string; description?: string; status?: BundleStatus }
+    data: {
+      title?: string;
+      handle?: string;
+      description?: string;
+      status?: BundleStatus;
+    }
   ): Promise<Bundle> {
     return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);

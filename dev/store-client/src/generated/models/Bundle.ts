@@ -18,6 +18,10 @@ export interface Bundle {
    */
   title: string;
   /**
+   * A unique string that identifies the Product Bundle - can for example be used in slug structures.
+   */
+  handle: string | null;
+  /**
    * A short description of the Bundle.
    */
   description: string | null;

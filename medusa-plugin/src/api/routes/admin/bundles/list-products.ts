@@ -25,7 +25,7 @@ export default async (req: Request, res: Response) => {
   });
 };
 
-export class AdminListBundleProductsParams {
+export class AdminListBundlesProductsParams {
   @IsString()
   @IsOptional()
   @Type(() => String)

@@ -9,7 +9,7 @@ import {
 } from "@medusajs/medusa";
 import { AdminDeleteProductsFromBundleReq } from "./remove-products";
 import { AdminPostProductsToBundleReq } from "./add-products";
-import { AdminListBundleProductsParams } from "./list-products";
+import { AdminListBundlesProductsParams } from "./list-products";
 import { AdminGetBundlesParams } from "./list-bundles";
 import { AdminPostBundlesReq } from "./create-bundle";
 import { AdminPostBundlesBundleReq } from "./update-bundle";
@@ -60,7 +60,7 @@ export default function adminRoutes(router: Router, options) {
 
   adminRouter.get(
     "/:id/products",
-    transformQuery(AdminListBundleProductsParams, {
+    transformQuery(AdminListBundlesProductsParams, {
       isList: true,
     }),
     wrapHandler(require("./list-products").default)

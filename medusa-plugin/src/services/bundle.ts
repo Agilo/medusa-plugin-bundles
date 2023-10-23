@@ -182,6 +182,7 @@ export default class BundleService extends TransactionBaseService {
     selector: {
       bundle_id: string;
       q?: string;
+      status?: ProductStatus;
     },
     config: {
       skip: number;
@@ -195,7 +196,7 @@ export default class BundleService extends TransactionBaseService {
 
     // console.log("selector.bundle_id", selector.bundle_id);
 
-    const queryBuilder = productRepo
+    const qb = productRepo
       .createQueryBuilder("product")
       .leftJoin("product.bundles", "bundle")
       .where("bundle.id = :id", { id: selector.bundle_id })
@@ -203,96 +204,62 @@ export default class BundleService extends TransactionBaseService {
       .take(config.take);
 
     if (selector.q) {
-      queryBuilder.andWhere("product.title ILIKE :q", {
+      qb.andWhere("product.title ILIKE :q", {
         q: `%${escapeLikeString(selector.q)}%`,
       });
     }
 
-    // console.log("queryBuilder.getQuery()", queryBuilder.getQuery());
-    // console.log(
-    //   "queryBuilder.getQueryAndParameters()",
-    //   queryBuilder.getQueryAndParameters()
-    // );
+    if (selector.status) {
+      qb.andWhere("product.status = :status", {
+        status: selector.status,
+      });
+    }
 
-    return queryBuilder.getManyAndCount();
-
-    // what params i need to support: q, limit, offset
-
-    // const query = buildQuery(
-    //   {
-    //     bundle
-    //   },
-    //   config
-    // );
-
-    // const products = await productRepo.find({ relations: ["bundles"] });
-
-    // Like(`%${selector.q}%`)
-
-    // const products = await productRepo
-    //   .createQueryBuilder("product")
-    //   .leftJoinAndSelect("product.bundles", "bundle")
-    //   .getMany();
-
-    // return products;
-
-    // const questions = await dataSource
-    //   .getRepository(Question)
-    //   .createQueryBuilder("question")
-    //   .leftJoinAndSelect("question.categories", "category")
-    //   .getMany();
-
-    // const bundle = await bundleRepo.findOne(query);
-
-    // if (!bundle) {
-    //   throw new MedusaError(MedusaError.Types.NOT_FOUND, "Post was not found");
-    // }
-
-    // return bundle;
+    return qb.getManyAndCount();
   }
 
-  async listProducts(
-    bundleId: string,
-    config?: FindConfig<Product>
-  ): Promise<Product[]> {
-    const productRepo = this.activeManager_.getRepository(Product);
+  // async listProducts(
+  //   bundleId: string,
+  //   config?: FindConfig<Product>
+  // ): Promise<Product[]> {
+  //   const productRepo = this.activeManager_.getRepository(Product);
 
-    const query = buildQuery(
-      {
-        bundleId,
-      },
-      config
-    );
+  //   const query = buildQuery(
+  //     {
+  //       bundleId,
+  //     },
+  //     config
+  //   );
 
-    // const products = await productRepo.find({ relations: ["bundles"] });
+  //   // const products = await productRepo.find({ relations: ["bundles"] });
 
-    return productRepo
-      .createQueryBuilder("product")
-      .leftJoin("product.bundles", "bundle")
-      .where("bundle.id = :id", { id: bundleId })
-      .getMany();
+  //   return productRepo
+  //     .createQueryBuilder("product")
+  //     .leftJoin("product.bundles", "bundle")
+  //     .where("bundle.id = :id", { id: bundleId })
+  //     .getMany();
 
-    // const products = await productRepo
-    //   .createQueryBuilder("product")
-    //   .leftJoinAndSelect("product.bundles", "bundle")
-    //   .getMany();
+  //   // const products = await productRepo
+  //   //   .createQueryBuilder("product")
+  //   //   .leftJoinAndSelect("product.bundles", "bundle")
+  //   //   .getMany();
 
-    // return products;
+  //   // return products;
 
-    // const questions = await dataSource
-    //   .getRepository(Question)
-    //   .createQueryBuilder("question")
-    //   .leftJoinAndSelect("question.categories", "category")
-    //   .getMany();
+  //   // const questions = await dataSource
+  //   //   .getRepository(Question)
+  //   //   .createQueryBuilder("question")
+  //   //   .leftJoinAndSelect("question.categories", "category")
+  //   //   .getMany();
 
-    // const bundle = await bundleRepo.findOne(query);
+  //   // const bundle = await bundleRepo.findOne(query);
 
-    // if (!bundle) {
-    //   throw new MedusaError(MedusaError.Types.NOT_FOUND, "Post was not found");
-    // }
+  //   // if (!bundle) {
+  //   //   throw new MedusaError(MedusaError.Types.NOT_FOUND, "Post was not found");
+  //   // }
 
-    // return bundle;
-  }
+  //   // return bundle;
+  // }
 
   async addProducts(bundleId: string, productIds: string[]): Promise<Bundle> {
     return await this.atomicPhase_(async (manager) => {

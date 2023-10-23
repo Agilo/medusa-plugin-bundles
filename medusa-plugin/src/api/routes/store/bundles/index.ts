@@ -8,6 +8,8 @@ import {
 import { StoreGetBundlesParams } from "./list-bundles";
 import { Bundle } from "../../../../models/bundle";
 import { parseCorsOrigins } from "medusa-core-utils";
+import { StoreGetBundlesBundleProductsParams } from "./list-products";
+import { Product } from "../../../../models/product";
 
 export default function storeRoutes(router: Router, options) {
   const storeRouter = Router();
@@ -34,6 +36,14 @@ export default function storeRoutes(router: Router, options) {
   );
 
   storeRouter.get("/:id", wrapHandler(require("./get-bundle").default));
+
+  storeRouter.get(
+    "/:id/products",
+    transformStoreQuery(StoreGetBundlesBundleProductsParams, {
+      isList: true,
+    }),
+    wrapHandler(require("./list-products").default)
+  );
 }
 
 // export const defaultStoreBundlesRelations = ["products"];
@@ -98,4 +108,34 @@ export type StoreBundlesRes = {
  */
 export type StoreBundlesListRes = PaginatedResponse & {
   bundles: Bundle[];
+};
+
+/**
+ * @schema StoreBundlesBundleProductsListRes
+ * type: object
+ * x-expanded-relations:
+ *   field: products
+ * required:
+ *   - products
+ *   - count
+ *   - offset
+ *   - limit
+ * properties:
+ *   products:
+ *     type: array
+ *     description: "An array of products details."
+ *     items:
+ *       $ref: "#/components/schemas/Product"
+ *   count:
+ *     type: integer
+ *     description: The total number of items available
+ *   offset:
+ *     type: integer
+ *     description: The number of products skipped when retrieving the products.
+ *   limit:
+ *     type: integer
+ *     description: The number of items per page
+ */
+export type StoreBundlesBundleProductsListRes = PaginatedResponse & {
+  products: Product[];
 };

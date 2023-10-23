@@ -20,6 +20,10 @@ export interface StoreGetBundlesParams {
    * Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
    */
   product_id?: Array<string>;
+  /**
+   * Filter by handles
+   */
+  handle?: Array<string>;
 };
 
 

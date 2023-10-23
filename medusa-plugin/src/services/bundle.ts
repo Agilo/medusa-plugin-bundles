@@ -40,6 +40,7 @@ export default class BundleService extends TransactionBaseService {
       q?: string;
       status?: "draft" | "published";
       product_id?: string[];
+      handle?: string[];
     } = {},
     config: {
       skip: number;
@@ -93,6 +94,10 @@ export default class BundleService extends TransactionBaseService {
       qb.andWhere("bundle.status = :status", {
         status: selector.status,
       });
+    }
+
+    if (selector.handle && selector.handle.length) {
+      qb.andWhere("bundle.handle IN (:...handle)", { handle: selector.handle });
     }
 
     // console.log("selector", selector);

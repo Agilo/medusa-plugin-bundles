@@ -23,6 +23,15 @@ import { cleanResponseData } from "@medusajs/medusa";
  *       type: array
  *       items:
  *         type: string
+ *   - in: query
+ *     name: handle
+ *     style: form
+ *     explode: false
+ *     description: Filter by handles
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
  * x-codegen:
  *   method: list
  *   queryParams: StoreGetBundlesParams
@@ -61,6 +70,10 @@ export default async (req, res) => {
 };
 
 export class StoreGetBundlesParams {
+  @IsOptional()
+  @IsArray()
+  handle?: string[];
+
   // @IsString()
   // @IsOptional()
   // expand?: string;

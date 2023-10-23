@@ -113,8 +113,6 @@ export type StoreBundlesListRes = PaginatedResponse & {
 /**
  * @schema StoreBundlesBundleProductsListRes
  * type: object
- * x-expanded-relations:
- *   field: products
  * required:
  *   - products
  *   - count

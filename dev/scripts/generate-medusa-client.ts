@@ -11,7 +11,7 @@ const type = (["store", "admin"].includes(firstArg) ? firstArg : "store") as
   | "admin";
 
 const oasOperationIds = {
-  store: ["GetBundles", "GetBundlesBundle"],
+  store: ["GetBundles", "GetBundlesBundle", "GetBundlesBundleProducts"],
   admin: [
     "AdminPostProductsToBundle",
     "DeleteProductsFromBundle",

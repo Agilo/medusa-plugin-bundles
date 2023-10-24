@@ -15,7 +15,7 @@ import BundleService from "../../../../services/bundle";
  *   - (query) offset=0 {integer} The number of bundles to skip when retrieving the bundles.
  *   - (query) limit=10 {integer} Limit the number of bundles returned.
  * x-codegen:
- *   method: list
+ *   method: listProducts
  *   queryParams: StoreGetBundlesBundleProductsParams
  * tags:
  *   - Bundles

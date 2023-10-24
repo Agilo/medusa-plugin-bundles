@@ -2,8 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 import {
+  StoreBundlesBundleProductsListRes,
   StoreBundlesListRes,
   StoreBundlesRes,
+  StoreGetBundlesBundleProductsParams,
   StoreGetBundlesParams,
 } from '../models';
 import type { CancelablePromise } from '../core/CancelablePromise';
@@ -52,6 +54,30 @@ export class BundlesService {
         'id': id,
       },
       headers: customHeaders,
+    });
+  }
+
+  /**
+   * GetBundlesBundleProducts
+   * List Bundle Products
+   * Retrieves a list of products.
+   *
+   * @returns StoreBundlesBundleProductsListRes OK
+   * @throws ApiError
+   */
+  public listProducts(
+    id: string,
+    queryParams: StoreGetBundlesBundleProductsParams,
+    customHeaders: Record<string, any> = {}
+  ): CancelablePromise<StoreBundlesBundleProductsListRes> {
+    return this.httpRequest.request({
+      method: 'GET',
+      url: '/store/bundles/{id}/products',
+      path: {
+        'id': id,
+      },
+      headers: customHeaders,
+      query: queryParams,
     });
   }
 

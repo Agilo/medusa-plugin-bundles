@@ -73,7 +73,7 @@ const oasOperationIds = {
       "--out-dir",
       type === "admin"
         ? `./medusa-plugin/src/admin/packages/generated/${type}-client`
-        : `./dev/${type}-client/src/generated`,
+        : `./dev/medusa-plugin-bundles-client/src-generated/generated`,
       "--clean",
     ],
     {
@@ -82,22 +82,22 @@ const oasOperationIds = {
     }
   );
 
-  /**
-   * Replace react-query imports with @tanstack/react-query
-   */
-  try {
-    const results = replace.sync({
-      files:
-        type === "admin"
-          ? [
-              `./medusa-plugin/src/admin/packages/generated/${type}-client/**/*.{ts,tsx}`,
-            ]
-          : [`./dev/${type}-client/src/generated/**/*.{ts,tsx}`],
-      from: / from ("|')react\-query("|');?$/gm,
-      to: " from '@tanstack/react-query';",
-    });
-    // console.log("Replacement results:", results);
-  } catch (error) {
-    // console.error("Error occurred:", error);
-  }
+  // /**
+  //  * Replace react-query imports with @tanstack/react-query
+  //  */
+  // try {
+  //   const results = replace.sync({
+  //     files:
+  //       type === "admin"
+  //         ? [
+  //             `./medusa-plugin/src/admin/packages/generated/${type}-client/**/*.{ts,tsx}`,
+  //           ]
+  //         : [`./dev/${type}-client/src/generated/**/*.{ts,tsx}`],
+  //     from: / from ("|')react\-query("|');?$/gm,
+  //     to: " from '@tanstack/react-query';",
+  //   });
+  //   // console.log("Replacement results:", results);
+  // } catch (error) {
+  //   // console.error("Error occurred:", error);
+  // }
 })();

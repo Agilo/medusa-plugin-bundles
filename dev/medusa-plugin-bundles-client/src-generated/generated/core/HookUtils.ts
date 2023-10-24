@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import { UseQueryOptions, UseMutationOptions, QueryKey } from '@tanstack/react-query';
+import { UseQueryOptions, UseMutationOptions, QueryKey } from "react-query"
 
 export type UseQueryOptionsWrapper<
   TQueryFnData = unknown,

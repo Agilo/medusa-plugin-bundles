@@ -1,5 +1,5 @@
 {
-  "name": "store-client",
+  "name": "medusa-plugin-bundles-client",
   "packageManager": "yarn@3.6.3",
   "scripts": {
     "build": "tsup src/index.ts",
@@ -39,11 +39,17 @@
     "@medusajs/medusa": "^1.12.0",
     "@tanstack/react-query": "4.22.0",
     "medusa-react": "^9.0.0",
-    "react-dom": "^16.8 || ^17.0 || ^18.0",
-    "react": "^16.8 || ^17.0 || ^18.0"
+    "react": "^16.8 || ^17.0 || ^18.0",
+    "react-dom": "^16.8 || ^17.0 || ^18.0"
   },
   "private": true,
   "files": [
     "dist"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  }
 }

@@ -1,46 +1,33 @@
-import { Product } from "@medusajs/medusa";
 import { Bundle } from "../models/bundle";
 import { dataSource } from "@medusajs/medusa/dist/loaders/database";
-import { In } from "typeorm";
+import { In, DeleteResult } from "typeorm";
 
 export const BundleRepository = dataSource.getRepository(Bundle).extend({
-  async bulkAddProducts(bundleId: string, productIds: string[]): Promise<void> {
-    // const bundle = await this.findOneByOrFail({ id: bundleId });
-    const bundle = await this.findOneOrFail({
-      relations: ["products"],
-      where: { id: bundleId },
-    });
+  async addProducts(bundleId: string, productIds: string[]): Promise<void> {
+    const valuesToInsert = productIds.map((id) => ({
+      bundle_id: bundleId,
+      product_id: id,
+    }));
 
-    const products = await dataSource
-      .getRepository(Product)
-      .findBy({ id: In(productIds) });
-
-    if (products.length === 0) {
-      throw new Error("No products found");
-    }
-
-    bundle.products = [...bundle.products, ...products];
-
-    await dataSource.manager.save(bundle);
-
-    return Promise.resolve();
+    await this.createQueryBuilder()
+      .insert()
+      .into(Bundle.bundleProductJoinTable)
+      .values(valuesToInsert)
+      .orIgnore()
+      .execute();
   },
-  async bulkRemoveProducts(
+  async removeProducts(
     bundleId: string,
     productIds: string[]
-  ): Promise<void> {
-    const bundle = await this.findOneOrFail({
-      relations: ["products"],
-      where: { id: bundleId },
-    });
-
-    bundle.products = bundle.products.filter((product) => {
-      return !productIds.includes(product.id);
-    });
-
-    await dataSource.manager.save(bundle);
-
-    return Promise.resolve();
+  ): Promise<DeleteResult> {
+    return await this.createQueryBuilder()
+      .delete()
+      .from(Bundle.bundleProductJoinTable)
+      .where({
+        bundle_id: bundleId,
+        product_id: In(productIds),
+      })
+      .execute();
   },
 });
 

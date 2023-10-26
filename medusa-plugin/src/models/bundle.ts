@@ -18,6 +18,8 @@ export enum BundleStatus {
 
 @Entity()
 export class Bundle extends BaseEntity {
+  static bundleProductJoinTable = "bundle_product";
+
   @Column({ type: "varchar" })
   title: string | null;
 
@@ -29,7 +31,17 @@ export class Bundle extends BaseEntity {
   description: string | null;
 
   @ManyToMany(() => Product, (product) => product.bundles)
-  @JoinTable()
+  @JoinTable({
+    name: Bundle.bundleProductJoinTable,
+    joinColumn: {
+      name: "bundle_id",
+      referencedColumnName: "id",
+    },
+    inverseJoinColumn: {
+      name: "product_id",
+      referencedColumnName: "id",
+    },
+  })
   products: Product[];
 
   @DbAwareColumn({ type: "enum", enum: BundleStatus, default: "draft" })

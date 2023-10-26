@@ -5,22 +5,21 @@ import {
   TransactionBaseService,
   buildQuery,
 } from "@medusajs/medusa";
+import { Brackets, In, Repository } from "typeorm";
 import { Bundle, BundleStatus } from "../models/bundle";
 import { Product } from "../models/product";
-import ProductRepository from "@medusajs/medusa/dist/repositories/product";
 import BundleRepository from "../repositories/bundle";
 import { escapeLikeString } from "../utils/escape-like-string";
-import { Brackets, In } from "typeorm";
 
 type InjectedDependencies = {
   eventBusService: EventBusService;
-  productRepository: typeof ProductRepository;
+  productRepository: Repository<Product>;
   bundleRepository: typeof BundleRepository;
 };
 
 export default class BundleService extends TransactionBaseService {
   protected readonly eventBus_: EventBusService;
-  protected readonly productRepository_: typeof ProductRepository;
+  protected readonly productRepository_: Repository<Product>;
   protected readonly bundleRepository_: typeof BundleRepository;
 
   constructor({
@@ -50,11 +49,15 @@ export default class BundleService extends TransactionBaseService {
       take: 10,
     }
   ): Promise<[Bundle[], number]> {
-    const bundleRepo = this.activeManager_.getRepository(Bundle);
+    const bundleRepo = this.activeManager_.withRepository(
+      this.bundleRepository_
+    );
 
     let bundle_ids = [];
     if (selector.product_id && selector.product_id.length) {
-      const productRepo = this.activeManager_.getRepository(Product);
+      const productRepo = this.activeManager_.withRepository(
+        this.productRepository_
+      );
       const products = await productRepo.find({
         where: {
           id: In(selector.product_id),
@@ -117,35 +120,41 @@ export default class BundleService extends TransactionBaseService {
       config
     );
 
-    const bundle = await this.bundleRepository_.findOneOrFail(query);
-    return bundle;
+    const bundleRepo = this.activeManager_.withRepository(
+      this.bundleRepository_
+    );
+
+    return bundleRepo.findOneOrFail(query);
   }
 
   async create(data: {
     title: string;
     handle?: string;
     description?: string;
+    status?: BundleStatus;
+    thumbnail?: string;
   }): Promise<Bundle> {
     return this.atomicPhase_(async (manager) => {
-      const bundleRepo = manager.getRepository(Bundle);
+      const bundleRepo = manager.withRepository(this.bundleRepository_);
       let bundle = bundleRepo.create(data);
       return bundleRepo.save(bundle);
     });
   }
 
   async update(
-    bundleId: string,
+    id: string,
     data: {
       title?: string;
       handle?: string;
       description?: string;
       status?: BundleStatus;
+      thumbnail?: string;
     }
   ): Promise<Bundle> {
     return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);
 
-      let bundle = await this.retrieve(bundleId);
+      let bundle = await this.retrieve(id);
 
       for (const [key, value] of Object.entries(data)) {
         bundle[key] = value;
@@ -157,13 +166,13 @@ export default class BundleService extends TransactionBaseService {
     });
   }
 
-  async delete(bundleId: string): Promise<void> {
+  async delete(id: string): Promise<void> {
     return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);
 
       // Should not fail, if bundle does not exist, since delete is idempotent
       const bundle = await bundleRepo.findOne({
-        where: { id: bundleId },
+        where: { id: id },
         relations: ["products"],
       });
 
@@ -192,7 +201,9 @@ export default class BundleService extends TransactionBaseService {
       take: 10,
     }
   ): Promise<[Product[], number]> {
-    const productRepo = this.activeManager_.getRepository(Product);
+    const productRepo = this.activeManager_.withRepository(
+      this.productRepository_
+    );
 
     // console.log("selector.bundle_id", selector.bundle_id);
 
@@ -267,7 +278,7 @@ export default class BundleService extends TransactionBaseService {
 
       const { id } = await this.retrieve(bundleId, { select: ["id"] });
 
-      await bundleRepo.bulkAddProducts(id, productIds);
+      await bundleRepo.addProducts(id, productIds);
 
       const bundle = await this.retrieve(id, {
         relations: ["products"],
@@ -286,7 +297,7 @@ export default class BundleService extends TransactionBaseService {
 
       const { id } = await this.retrieve(bundleId, { select: ["id"] });
 
-      await bundleRepo.bulkRemoveProducts(id, productIds);
+      await bundleRepo.removeProducts(id, productIds);
 
       const bundle = await this.retrieve(id, {
         relations: ["products"],

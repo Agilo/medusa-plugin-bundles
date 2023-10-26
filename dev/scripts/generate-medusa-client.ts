@@ -68,6 +68,8 @@ const oasOperationIds = {
       "client",
       "--type",
       type,
+      "--component",
+      "types",
       "--src-file",
       `./.oas/filtered-${type}.oas.json`,
       "--out-dir",

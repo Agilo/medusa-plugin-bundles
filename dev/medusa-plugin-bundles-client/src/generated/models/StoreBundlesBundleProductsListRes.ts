@@ -3,7 +3,7 @@
 /* eslint-disable */
 import { SetRelation, Merge } from '../core/ModelUtils';
 
-import type { Product } from './Product';
+import type { Product } from '@medusajs/medusa';
 
 export interface StoreBundlesBundleProductsListRes {
   /**

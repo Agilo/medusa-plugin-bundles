@@ -24,7 +24,7 @@ import {
   useBundlesUpdate,
 } from "../../../../hooks/useBundles";
 import BundleThumbnailSection from "../../../../components/organisms/bundle-thumbnail-section";
-import { Bundle } from "../../../../../../../generated/admin-client";
+import { Bundle } from "../../../../../../../admin-client";
 
 type BundleGeneralSectionProps = {
   bundle: Bundle;

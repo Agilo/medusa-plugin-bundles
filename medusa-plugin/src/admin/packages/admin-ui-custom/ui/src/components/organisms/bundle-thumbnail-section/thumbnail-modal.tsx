@@ -14,7 +14,7 @@ import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/bu
 import Modal from "../../../../../../admin-ui/ui/src/components/molecules/modal";
 import { useBundlesUpdate } from "../../../hooks/useBundles";
 import { getErrorMessage } from "../../../../../../admin-ui/ui/src/utils/error-messages";
-import { Bundle } from "../../../../../../generated/admin-client";
+import { Bundle } from "../../../../../../admin-client";
 
 type Props = {
   bundle: Bundle;

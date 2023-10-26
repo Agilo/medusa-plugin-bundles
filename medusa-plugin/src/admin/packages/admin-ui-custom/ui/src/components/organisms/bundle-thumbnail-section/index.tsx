@@ -10,7 +10,7 @@ import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/bu
 import Section from "../../../../../../admin-ui/ui/src/components/organisms/section";
 import ThumbnailModal from "./thumbnail-modal";
 import { useBundlesUpdate } from "../../../hooks/useBundles";
-import { Bundle } from "../../../../../../generated/admin-client";
+import { Bundle } from "../../../../../../admin-client";
 
 type Props = {
   bundle: Bundle;

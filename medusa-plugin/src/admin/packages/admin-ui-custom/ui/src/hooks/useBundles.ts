@@ -8,22 +8,7 @@ import {
   AdminBundlesRes,
   AdminPostBundlesBundleReq,
   AdminPostBundlesReq,
-} from "../../../../../packages/generated/admin-client";
-// import { AdminPostBundlesBundleReq } from "../../../../../../api/routes/admin/update-bundle";
-// import { Bundle } from "../../../../../../models/bundle";
-
-// export const useAdminUpdateBundle = (id: string) => {
-//   return useAdminCustomPost<
-//     { title?: string; description?: string; status?: "draft" | "published" },
-//     { bundle: any }
-//   >(`/bundles/${id}`, ["bundles", id]);
-// };
-
-// export const useAdminDeleteBundle = (id: string) => {
-//   return useAdminCustomDelete(`/bundles/${id}`, ["bundles", id]);
-// };
-
-// new custom
+} from "../../../../admin-client";
 
 export const useBundlesList = () => {
   return useAdminCustomQuery<undefined, AdminBundlesListRes>(`/bundles`, [

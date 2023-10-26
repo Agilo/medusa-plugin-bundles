@@ -74,7 +74,7 @@ const oasOperationIds = {
       `./.oas/filtered-${type}.oas.json`,
       "--out-dir",
       type === "admin"
-        ? `./medusa-plugin/src/admin/packages/generated/${type}-client`
+        ? "./medusa-plugin/src/admin/packages/admin-client/src-generated/generated"
         : `./dev/medusa-plugin-bundles-client/src-generated/generated`,
       "--clean",
     ],

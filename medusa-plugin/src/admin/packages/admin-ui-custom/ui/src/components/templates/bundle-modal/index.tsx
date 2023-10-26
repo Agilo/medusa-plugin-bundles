@@ -14,7 +14,7 @@ import IconTooltip from "../../../../../../admin-ui/ui/src/components/molecules/
 import InputField from "../../../../../../admin-ui/ui/src/components/molecules/input";
 import Modal from "../../../../../../admin-ui/ui/src/components/molecules/modal";
 import TextArea from "../../../../../../admin-ui/ui/src/components/molecules/textarea";
-import { Bundle } from "../../../../../../generated/admin-client";
+import { Bundle } from "../../../../../../admin-client";
 import { useBundlesCreate, useBundlesUpdate } from "../../../hooks/useBundles";
 // import { MetadataField } from "../../../../../../admin-ui/ui/src/components/organisms/metadata";
 

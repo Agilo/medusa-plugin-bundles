@@ -1,24 +1,24 @@
-import { Router } from "express";
-import cors from "cors";
 import {
   PaginatedResponse,
   transformStoreQuery,
   wrapHandler,
 } from "@medusajs/medusa";
-import { StoreGetBundlesParams } from "./list-bundles";
-import { Bundle } from "../../../../models/bundle";
+import cors from "cors";
+import { Router } from "express";
 import { parseCorsOrigins } from "medusa-core-utils";
-import { StoreGetBundlesBundleProductsParams } from "./list-products";
+import { Bundle } from "../../../../models/bundle";
 import { Product } from "../../../../models/product";
+import { StoreGetBundlesParams } from "./list-bundles";
+import { StoreGetBundlesBundleProductsParams } from "./list-products";
 
-export default function storeRoutes(router: Router, options) {
+export default function storeRoutes(router: Router, store_cors: string) {
   const storeRouter = Router();
 
   router.use("/store/bundles", storeRouter);
 
   storeRouter.use(
     cors({
-      origin: parseCorsOrigins(options.store_cors || ""),
+      origin: parseCorsOrigins(store_cors),
       credentials: true,
     })
   );

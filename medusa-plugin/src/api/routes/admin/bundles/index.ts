@@ -1,5 +1,3 @@
-import { Router } from "express";
-import cors from "cors";
 import {
   PaginatedResponse,
   authenticate,
@@ -7,22 +5,25 @@ import {
   transformQuery,
   wrapHandler,
 } from "@medusajs/medusa";
-import { AdminDeleteProductsFromBundleReq } from "./remove-products";
-import { AdminPostProductsToBundleReq } from "./add-products";
-import { AdminListBundlesProductsParams } from "./list-products";
-import { AdminGetBundlesParams } from "./list-bundles";
-import { AdminPostBundlesReq } from "./create-bundle";
-import { AdminPostBundlesBundleReq } from "./update-bundle";
+import cors from "cors";
+import { Router } from "express";
+import { parseCorsOrigins } from "medusa-core-utils";
 import { Bundle } from "../../../../models/bundle";
+import { AdminPostProductsToBundleReq } from "./add-products";
+import { AdminPostBundlesReq } from "./create-bundle";
+import { AdminGetBundlesParams } from "./list-bundles";
+import { AdminListBundlesProductsParams } from "./list-products";
+import { AdminDeleteProductsFromBundleReq } from "./remove-products";
+import { AdminPostBundlesBundleReq } from "./update-bundle";
 
-export default function adminRoutes(router: Router, options) {
+export default function adminRoutes(router: Router, admin_cors: string) {
   const adminRouter = Router();
 
   router.use("/admin/bundles", adminRouter);
 
   adminRouter.use(
     cors({
-      origin: options.admin_cors.split(","),
+      origin: parseCorsOrigins(admin_cors),
       credentials: true,
     })
   );

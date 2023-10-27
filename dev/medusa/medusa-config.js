@@ -57,8 +57,6 @@ const plugins = [
     resolve: "medusa-plugin-bundles",
     options: {
       enableUI: true,
-      admin_cors: ADMIN_CORS,
-      store_cors: STORE_CORS,
     },
   },
 ];

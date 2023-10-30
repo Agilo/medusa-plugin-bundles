@@ -1,19 +1,17 @@
-import clsx from "clsx"
 import Link from "next/link"
-import { ProductPreviewType } from "types/global"
 import Thumbnail from "../thumbnail"
-import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 
 type BundlePreviewProps = {
   title: string
-  products: PricedProduct[]
+  handle: string
+  thumbnail: string | null
 }
 
-const BundlePreview = ({ title, products }: BundlePreviewProps) => {
+const BundlePreview = ({ title, handle, thumbnail }: BundlePreviewProps) => {
   return (
-    <Link href={`/products/${123}`}>
+    <Link href={`/bundles/${handle}`}>
       <div>
-        {/* <Thumbnail thumbnail={thumbnail} size="full" /> */}
+        <Thumbnail thumbnail={thumbnail} size="full" />
         <div className="text-base-regular mt-2">
           <span>{title}</span>
           <div className="flex items-center gap-x-2 mt-1">

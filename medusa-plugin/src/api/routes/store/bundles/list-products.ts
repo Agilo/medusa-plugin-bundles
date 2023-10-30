@@ -1,24 +1,183 @@
-import { IsString, IsNumber, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
-import { Request, Response } from "express";
+import {
+  CartService,
+  PricingService,
+  ProductService,
+  ProductVariantInventoryService,
+  StoreGetProductsParams,
+  cleanResponseData,
+  defaultStoreCategoryScope,
+} from "@medusajs/medusa";
 import BundleService from "../../../../services/bundle";
 
 /**
  * @oas [get] /store/bundles/{id}/products
  * operationId: GetBundlesBundleProducts
- * summary: List Bundle Products
+ * summary: List Products
  * description: |
- *   Retrieves a list of products.
+ *   Retrieves a list of products. The products can be filtered by fields such as `id` or `q`. The products can also be sorted or paginated.
+ *   This endpoint can also be used to retrieve a product by its handle.
+ *
+ *   For accurate and correct pricing of the products based on the customer's context, it's highly recommended to pass fields such as
+ *   `region_id`, `currency_code`, and `cart_id` when available.
+ *
+ *   Passing `sales_channel_id` ensures retrieving only products available in the specified sales channel.
+ *   You can alternatively use a publishable API key in the request header instead of passing a `sales_channel_id`.
+ * externalDocs:
+ *   description: "How to retrieve a product by its handle"
+ *   url: "https://docs.medusajs.com/modules/products/storefront/show-products#retrieve-product-by-handle"
  * parameters:
  *   - (path) id=* {string} The ID of the Bundle.
- *   - (query) q {string} term used to search bundles' title and description.
- *   - (query) offset=0 {integer} The number of bundles to skip when retrieving the bundles.
- *   - (query) limit=10 {integer} Limit the number of bundles returned.
+ *   - (query) q {string} term used to search products' title, description, variant's title, variant's sku, and collection's title.
+ *   - in: query
+ *     name: id
+ *     style: form
+ *     explode: false
+ *     description: Filter by IDs.
+ *     schema:
+ *       oneOf:
+ *         - type: string
+ *         - type: array
+ *           items:
+ *             type: string
+ *   - in: query
+ *     name: sales_channel_id
+ *     style: form
+ *     explode: false
+ *     description: "Filter by sales channel IDs. When provided, only products available in the selected sales channels are retrieved. Alternatively, you can pass a
+ *      publishable API key in the request header and this will have the same effect."
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: collection_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product collection IDs. When provided, only products that belong to the specified product collections are retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: type_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product type IDs. When provided, only products that belong to the specified product types are retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: tags
+ *     style: form
+ *     explode: false
+ *     description: Filter by product tag IDs. When provided, only products that belong to the specified product tags are retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - (query) title {string} Filter by title.
+ *   - (query) description {string} Filter by description
+ *   - (query) handle {string} Filter by handle.
+ *   - (query) is_giftcard {boolean} Whether to retrieve regular products or gift-card products.
+ *   - in: query
+ *     name: created_at
+ *     description: Filter by a creation date range.
+ *     schema:
+ *       type: object
+ *       properties:
+ *         lt:
+ *            type: string
+ *            description: filter by dates less than this date
+ *            format: date
+ *         gt:
+ *            type: string
+ *            description: filter by dates greater than this date
+ *            format: date
+ *         lte:
+ *            type: string
+ *            description: filter by dates less than or equal to this date
+ *            format: date
+ *         gte:
+ *            type: string
+ *            description: filter by dates greater than or equal to this date
+ *            format: date
+ *   - in: query
+ *     name: updated_at
+ *     description: Filter by an update date range.
+ *     schema:
+ *       type: object
+ *       properties:
+ *         lt:
+ *            type: string
+ *            description: filter by dates less than this date
+ *            format: date
+ *         gt:
+ *            type: string
+ *            description: filter by dates greater than this date
+ *            format: date
+ *         lte:
+ *            type: string
+ *            description: filter by dates less than or equal to this date
+ *            format: date
+ *         gte:
+ *            type: string
+ *            description: filter by dates greater than or equal to this date
+ *            format: date
+ *   - in: query
+ *     name: category_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product category IDs. When provided, only products that belong to the specified product categories are retrieved.
+ *     schema:
+ *       type: array
+ *       x-featureFlag: "product_categories"
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: include_category_children
+ *     style: form
+ *     explode: false
+ *     description: Whether to include child product categories when filtering using the `category_id` field.
+ *     schema:
+ *       type: boolean
+ *       x-featureFlag: "product_categories"
+ *   - (query) offset=0 {integer} The number of products to skip when retrieving the products.
+ *   - (query) limit=100 {integer} Limit the number of products returned.
+ *   - (query) expand {string} Comma-separated relations that should be expanded in the returned products.
+ *   - (query) fields {string} Comma-separated fields that should be included in the returned products.
+ *   - (query) order {string} A product field to sort-order the retrieved products by.
+ *   - (query) cart_id {string} The ID of the cart. This is useful for accurate pricing based on the cart's context.
+ *   - (query) region_id {string} The ID of the region. This is useful for accurate pricing based on the selected region.
+ *   - in: query
+ *     name: currency_code
+ *     style: form
+ *     explode: false
+ *     description: A 3 character ISO currency code. This is useful for accurate pricing based on the selected currency.
+ *     schema:
+ *       type: string
+ *       externalDocs:
+ *         url: https://en.wikipedia.org/wiki/ISO_4217#Active_codes
+ *         description: See a list of codes.
  * x-codegen:
- *   method: listProducts
+ *   method: list
  *   queryParams: StoreGetBundlesBundleProductsParams
+ * x-codeSamples:
+ *   - lang: JavaScript
+ *     label: JS Client
+ *     source: |
+ *       import Medusa from "@medusajs/medusa-js"
+ *       const medusa = new Medusa({ baseUrl: MEDUSA_BACKEND_URL, maxRetries: 3 })
+ *       medusa.products.list()
+ *       .then(({ products, limit, offset, count }) => {
+ *         console.log(products.length);
+ *       });
+ *   - lang: Shell
+ *     label: cURL
+ *     source: |
+ *       curl '{backend_url}/store/products'
  * tags:
- *   - Bundles
+ *   - Products
  * responses:
  *   200:
  *     description: OK
@@ -26,44 +185,251 @@ import BundleService from "../../../../services/bundle";
  *       application/json:
  *         schema:
  *           $ref: "#/components/schemas/StoreBundlesBundleProductsListRes"
+ *   "400":
+ *     $ref: "#/components/responses/400_error"
+ *   "404":
+ *     $ref: "#/components/responses/not_found_error"
+ *   "409":
+ *     $ref: "#/components/responses/invalid_state_error"
+ *   "422":
+ *     $ref: "#/components/responses/invalid_request_error"
+ *   "500":
+ *     $ref: "#/components/responses/500_error"
  */
 export default async (req, res) => {
   const { id } = req.params;
-  const { skip, take } = req.listConfig;
 
   const bundleService: BundleService = req.scope.resolve("bundleService");
+  const productService: ProductService = req.scope.resolve("productService");
+  const productVariantInventoryService: ProductVariantInventoryService =
+    req.scope.resolve("productVariantInventoryService");
+  const pricingService: PricingService = req.scope.resolve("pricingService");
+  const cartService: CartService = req.scope.resolve("cartService");
 
-  req.filterableFields["status"] = "published";
+  // const featureFlagRouter = req.scope.resolve("featureFlagRouter");
 
-  const [products, count] = await bundleService.listAndCountProducts(
-    {
-      bundle_id: id,
-      ...req.filterableFields,
-    },
-    req.listConfig
+  const validated = req.validatedQuery as StoreGetBundlesBundleProductsParams;
+
+  let {
+    cart_id,
+    region_id: regionId,
+    currency_code: currencyCode,
+    ...filterableFields
+  } = req.filterableFields;
+  const listConfig = req.listConfig;
+
+  console.log("listConfig", listConfig);
+
+  const bundleProductIds = await bundleService.listProductIds(id);
+  console.log("bundleProductIds", bundleProductIds);
+  console.log("filterableFields1", filterableFields);
+
+  if (filterableFields.id && typeof filterableFields.id === "string") {
+    filterableFields.id = [filterableFields.id];
+  }
+
+  if (filterableFields.id && Array.isArray(filterableFields.id)) {
+    // intersection
+    filterableFields.id = filterableFields.id.filter((id) =>
+      bundleProductIds.includes(id)
+    );
+  } else {
+    filterableFields.id = bundleProductIds;
+  }
+
+  console.log("filterableFields2", filterableFields);
+
+  if (!filterableFields.id.length) {
+    res.json({
+      products: [],
+      count: 0,
+      offset: validated.offset,
+      limit: validated.limit,
+    });
+    return;
+  }
+
+  // get only published products for store endpoint
+  filterableFields["status"] = ["published"];
+  // store APIs only receive active and public categories to query from
+  filterableFields["categories"] = {
+    ...(filterableFields.categories || {}),
+    // Store APIs are only allowed to query active and public categories
+    ...defaultStoreCategoryScope,
+  };
+
+  if (req.publishableApiKeyScopes?.sales_channel_ids.length) {
+    filterableFields.sales_channel_id =
+      filterableFields.sales_channel_id ||
+      req.publishableApiKeyScopes.sales_channel_ids;
+
+    if (!listConfig.relations.includes("listConfig.relations")) {
+      listConfig.relations.push("sales_channels");
+    }
+  }
+
+  // const isIsolateProductDomain = featureFlagRouter.isFeatureEnabled(
+  //   IsolateProductDomain.key
+  // );
+
+  const promises: Promise<any>[] = [];
+
+  // if (isIsolateProductDomain) {
+  //   promises.push(
+  //     listAndCountProductWithIsolatedProductModule(
+  //       req,
+  //       filterableFields,
+  //       listConfig
+  //     )
+  //   );
+  // } else {
+  //   promises.push(productService.listAndCount(filterableFields, listConfig));
+  // }
+  promises.push(productService.listAndCount(filterableFields, listConfig));
+
+  if (validated.cart_id) {
+    promises.push(
+      cartService.retrieve(validated.cart_id, {
+        select: ["id", "region_id"] as any,
+        relations: ["region"],
+      })
+    );
+  }
+
+  const [[rawProducts, count], cart] = await Promise.all(promises);
+
+  if (validated.cart_id) {
+    regionId = cart.region_id;
+    currencyCode = cart.region.currency_code;
+  }
+
+  // Create a new reference just for naming purpose
+  const computedProducts = rawProducts;
+
+  // We only set prices if variants.prices are requested
+  const shouldSetPricing = ["variants", "variants.prices"].every((relation) =>
+    listConfig.relations?.includes(relation)
   );
 
-  res.status(200).json({
-    products,
+  // We only set availability if variants are requested
+  const shouldSetAvailability = listConfig.relations?.includes("variants");
+
+  const decoratePromises: Promise<any>[] = [];
+
+  if (shouldSetPricing) {
+    decoratePromises.push(
+      pricingService.setProductPrices(computedProducts, {
+        cart_id: cart_id,
+        region_id: regionId,
+        currency_code: currencyCode,
+        customer_id: req.user?.customer_id,
+        include_discount_prices: true,
+      })
+    );
+  }
+
+  if (shouldSetAvailability) {
+    decoratePromises.push(
+      productVariantInventoryService.setProductAvailability(
+        computedProducts,
+        filterableFields.sales_channel_id
+      )
+    );
+  }
+
+  // We can run them concurrently as the new properties are assigned to the references
+  // of the appropriate entity
+  await Promise.all(decoratePromises);
+
+  res.json({
+    products: cleanResponseData(computedProducts, req.allowedProperties || []),
     count,
-    offset: skip,
-    limit: take,
+    offset: validated.offset,
+    limit: validated.limit,
   });
 };
 
-export class StoreGetBundlesBundleProductsParams {
-  @IsString()
-  @IsOptional()
-  @Type(() => String)
-  q?: string;
+// async function listAndCountProductWithIsolatedProductModule(
+//   req,
+//   filterableFields,
+//   listConfig
+// ) {
+//   // TODO: Add support for fields/expands
 
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  offset?: number = 0;
+//   const remoteQuery = req.scope.resolve("remoteQuery");
 
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  limit?: number = 10;
-}
+//   let salesChannelIdFilter = filterableFields.sales_channel_id;
+//   if (req.publishableApiKeyScopes?.sales_channel_ids.length) {
+//     salesChannelIdFilter ??= req.publishableApiKeyScopes.sales_channel_ids;
+//   }
+
+//   delete filterableFields.sales_channel_id;
+
+//   filterableFields["categories"] = {
+//     $or: [
+//       {
+//         id: null,
+//       },
+//       {
+//         ...(filterableFields.categories || {}),
+//         // Store APIs are only allowed to query active and public categories
+//         ...defaultStoreCategoryScope,
+//       },
+//     ],
+//   };
+
+//   // This is not the best way of handling cross filtering but for now I would say it is fine
+//   if (salesChannelIdFilter) {
+//     const salesChannelService = req.scope.resolve(
+//       "salesChannelService"
+//     ) as SalesChannelService;
+
+//     const productIdsInSalesChannel =
+//       await salesChannelService.listProductIdsBySalesChannelIds(
+//         salesChannelIdFilter
+//       );
+
+//     let filteredProductIds = productIdsInSalesChannel[salesChannelIdFilter];
+
+//     if (filterableFields.id) {
+//       filterableFields.id = Array.isArray(filterableFields.id)
+//         ? filterableFields.id
+//         : [filterableFields.id];
+
+//       const salesChannelProductIdsSet = new Set(filteredProductIds);
+
+//       filteredProductIds = filterableFields.id.filter((productId) =>
+//         salesChannelProductIdsSet.has(productId)
+//       );
+//     }
+
+//     filterableFields.id = filteredProductIds;
+//   }
+
+//   const variables = {
+//     filters: filterableFields,
+//     order: listConfig.order,
+//     skip: listConfig.skip,
+//     take: listConfig.take,
+//   };
+
+//   const query = {
+//     product: {
+//       __args: variables,
+//       ...defaultStoreProductRemoteQueryObject,
+//     },
+//   };
+
+//   const {
+//     rows: products,
+//     metadata: { count },
+//   } = await remoteQuery(query);
+
+//   products.forEach((product) => {
+//     product.profile_id = product.profile?.id;
+//   });
+
+//   return [products, count];
+// }
+
+export class StoreGetBundlesBundleProductsParams extends StoreGetProductsParams {}

@@ -1,5 +1,9 @@
 import {
   PaginatedResponse,
+  allowedStoreProductsFields,
+  allowedStoreProductsRelations,
+  defaultStoreProductsFields,
+  defaultStoreProductsRelations,
   transformStoreQuery,
   wrapHandler,
 } from "@medusajs/medusa";
@@ -7,9 +11,9 @@ import cors from "cors";
 import { Router } from "express";
 import { parseCorsOrigins } from "medusa-core-utils";
 import { Bundle } from "../../../../models/bundle";
-import { Product } from "../../../../models/product";
 import { StoreGetBundlesParams } from "./list-bundles";
 import { StoreGetBundlesBundleProductsParams } from "./list-products";
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 
 export default function storeRoutes(router: Router, store_cors: string) {
   const storeRouter = Router();
@@ -37,14 +41,91 @@ export default function storeRoutes(router: Router, store_cors: string) {
 
   storeRouter.get("/:id", wrapHandler(require("./get-bundle").default));
 
+  // storeRouter.get(
+  //   "/:id/products",
+  //   transformStoreQuery(StoreGetBundlesBundleProductsParams, {
+  //     isList: true,
+  //   }),
+  //   wrapHandler(require("./list-products").default)
+  // );
+
   storeRouter.get(
     "/:id/products",
+    // withDefaultSalesChannel({ attachChannelAsArray: true }),
     transformStoreQuery(StoreGetBundlesBundleProductsParams, {
+      defaultRelations: defaultStoreProductsRelations,
+      defaultFields: defaultStoreProductsFields,
+      allowedFields: allowedStoreProductsFields,
+      allowedRelations: allowedStoreProductsRelations,
       isList: true,
     }),
     wrapHandler(require("./list-products").default)
   );
+
+  // storeRouter.get(
+  //   "/:id/products2",
+  //   transformStoreQuery(StoreGetBundlesBundleProducts2Params, {
+  //     isList: true,
+  //   }),
+  //   wrapHandler(require("./list-products2").default)
+  // );
 }
+
+// export const defaultStoreProductsRelations = [
+//   "variants",
+//   "variants.prices",
+//   "variants.options",
+//   "options",
+//   "options.values",
+//   "images",
+//   "tags",
+//   "collection",
+//   "type",
+//   "profiles",
+// ];
+
+// export const defaultStoreProductsFields: (keyof Product)[] = [
+//   "id",
+//   "title",
+//   "subtitle",
+//   "status",
+//   "external_id",
+//   "description",
+//   "handle",
+//   "is_giftcard",
+//   "discountable",
+//   "thumbnail",
+//   "collection_id",
+//   "type_id",
+//   "weight",
+//   "length",
+//   "height",
+//   "width",
+//   "hs_code",
+//   "origin_country",
+//   "mid_code",
+//   "material",
+//   "created_at",
+//   "updated_at",
+//   "deleted_at",
+//   "metadata",
+// ];
+
+// export const allowedStoreProductsFields = [
+//   ...defaultStoreProductsFields,
+//   // profile_id is not a column in the products table, so it should be ignored as it
+//   // will be rejected by typeorm as invalid, though, it is an entity property
+//   // that we want to return, so it part of the allowedStoreProductsFields
+//   "profile_id",
+//   "variants.title",
+//   "variants.prices.amount",
+// ];
+
+// export const allowedStoreProductsRelations = [
+//   ...defaultStoreProductsRelations,
+//   "variants.inventory_items",
+//   "sales_channels",
+// ];
 
 // export const defaultStoreBundlesRelations = ["products"];
 
@@ -113,6 +194,20 @@ export type StoreBundlesListRes = PaginatedResponse & {
 /**
  * @schema StoreBundlesBundleProductsListRes
  * type: object
+ * x-expanded-relations:
+ *   field: products
+ *   relations:
+ *     - collection
+ *     - images
+ *     - options
+ *     - options.values
+ *     - tags
+ *     - type
+ *     - variants
+ *     - variants.options
+ *     - variants.prices
+ *   totals:
+ *     - variants.purchasable
  * required:
  *   - products
  *   - count
@@ -123,7 +218,7 @@ export type StoreBundlesListRes = PaginatedResponse & {
  *     type: array
  *     description: "An array of products details."
  *     items:
- *       $ref: "#/components/schemas/Product"
+ *       $ref: "#/components/schemas/PricedProduct"
  *   count:
  *     type: integer
  *     description: The total number of items available
@@ -135,5 +230,5 @@ export type StoreBundlesListRes = PaginatedResponse & {
  *     description: The number of items per page
  */
 export type StoreBundlesBundleProductsListRes = PaginatedResponse & {
-  products: Product[];
+  products: PricedProduct[];
 };

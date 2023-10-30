@@ -229,6 +229,13 @@ export default class BundleService extends TransactionBaseService {
     return qb.getManyAndCount();
   }
 
+  async listProductIds(id: string): Promise<string[]> {
+    const bundleRepo = this.activeManager_.withRepository(
+      this.bundleRepository_
+    );
+    return await bundleRepo.listProductIds(id);
+  }
+
   // async listProducts(
   //   bundleId: string,
   //   config?: FindConfig<Product>

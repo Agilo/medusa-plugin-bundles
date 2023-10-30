@@ -3,13 +3,18 @@
 /* eslint-disable */
 import { SetRelation, Merge } from '../core/ModelUtils';
 
-import type { Product } from './Product';
+import type { PricedProduct } from './PricedProduct';
+import type { ProductOption } from './ProductOption';
+import type { ProductVariant } from './ProductVariant';
 
 export interface StoreBundlesBundleProductsListRes {
   /**
    * An array of products details.
    */
-  products: Array<Product>;
+  products: Array<Merge<SetRelation<PricedProduct, 'collection' | 'images' | 'options' | 'tags' | 'type' | 'variants'>, {
+    options: Array<SetRelation<ProductOption, 'values'>>,
+    variants: Array<SetRelation<ProductVariant, 'options' | 'prices' | 'purchasable'>>,
+  }>>;
   /**
    * The total number of items available
    */

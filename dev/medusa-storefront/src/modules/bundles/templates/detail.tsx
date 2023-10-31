@@ -2,17 +2,23 @@
 
 import { getProductsByBundleHandle } from "@lib/data"
 import usePreviews from "@lib/hooks/use-previews"
+import getNumberOfSkeletons from "@lib/util/get-number-of-skeletons"
+import repeat from "@lib/util/repeat"
 import ProductPreview from "@modules/products/components/product-preview"
+import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
 import { useInfiniteQuery } from "@tanstack/react-query"
+import { Bundle } from "medusa-plugin-bundles-client"
 import { useCart } from "medusa-react"
 import React, { useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 
-type BundleTemplateProps = {
-  bundle: any
+type BundleDetailTemplateProps = {
+  bundle: Bundle
 }
 
-const BundleTemplate: React.FC<BundleTemplateProps> = ({ bundle }) => {
+const BundleDetailTemplate: React.FC<BundleDetailTemplateProps> = ({
+  bundle,
+}) => {
   const { cart } = useCart()
   const { ref, inView } = useInView()
 
@@ -59,24 +65,17 @@ const BundleTemplate: React.FC<BundleTemplateProps> = ({ bundle }) => {
         <h1>{bundle.title}</h1>
       </div>
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8">
-        {/* {infiniteData?.pages.map((page) =>
-          page.response.products.map((p) => (
-            <li key={p.id}>
-              <ProductPreview {...p} />
-            </li>
-          ))
-        )} */}
         {previews.map((p) => (
           <li key={p.id}>
             <ProductPreview {...p} />
           </li>
         ))}
-        {/* {isFetchingNextPage &&
+        {isFetchingNextPage &&
           repeat(getNumberOfSkeletons(infiniteData?.pages)).map((index) => (
             <li key={index}>
               <SkeletonProductPreview />
             </li>
-          ))} */}
+          ))}
       </ul>
       <div
         className="py-16 flex justify-center items-center text-small-regular text-gray-700"
@@ -88,4 +87,4 @@ const BundleTemplate: React.FC<BundleTemplateProps> = ({ bundle }) => {
   )
 }
 
-export default BundleTemplate
+export default BundleDetailTemplate

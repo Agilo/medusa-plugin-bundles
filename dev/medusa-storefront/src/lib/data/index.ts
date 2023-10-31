@@ -155,7 +155,7 @@ export async function getBundleProductsList({
   pageParam?: number
   queryParams: StoreGetBundlesBundleProductsParams
 }) {
-  const limit = queryParams.limit || 10
+  const limit = queryParams.limit || 12
 
   const { products, count, nextPage } = await medusaRequest(
     "GET",

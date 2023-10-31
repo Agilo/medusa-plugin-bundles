@@ -1,5 +1,5 @@
 import { getBundleByHandle } from "@lib/data"
-import BundleTemplate from "@modules/bundles/templates"
+import BundleDetailTemplate from "@modules/bundles/templates/detail"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${bundle.title} | Acme Store`,
-    description: `${bundle.title} collection`,
+    description: `${bundle.title} bundle`,
   }
 }
 
@@ -27,5 +27,5 @@ export default async function BundlePage({ params }: Props) {
 
   const bundle = bundles[0]
 
-  return <BundleTemplate bundle={bundle} />
+  return <BundleDetailTemplate bundle={bundle} />
 }

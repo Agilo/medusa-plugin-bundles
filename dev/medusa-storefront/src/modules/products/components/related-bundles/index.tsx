@@ -1,6 +1,6 @@
 import repeat from "@lib/util/repeat"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
-import SkeletonProductPreview from "@modules/skeletons/components/skeleton-product-preview"
+import SkeletonBundlePreview from "@modules/skeletons/components/skeleton-bundle-preview"
 import { useBundles } from "medusa-plugin-bundles-client"
 import BundlePreview from "../bundle-preview"
 
@@ -10,7 +10,7 @@ type RelatedBundlesProps = {
 
 const RelatedBundles = ({ product }: RelatedBundlesProps) => {
   const { bundles, isLoading } = useBundles({
-    product_id: product.id ? [product.id, "123"] : [],
+    product_id: [product.id!],
     limit: 8,
   })
 
@@ -29,17 +29,13 @@ const RelatedBundles = ({ product }: RelatedBundlesProps) => {
         {bundles &&
           bundles.map((bundle) => (
             <li key={bundle.id}>
-              <BundlePreview
-                title={bundle.title}
-                handle={bundle.handle}
-                thumbnail={bundle.thumbnail}
-              />
+              <BundlePreview {...bundle} />
             </li>
           ))}
         {isLoading &&
           repeat(8).map((index) => (
             <li key={index}>
-              <SkeletonProductPreview />
+              <SkeletonBundlePreview />
             </li>
           ))}
       </ul>

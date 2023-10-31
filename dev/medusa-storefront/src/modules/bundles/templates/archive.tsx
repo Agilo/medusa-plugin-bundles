@@ -1,14 +1,15 @@
 "use client"
 
 import { getBundlesList } from "@lib/data"
+import getNumberOfSkeletons from "@lib/util/get-number-of-skeletons"
+import repeat from "@lib/util/repeat"
 import BundlePreview from "@modules/products/components/bundle-preview"
+import SkeletonBundlePreview from "@modules/skeletons/components/skeleton-bundle-preview"
 import { useInfiniteQuery } from "@tanstack/react-query"
-import { useCart } from "medusa-react"
 import React, { useEffect } from "react"
 import { useInView } from "react-intersection-observer"
 
-const BundleListTemplate: React.FC = () => {
-  const { cart } = useCart()
+const BundleArchiveTemplate: React.FC = () => {
   const { ref, inView } = useInView()
 
   const {
@@ -16,7 +17,7 @@ const BundleListTemplate: React.FC = () => {
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-    refetch,
+    isLoading,
   } = useInfiniteQuery(
     [`get_bundles`],
     ({ pageParam }) =>
@@ -27,19 +28,6 @@ const BundleListTemplate: React.FC = () => {
       getNextPageParam: (lastPage) => lastPage.nextPage,
     }
   )
-
-  // useEffect(() => {
-  //   if (cart?.region_id) {
-  //     refetch()
-  //   }
-  // }, [cart?.region_id, refetch])
-
-  // const previews = usePreviews({
-  //   pages: infiniteData?.pages,
-  //   region: cart?.region,
-  // })
-
-  console.log("infiniteData", infiniteData)
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -55,22 +43,27 @@ const BundleListTemplate: React.FC = () => {
       </div>
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-4 gap-y-8">
         {infiniteData?.pages.map((page) =>
-          page.response.bundles.map((b) => (
-            <li key={b.id}>
-              <BundlePreview
-                title={b.title}
-                handle={b.handle}
-                thumbnail={b.thumbnail}
-              />
+          page.response.bundles.map((bundle) => (
+            <li key={bundle.id}>
+              <BundlePreview {...bundle} />
             </li>
           ))
         )}
-        {/* {isFetchingNextPage &&
-          repeat(getNumberOfSkeletons(infiniteData?.pages)).map((index) => (
+        {isLoading &&
+          !infiniteData &&
+          repeat(8).map((index) => (
             <li key={index}>
-              <SkeletonProductPreview />
+              <SkeletonBundlePreview />
             </li>
-          ))} */}
+          ))}
+        {isFetchingNextPage &&
+          repeat(getNumberOfSkeletons(infiniteData?.pages as any)).map(
+            (index) => (
+              <li key={index}>
+                <SkeletonBundlePreview />
+              </li>
+            )
+          )}
       </ul>
       <div
         className="py-16 flex justify-center items-center text-small-regular text-gray-700"
@@ -82,4 +75,4 @@ const BundleListTemplate: React.FC = () => {
   )
 }
 
-export default BundleListTemplate
+export default BundleArchiveTemplate

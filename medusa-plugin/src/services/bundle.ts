@@ -22,6 +22,12 @@ export default class BundleService extends TransactionBaseService {
   protected readonly productRepository_: Repository<Product>;
   protected readonly bundleRepository_: typeof BundleRepository;
 
+  static readonly Events = {
+    UPDATED: "bundle.updated",
+    CREATED: "bundle.created",
+    DELETED: "bundle.deleted",
+  };
+
   constructor({
     eventBusService,
     productRepository,
@@ -103,13 +109,7 @@ export default class BundleService extends TransactionBaseService {
       qb.andWhere("bundle.handle IN (:...handle)", { handle: selector.handle });
     }
 
-    // console.log("selector", selector);
-    // console.log("qb.getQuery()", qb.getQuery());
-    // console.log("qb.getQueryAndParameters()", qb.getQueryAndParameters());
-
     return qb.getManyAndCount();
-
-    // return bundleRepo.findAndCount();
   }
 
   async retrieve(id: string, config?: FindConfig<Bundle>): Promise<Bundle> {
@@ -134,10 +134,21 @@ export default class BundleService extends TransactionBaseService {
     status?: BundleStatus;
     thumbnail?: string;
   }): Promise<Bundle> {
-    return this.atomicPhase_(async (manager) => {
+    return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);
+
       let bundle = bundleRepo.create(data);
-      return bundleRepo.save(bundle);
+      bundle = await bundleRepo.save(bundle);
+
+      const result = await this.retrieve(bundle.id, {});
+
+      await this.eventBus_
+        .withTransaction(manager)
+        .emit(BundleService.Events.CREATED, {
+          id: result.id,
+        });
+
+      return result;
     });
   }
 
@@ -154,15 +165,21 @@ export default class BundleService extends TransactionBaseService {
     return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);
 
-      let bundle = await this.retrieve(id);
+      const bundle = await this.retrieve(id);
 
       for (const [key, value] of Object.entries(data)) {
         bundle[key] = value;
       }
 
-      bundle = await bundleRepo.save(bundle);
+      const result = await bundleRepo.save(bundle);
 
-      return bundle;
+      await this.eventBus_
+        .withTransaction(manager)
+        .emit(BundleService.Events.UPDATED, {
+          id: result.id,
+        });
+
+      return result;
     });
   }
 
@@ -172,16 +189,20 @@ export default class BundleService extends TransactionBaseService {
 
       // Should not fail, if bundle does not exist, since delete is idempotent
       const bundle = await bundleRepo.findOne({
-        where: { id: id },
-        relations: ["products"],
+        where: { id },
       });
 
       if (!bundle) {
         return;
       }
 
-      // TODO: check if this removes product relations
       await bundleRepo.remove(bundle);
+
+      await this.eventBus_
+        .withTransaction(manager)
+        .emit(BundleService.Events.DELETED, {
+          id,
+        });
 
       return Promise.resolve();
     });
@@ -204,8 +225,6 @@ export default class BundleService extends TransactionBaseService {
     const productRepo = this.activeManager_.withRepository(
       this.productRepository_
     );
-
-    // console.log("selector.bundle_id", selector.bundle_id);
 
     const qb = productRepo
       .createQueryBuilder("product")
@@ -287,11 +306,15 @@ export default class BundleService extends TransactionBaseService {
 
       await bundleRepo.addProducts(id, productIds);
 
-      const bundle = await this.retrieve(id, {
+      const result = await this.retrieve(id, {
         relations: ["products"],
       });
 
-      return bundle;
+      await this.eventBus_
+        .withTransaction(manager)
+        .emit(BundleService.Events.UPDATED, result);
+
+      return result;
     });
   }
 
@@ -306,11 +329,15 @@ export default class BundleService extends TransactionBaseService {
 
       await bundleRepo.removeProducts(id, productIds);
 
-      const bundle = await this.retrieve(id, {
+      const result = await this.retrieve(id, {
         relations: ["products"],
       });
 
-      return bundle;
+      await this.eventBus_
+        .withTransaction(manager)
+        .emit(BundleService.Events.UPDATED, result);
+
+      return result;
     });
   }
 }

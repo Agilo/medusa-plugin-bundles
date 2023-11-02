@@ -59,7 +59,11 @@ export default class BundleService extends TransactionBaseService {
       this.bundleRepository_
     );
 
-    let bundle_ids = [];
+    let qb = bundleRepo
+      .createQueryBuilder(`bundle`)
+      .skip(config.skip)
+      .take(config.take);
+
     if (selector.product_id && selector.product_id.length) {
       const productRepo = this.activeManager_.withRepository(
         this.productRepository_
@@ -71,19 +75,10 @@ export default class BundleService extends TransactionBaseService {
         },
         relations: ["bundles"],
       });
-      bundle_ids = products
+      const bundle_ids = products
         .map((product) => product.bundles.map((bundle) => bundle.id))
         .flat();
-      console.log("products", products);
-      console.log("bundle_ids", bundle_ids);
-    }
 
-    let qb = bundleRepo
-      .createQueryBuilder(`bundle`)
-      .skip(config.skip)
-      .take(config.take);
-
-    if (bundle_ids.length) {
       qb.andWhereInIds(bundle_ids);
     }
 

@@ -1,8 +1,7 @@
-// import { DateComparisonOperator } from "@medusajs/medusa";
-import { IsOptional, IsNumber, IsString, IsArray } from "class-validator";
-import { Type } from "class-transformer";
-import BundleService from "../../../../services/bundle";
 import { cleanResponseData } from "@medusajs/medusa";
+import { Type } from "class-transformer";
+import { IsArray, IsNumber, IsOptional, IsString } from "class-validator";
+import BundleService from "../../../../services/bundle";
 
 /**
  * @oas [get] /store/bundles
@@ -53,9 +52,6 @@ export default async (req, res) => {
   // get only published bundles for store endpoint
   req.filterableFields["status"] = "published";
 
-  // console.log("req.filterableFields", req.filterableFields);
-  // console.log("req.listConfig", req.listConfig);
-
   const [bundles, count] = await bundleService.listAndCount(
     req.filterableFields,
     req.listConfig
@@ -70,17 +66,10 @@ export default async (req, res) => {
 };
 
 export class StoreGetBundlesParams {
+  @IsString()
   @IsOptional()
-  @IsArray()
-  handle?: string[];
-
-  // @IsString()
-  // @IsOptional()
-  // expand?: string;
-
-  // @IsString()
-  // @IsOptional()
-  // fields?: string;
+  @Type(() => String)
+  q?: string;
 
   @IsNumber()
   @IsOptional()
@@ -92,70 +81,11 @@ export class StoreGetBundlesParams {
   @Type(() => Number)
   limit?: number = 10;
 
-  // @IsString()
-  // @IsOptional()
-  // order?: string;
-
-  // @IsOptional()
-  // @IsType([String, [String]])
-  // id?: string | string[];
-
-  @IsString()
-  @IsOptional()
-  q?: string;
-
   @IsArray()
   @IsOptional()
   product_id?: string[];
 
-  // @IsArray()
-  // @IsOptional()
-  // collection_id?: string[];
-
-  // @IsArray()
-  // @IsOptional()
-  // tags?: string[];
-
-  // @IsString()
-  // @IsOptional()
-  // title?: string;
-
-  // @IsString()
-  // @IsOptional()
-  // description?: string;
-
-  // @IsString()
-  // @IsOptional()
-  // handle?: string;
-
-  // @IsBoolean()
-  // @IsOptional()
-  // @Transform(({ value }) => optionalBooleanMapper.get(value.toLowerCase()))
-  // is_giftcard?: boolean;
-
-  // @IsArray()
-  // @IsOptional()
-  // type_id?: string[];
-
-  // @FeatureFlagDecorators(SalesChannelFeatureFlag.key, [IsOptional(), IsArray()])
-  // sales_channel_id?: string[];
-
-  // @IsArray()
-  // @IsOptional()
-  // category_id?: string[];
-
-  // @IsBoolean()
-  // @IsOptional()
-  // @Transform(({ value }) => optionalBooleanMapper.get(value.toLowerCase()))
-  // include_category_children?: boolean;
-
-  // @IsOptional()
-  // @ValidateNested()
-  // @Type(() => DateComparisonOperator)
-  // created_at?: DateComparisonOperator;
-
-  // @IsOptional()
-  // @ValidateNested()
-  // @Type(() => DateComparisonOperator)
-  // updated_at?: DateComparisonOperator;
+  @IsOptional()
+  @IsArray()
+  handle?: string[];
 }

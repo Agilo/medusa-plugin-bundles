@@ -1,17 +1,27 @@
-import { IsNumber, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { IsArray, IsNumber, IsOptional, IsString } from "class-validator";
 import BundleService from "../../../../services/bundle";
 
 /**
  * @oas [get] /admin/bundles
- * operationId: "AdminGetBundles"
- * summary: "List Bundles"
- * description: "Retrieve a list of bundles."
+ * operationId: AdminGetBundles
+ * summary: List Bundles
+ * description: |
+ *   Retrieves a list of bundles. The bundles can be filtered by `q` field. The bundles can also be paginated.
  * x-authenticated: true
  * parameters:
- *   - (query) q {string} term to search bundles' title and description.
+ *   - (query) q {string} term used to search bundles' title and description.
  *   - (query) offset=0 {integer} The number of bundles to skip when retrieving the bundles.
  *   - (query) limit=10 {integer} Limit the number of bundles returned.
+ *   - in: query
+ *     name: product_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
  * x-codegen:
  *   method: list
  *   queryParams: AdminGetBundlesParams
@@ -31,8 +41,6 @@ import BundleService from "../../../../services/bundle";
 export default async (req, res) => {
   const { skip, take } = req.listConfig;
 
-  console.log("req.listConfig", req.listConfig);
-
   const bundleService: BundleService = req.scope.resolve("bundleService");
 
   const [bundles, count] = await bundleService.listAndCount(
@@ -40,7 +48,7 @@ export default async (req, res) => {
     req.listConfig
   );
 
-  res.status(200).json({
+  res.json({
     bundles,
     count,
     offset: skip,
@@ -63,4 +71,8 @@ export class AdminGetBundlesParams {
   @IsOptional()
   @Type(() => Number)
   limit?: number = 10;
+
+  @IsArray()
+  @IsOptional()
+  product_id?: string[];
 }

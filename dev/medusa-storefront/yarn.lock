@@ -6444,23 +6444,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"medusa-plugin-bundles@file:../../medusa-plugin::locator=medusa-storefront%40workspace%3A.":
-  version: 0.0.1
-  resolution: "medusa-plugin-bundles@file:../../medusa-plugin#../../medusa-plugin::hash=778110&locator=medusa-storefront%40workspace%3A."
-  dependencies:
-    axios: ^0.24.0
-    medusa-core-utils: ^1.2.0
+"medusa-plugin-bundles-client@file:../medusa-plugin-bundles-client::locator=medusa-storefront%40workspace%3A.":
+  version: 0.0.0
+  resolution: "medusa-plugin-bundles-client@file:../medusa-plugin-bundles-client#../medusa-plugin-bundles-client::hash=288403&locator=medusa-storefront%40workspace%3A."
   peerDependencies:
-    "@medusajs/admin": ^7.1.1
-    "@medusajs/medusa": ^1.16.0
+    "@medusajs/medusa": ^1.12.0
     "@tanstack/react-query": 4.22.0
     medusa-react: ^9.0.0
-    react: ^18.2.0
-    react-hook-form: 7.38.0
-    react-i18next: ^12.3.1
-    react-router-dom: ^6.13.0
-    typeorm: ^0.3.16
-  checksum: 5344877e99fa6350354d9a846b40488e7bacf7192f70a8710919f88b222f9561a401ffeb2232d0a12e01b17187faa901c53f360ea0f22eb9d3119c47a7f058ed
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 389fe38191a0e082fff3cebb96ba80c37b805d94577bb44ba93eeccdb2785ae01ae2bda0aaa6685681d7ce20a61bb0224dab1ae6820555c14b980e82aff5a3cc
   languageName: node
   linkType: hard
 
@@ -6506,7 +6499,7 @@ __metadata:
     eslint: 8.10.0
     eslint-config-next: ^13.4.5
     lodash: ^4.17.21
-    medusa-plugin-bundles: "file:../../medusa-plugin"
+    medusa-plugin-bundles-client: "file:../medusa-plugin-bundles-client"
     medusa-react: ^9.0.0
     next: ^13.4.5
     postcss: ^8.4.8

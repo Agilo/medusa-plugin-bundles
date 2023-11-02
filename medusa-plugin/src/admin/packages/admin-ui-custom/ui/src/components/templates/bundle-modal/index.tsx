@@ -1,26 +1,21 @@
-import { useAdminCustomPost } from "medusa-react";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import useNotification from "../../../../../../admin-ui/ui/src/hooks/use-notification";
-import { getErrorMessage } from "../../../../../../admin-ui/ui/src/utils/error-messages";
-// import { nestedForm } from "../../../../../../admin-ui/ui/src/utils/nested-form";
-// import MetadataForm, {
-//   getSubmittableMetadata,
-//   MetadataFormType,
-// } from "../../forms/general/metadata-form";
+import {
+  Bundle,
+  useAdminCreateBundle,
+  useAdminUpdateBundle,
+} from "../../../../../../admin-client/src";
 import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/button";
 import IconTooltip from "../../../../../../admin-ui/ui/src/components/molecules/icon-tooltip";
 import InputField from "../../../../../../admin-ui/ui/src/components/molecules/input";
 import Modal from "../../../../../../admin-ui/ui/src/components/molecules/modal";
 import TextArea from "../../../../../../admin-ui/ui/src/components/molecules/textarea";
-import { Bundle } from "../../../../../../admin-client";
-import { useBundlesCreate, useBundlesUpdate } from "../../../hooks/useBundles";
-// import { MetadataField } from "../../../../../../admin-ui/ui/src/components/organisms/metadata";
+import useNotification from "../../../../../../admin-ui/ui/src/hooks/use-notification";
+import { getErrorMessage } from "../../../../../../admin-ui/ui/src/utils/error-messages";
 
 type BundleModalProps = {
   onClose: () => void;
-  // onSubmit: (values: any /*, metadata: MetadataField[]*/) => void;
   isEdit?: boolean;
   bundle?: Bundle;
 };
@@ -37,8 +32,8 @@ const BundleModal: React.FC<BundleModalProps> = ({
   bundle,
 }) => {
   const { t } = useTranslation();
-  const updateBundle = useBundlesUpdate(bundle?.id);
-  const createBundle = useBundlesCreate();
+  const updateBundle = useAdminUpdateBundle(bundle?.id);
+  const createBundle = useAdminCreateBundle();
 
   const form = useForm<BundleModalFormData>({
     defaultValues: {

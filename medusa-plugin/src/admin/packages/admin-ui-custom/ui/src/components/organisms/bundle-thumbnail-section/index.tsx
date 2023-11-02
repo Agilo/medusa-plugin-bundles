@@ -1,16 +1,16 @@
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
-// import useEditProductActions from "../../../hooks/use-edit-product-actions";
+import {
+  Bundle,
+  useAdminUpdateBundle,
+} from "../../../../../../admin-client/src";
+import TwoStepDelete from "../../../../../../admin-ui/ui/src/components/atoms/two-step-delete";
+import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/button";
+import Section from "../../../../../../admin-ui/ui/src/components/organisms/section";
 import useNotification from "../../../../../../admin-ui/ui/src/hooks/use-notification";
 import useToggleState from "../../../../../../admin-ui/ui/src/hooks/use-toggle-state";
 import { getErrorMessage } from "../../../../../../admin-ui/ui/src/utils/error-messages";
-import TwoStepDelete from "../../../../../../admin-ui/ui/src/components/atoms/two-step-delete";
-import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/button";
-// import Section from "../../organisms/section";
-import Section from "../../../../../../admin-ui/ui/src/components/organisms/section";
 import ThumbnailModal from "./thumbnail-modal";
-import { useBundlesUpdate } from "../../../hooks/useBundles";
-import { Bundle } from "../../../../../../admin-client";
 
 type Props = {
   bundle: Bundle;
@@ -18,8 +18,7 @@ type Props = {
 
 const BundleThumbnailSection = ({ bundle }: Props) => {
   const { t } = useTranslation();
-  // const { onUpdate, updating } = useEditProductActions(bundle.id);
-  const updateBundle = useBundlesUpdate(bundle.id);
+  const updateBundle = useAdminUpdateBundle(bundle.id);
   const { state, toggle, close } = useToggleState();
 
   const notification = useNotification();

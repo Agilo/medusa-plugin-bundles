@@ -1,30 +1,27 @@
-import { useNavigate, useParams } from "react-router-dom";
-// import FormValidator from "form-validator"
-import Spinner from "../../../../../../../admin-ui/ui/src/components/atoms/spinner";
-import BackButton from "../../../../../../../admin-ui/ui/src/components/atoms/back-button";
-import Section from "../../../../../../../admin-ui/ui/src/components/organisms/section";
-import StatusSelector from "../../../../../../../admin-ui/ui/src/components/molecules/status-selector";
-import { useTranslation } from "react-i18next";
-import JSONView from "../../../../../../../admin-ui/ui/src/components/molecules/json-view";
-import EditIcon from "../../../../../../../admin-ui/ui/src/components/fundamentals/icons/edit-icon";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  Bundle,
+  useAdminBundle,
+  useAdminDeleteBundle,
+  useAdminUpdateBundle,
+} from "../../../../../../../admin-client";
+import ViewProductsTable from "../../../../../../../admin-ui-custom/ui/src/components/templates/bundle-product-table/view-products-table";
+import Medusa from "../../../../../../../admin-ui-custom/ui/src/services/api";
+import BackButton from "../../../../../../../admin-ui/ui/src/components/atoms/back-button";
+import Spinner from "../../../../../../../admin-ui/ui/src/components/atoms/spinner";
+import EditIcon from "../../../../../../../admin-ui/ui/src/components/fundamentals/icons/edit-icon";
+import TrashIcon from "../../../../../../../admin-ui/ui/src/components/fundamentals/icons/trash-icon";
+import JSONView from "../../../../../../../admin-ui/ui/src/components/molecules/json-view";
+import StatusSelector from "../../../../../../../admin-ui/ui/src/components/molecules/status-selector";
+import DeletePrompt from "../../../../../../../admin-ui/ui/src/components/organisms/delete-prompt";
+import Section from "../../../../../../../admin-ui/ui/src/components/organisms/section";
+import AddProductsTable from "../../../../../../../admin-ui/ui/src/components/templates/collection-product-table/add-product-table";
 import useNotification from "../../../../../../../admin-ui/ui/src/hooks/use-notification";
 import { getErrorMessage } from "../../../../../../../admin-ui/ui/src/utils/error-messages";
-import AddProductsTable from "../../../../../../../admin-ui/ui/src/components/templates/collection-product-table/add-product-table";
-import Medusa from "../../../../../../../admin-ui-custom/ui/src/services/api";
-import ViewProductsTable from "../../../../../../../admin-ui-custom/ui/src/components/templates/bundle-product-table/view-products-table";
-// import { ActionType } from "../../../../../../../admin-ui/ui/src/components/molecules/actionables";
-import TrashIcon from "../../../../../../../admin-ui/ui/src/components/fundamentals/icons/trash-icon";
-// import { Bundle, BundleStatus } from "../../../../../../../../../models/bundle";
-import EditBundleModal from "../../../../components/templates/bundle-modal";
-import DeletePrompt from "../../../../../../../admin-ui/ui/src/components/organisms/delete-prompt";
-import {
-  useBundlesDelete,
-  useBundlesRetrieve,
-  useBundlesUpdate,
-} from "../../../../hooks/useBundles";
 import BundleThumbnailSection from "../../../../components/organisms/bundle-thumbnail-section";
-import { Bundle } from "../../../../../../../admin-client";
+import EditBundleModal from "../../../../components/templates/bundle-modal";
 
 type BundleGeneralSectionProps = {
   bundle: Bundle;
@@ -75,20 +72,7 @@ const BundleGeneralSection = ({
         <p className="inter-base-regular text-grey-50 mt-2 whitespace-pre-wrap">
           {bundle.description}
         </p>
-        {/* <ProductTags product={product} /> */}
-        {/* <ProductDetails product={product} /> */}
-        {/* <ProductSalesChannels product={product} /> */}
       </Section>
-
-      {/* <GeneralModal product={product} open={infoState} onClose={closeInfo} /> */}
-
-      {/* <FeatureToggle featureFlag="sales_channels">
-        <ChannelsModal
-          product={product}
-          open={channelsState}
-          onClose={closeChannels}
-        />
-      </FeatureToggle> */}
     </>
   );
 };
@@ -119,32 +103,9 @@ const BundleDetails = () => {
 
   const [showAddProducts, setShowAddProducts] = useState(false);
 
-  // const { data, isLoading, refetch } = useAdminCustomQuery<any, any>(
-  //   `/bundles/${id}`,
-  //   ["bundles", id]
-  // );
-
-  const { data, isLoading, refetch } = useBundlesRetrieve(id);
-
-  const { bundle } = data ?? {};
-
-  // const updateBundle = useBundlesUpdate(id, undefined);
-  // const deleteBundle = useBundlesDelete(id);
-  const updateBundle = useBundlesUpdate(id);
-  const deleteBundle = useBundlesDelete(id);
-
-  // const foo: Bundle = {
-  //   created_at: "",
-  //   updated_at: "",
-  //   products: [],
-  //   id: "",
-  //   title: "debug bundle",
-  //   description: "",
-  //   status: "draft",
-  // };
-
-  // console.log(foo);
-  // alert(foo);
+  const { bundle, isLoading, refetch } = useAdminBundle(id);
+  const updateBundle = useAdminUpdateBundle(id);
+  const deleteBundle = useAdminDeleteBundle(id);
 
   const handleUpdateStatus = (newStatus: string) => {
     updateBundle.mutate(
@@ -237,16 +198,7 @@ const BundleDetails = () => {
           className="mb-xsmall"
         />
         <div className="gap-y-xsmall flex flex-col">
-          {/* {getWidgets("product.details.before").map((w, i) => {
-          return (
-            <WidgetContainer
-              key={i}
-              injectionZone={"product.details.before"}
-              widget={w}
-              entity={product}
-            />
-          );
-        })} */}
+          {/* getWidgets("bundle.details.before") */}
           <div className="gap-x-base grid grid-cols-12">
             <div className="gap-y-xsmall col-span-12 flex flex-col">
               <BundleGeneralSection
@@ -255,19 +207,7 @@ const BundleDetails = () => {
                 setShowDelete={setShowDelete}
                 handleUpdateStatus={handleUpdateStatus}
               />
-              {/* <ProductVariantsSection product={product} />
-            <ProductAttributesSection product={product} /> */}
-              {/* {getWidgets("product.details.after").map((w, i) => {
-              return (
-                <WidgetContainer
-                  key={i}
-                  injectionZone={"product.details.after"}
-                  widget={w}
-                  entity={product}
-                />
-              );
-            })} */}
-
+              {/* getWidgets("bundle.details.after") */}
               <Section
                 title="Products"
                 actions={[
@@ -298,10 +238,6 @@ const BundleDetails = () => {
 
               <BundleRawSection bundle={bundle} />
             </div>
-            {/* <div className="gap-y-xsmall col-span-4 flex flex-col">
-            <ProductThumbnailSection product={product} />
-            <ProductMediaSection product={product} />
-          </div> */}
           </div>
         </div>
       </div>

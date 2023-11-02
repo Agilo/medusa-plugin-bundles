@@ -1,57 +1,15 @@
-// import { isEmpty } from "lodash";
-import { useAdminProducts, useAdminCustomQuery } from "medusa-react";
-// import qs from "qs";
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { usePagination, useTable } from "react-table";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-// import ProductsFilter from "../../../domain/products/filter-dropdown";
-// import { useAnalytics } from "../../../providers/analytics-provider";
-// import { useFeatureFlag } from "../../../providers/feature-flag-provider";
+import { usePagination, useTable } from "react-table";
+import { useAdminBundles } from "../../../../../../admin-client";
 import Table from "../../../../../../admin-ui/ui/src/components/molecules/table";
 import TableContainer from "../../../../../../admin-ui/ui/src/components/organisms/table-container";
-// import ProductOverview from "./overview";
+import { useDebounce } from "../../../../../../admin-ui/ui/src/hooks/use-debounce";
 import useBundleActions from "./use-bundle-actions";
 import useBundleTableColumn from "./use-bundle-column";
-import { useDebounce } from "../../../../../../admin-ui/ui/src/hooks/use-debounce";
-// import { useProductFilters } from "./use-product-filters";
-
-// const DEFAULT_PAGE_SIZE = 15;
-// const DEFAULT_PAGE_SIZE_TILE_VIEW = 18;
-
-const defaultQueryProps = {
-  fields: "id,title,description",
-  // expand:
-  //   "variants,options,variants.prices,variants.options,collection,tags,type,images",
-  // is_giftcard: false,
-};
 
 const BundleTable = () => {
-  const location = useLocation();
   const { t } = useTranslation();
-
-  // const { isFeatureEnabled } = useFeatureFlag()
-  // const { trackNumberOfProducts } = useAnalytics()
-
-  // let hiddenColumns = ["sales_channel"]
-  // if (isFeatureEnabled("sales_channels")) {
-  //   defaultQueryProps.expand =
-  //     "variants,options,variants.prices,variants.options,collection,tags,type,images,sales_channels"
-  //   hiddenColumns = []
-  // }
-
-  // const {
-  //   // reset,
-  //   paginate,
-  //   // setFilters,
-  //   // setLimit,
-  //   // filters,
-  //   setQuery: setFreeText,
-  //   queryObject,
-  //   representationObject,
-  // } = useProductFilters(location.search, defaultQueryProps);
-
-  // const offs = parseInt(queryObject.offset) || 0;
 
   const limit = 10;
   const [query, setQuery] = useState("");
@@ -60,32 +18,11 @@ const BundleTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const debouncedSearchTerm = useDebounce(query, 500);
 
-  // const clearFilters = () => {
-  //   reset();
-  //   setQuery("");
-  // };
-
-  // const { products, isLoading, count } = useAdminProducts(
-  //   {
-  //     ...queryObject,
-  //   },
-  //   {
-  //     keepPreviousData: true,
-  //     onSuccess: ({ count }) => trackNumberOfProducts({ count }),
-  //   }
-  // )
-
-  const { data, isLoading } = useAdminCustomQuery<any, any>(
-    "/bundles",
-    ["bundles"],
-    {
-      q: debouncedSearchTerm,
-      limit,
-      offset,
-    }
-  );
-
-  const { bundles, count } = data ?? {};
+  const { bundles, isLoading, count } = useAdminBundles({
+    q: debouncedSearchTerm,
+    limit,
+    offset,
+  });
 
   useEffect(() => {
     if (typeof count !== "undefined") {
@@ -94,40 +31,6 @@ const BundleTable = () => {
     }
   }, [count]);
 
-  // const updateUrlFromFilter = (obj = {}) => {
-  //   const stringified = qs.stringify(obj);
-  //   window.history.replaceState(`/a/products`, "", `${`?${stringified}`}`);
-  // };
-
-  // const refreshWithFilters = () => {
-  //   const filterObj = representationObject;
-
-  //   if (isEmpty(filterObj)) {
-  //     updateUrlFromFilter({ offset: 0, limit: DEFAULT_PAGE_SIZE });
-  //   } else {
-  //     updateUrlFromFilter(filterObj);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   refreshWithFilters();
-  // }, [representationObject]);
-
-  // const setTileView = () => {
-  //   setLimit(DEFAULT_PAGE_SIZE_TILE_VIEW);
-  //   setShowList(false);
-  // };
-
-  // const setListView = () => {
-  //   setLimit(DEFAULT_PAGE_SIZE);
-  //   setShowList(true);
-  // };
-  // const [showList, setShowList] = React.useState(true);
-  // const [columns] = useProductTableColumn({
-  //   setTileView,
-  //   setListView,
-  //   showList,
-  // });
   const [columns] = useBundleTableColumn();
 
   const {
@@ -160,37 +63,6 @@ const BundleTable = () => {
     },
     usePagination
   );
-
-  // Debounced search
-  // useEffect(() => {
-  //   const delayDebounceFn = setTimeout(() => {
-  //     if (query) {
-  //       setFreeText(query);
-  //       gotoPage(0);
-  //     } else {
-  //       if (typeof query !== "undefined") {
-  //         // if we delete query string, we reset the table view
-  //         reset();
-  //       }
-  //     }
-  //   }, 400);
-
-  //   return () => clearTimeout(delayDebounceFn);
-  // }, [query]);
-
-  // const handleNext = () => {
-  //   if (canNextPage) {
-  //     paginate(1);
-  //     nextPage();
-  //   }
-  // };
-
-  // const handlePrev = () => {
-  //   if (canPreviousPage) {
-  //     paginate(-1);
-  //     previousPage();
-  //   }
-  // };
 
   const handleNext = () => {
     if (canNextPage) {
@@ -232,18 +104,6 @@ const BundleTable = () => {
       isLoading={isLoading}
     >
       <Table
-        // filteringOptions={
-        //   <ProductsFilter
-        //     filters={filters}
-        //     submitFilters={setFilters}
-        //     clearFilters={clearFilters}
-        //     tabs={filterTabs}
-        //     onTabClick={setTab}
-        //     activeTab={activeFilterTab}
-        //     onRemoveTab={removeTab}
-        //     onSaveTab={saveTab}
-        //   />
-        // }
         enableSearch
         searchValue={query}
         handleSearch={handleSearch}

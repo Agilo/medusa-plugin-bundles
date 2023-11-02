@@ -1,7 +1,7 @@
+import { useAdminCustomQuery } from "medusa-react";
 import React, { useEffect, useState } from "react";
-import { usePagination, useTable } from "react-table";
 import { useTranslation } from "react-i18next";
-import { useDebounce } from "../../../../../../admin-ui/ui/src/hooks/use-debounce";
+import { usePagination, useTable } from "react-table";
 import Medusa from "../../../../../../admin-ui-custom/ui/src/services/api";
 import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/button";
 import TrashIcon from "../../../../../../admin-ui/ui/src/components/fundamentals/icons/trash-icon";
@@ -9,7 +9,7 @@ import Table from "../../../../../../admin-ui/ui/src/components/molecules/table"
 import DeletePrompt from "../../../../../../admin-ui/ui/src/components/organisms/delete-prompt";
 import TableContainer from "../../../../../../admin-ui/ui/src/components/organisms/table-container";
 import useViewProductColumns from "../../../../../../admin-ui/ui/src/components/templates/collection-product-table/use-view-product-columns";
-import { useAdminCustomQuery, useAdminCustomDelete } from "medusa-react";
+import { useDebounce } from "../../../../../../admin-ui/ui/src/hooks/use-debounce";
 
 type ViewProductsTableProps = {
   bundleId: string;
@@ -31,13 +31,7 @@ const ViewProductsTable: React.FC<ViewProductsTableProps> = ({
   const [showDelete, setShowDelete] = useState(false);
   const [idToDelete, setIdToDelete] = useState<string | undefined>(undefined);
 
-  // const { isLoading, count, products, refetch } = useAdminProducts({
-  //   q: debouncedSearchTerm,
-  //   bundle_id: [bundleId],
-  //   limit: limit,
-  //   offset,
-  // });
-
+  // TODO: create admin-client hook for this
   const { data, isLoading, refetch } = useAdminCustomQuery(
     `/bundles/${bundleId}/products`,
     ["bundles", bundleId, "products"],

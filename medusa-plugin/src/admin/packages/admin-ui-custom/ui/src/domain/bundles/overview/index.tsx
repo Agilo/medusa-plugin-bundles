@@ -1,10 +1,10 @@
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import BundleTable from "../../../../../../admin-ui-custom/ui/src/components/templates/bundle-table";
 import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/button";
 import PlusIcon from "../../../../../../admin-ui/ui/src/components/fundamentals/icons/plus-icon";
-import { useTranslation } from "react-i18next";
 import BodyCard from "../../../../../../admin-ui/ui/src/components/organisms/body-card";
 import TableViewHeader from "../../../../../../admin-ui/ui/src/components/organisms/custom-table-header";
-import BundleTable from "../../../../../../admin-ui-custom/ui/src/components/templates/bundle-table";
-import { useState } from "react";
 import AddBundleModal from "../../../components/templates/bundle-modal";
 
 const VIEWS = ["bundles"];

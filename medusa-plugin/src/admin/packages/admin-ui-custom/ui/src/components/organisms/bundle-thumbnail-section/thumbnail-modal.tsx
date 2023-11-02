@@ -1,20 +1,20 @@
-import { Product } from "@medusajs/medusa";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-// import useEditProductActions from "@src/admin/packages/admin-ui/ui/src/hooks/use-edit-product-actions";
-import useNotification from "../../../../../../admin-ui/ui/src/hooks/use-notification";
-import { FormImage } from "../../../../../../admin-ui/ui/src/types/shared";
-import { prepareImages } from "../../../../../../admin-ui/ui/src/utils/images";
-import { nestedForm } from "../../../../../../admin-ui/ui/src/utils/nested-form";
+import {
+  Bundle,
+  useAdminUpdateBundle,
+} from "../../../../../../admin-client/src";
 import ThumbnailForm, {
   ThumbnailFormType,
 } from "../../../../../../admin-ui/ui/src/components/forms/product/thumbnail-form";
 import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/button";
 import Modal from "../../../../../../admin-ui/ui/src/components/molecules/modal";
-import { useBundlesUpdate } from "../../../hooks/useBundles";
+import useNotification from "../../../../../../admin-ui/ui/src/hooks/use-notification";
+import { FormImage } from "../../../../../../admin-ui/ui/src/types/shared";
 import { getErrorMessage } from "../../../../../../admin-ui/ui/src/utils/error-messages";
-import { Bundle } from "../../../../../../admin-client";
+import { prepareImages } from "../../../../../../admin-ui/ui/src/utils/images";
+import { nestedForm } from "../../../../../../admin-ui/ui/src/utils/nested-form";
 
 type Props = {
   bundle: Bundle;
@@ -28,8 +28,7 @@ type ThumbnailFormWrapper = {
 
 const ThumbnailModal = ({ bundle, open, onClose }: Props) => {
   const { t } = useTranslation();
-  // const { onUpdate, updating } = useEditProductActions(product.id);
-  const updateBundle = useBundlesUpdate(bundle.id);
+  const updateBundle = useAdminUpdateBundle(bundle.id);
   const form = useForm<ThumbnailFormWrapper>({
     defaultValues: getDefaultValues(bundle),
   });

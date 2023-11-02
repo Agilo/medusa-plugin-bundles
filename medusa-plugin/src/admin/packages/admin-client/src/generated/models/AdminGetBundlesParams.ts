@@ -5,7 +5,7 @@ import { SetRelation, Merge } from '../core/ModelUtils';
 
 export interface AdminGetBundlesParams {
   /**
-   * term to search bundles' title and description.
+   * term used to search bundles' title and description.
    */
   'q'?: string;
   /**
@@ -16,6 +16,10 @@ export interface AdminGetBundlesParams {
    * Limit the number of bundles returned.
    */
   limit?: number;
+  /**
+   * Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
+   */
+  product_id?: Array<string>;
 };
 
 

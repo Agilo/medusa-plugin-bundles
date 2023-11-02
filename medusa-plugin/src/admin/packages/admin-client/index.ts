@@ -1,1 +1,1 @@
-export * from "./src/generated/models";
+export * from "./src";

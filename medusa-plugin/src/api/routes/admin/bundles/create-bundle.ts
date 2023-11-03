@@ -41,9 +41,13 @@ export default async (req: Request, res: Response) => {
       .create(validatedBody);
   });
 
-  const bundle = await bundleService.retrieve(created.id, {
-    relations: ["products"],
-  });
+  const bundle = await bundleService.retrieve(
+    created.id,
+    {},
+    {
+      relations: ["products"],
+    }
+  );
 
   res.status(200).json({
     bundle,

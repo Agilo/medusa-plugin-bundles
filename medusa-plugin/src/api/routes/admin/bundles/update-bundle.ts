@@ -53,9 +53,13 @@ export default async (req: Request, res: Response) => {
       .update(id, validated);
   });
 
-  const bundle = await bundleService.retrieve(updated.id, {
-    relations: ["products"],
-  });
+  const bundle = await bundleService.retrieve(
+    updated.id,
+    {},
+    {
+      relations: ["products"],
+    }
+  );
 
   res.status(200).json({ bundle });
 };

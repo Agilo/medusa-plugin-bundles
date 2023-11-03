@@ -112,19 +112,24 @@ export default class BundleService extends TransactionBaseService {
     return qb.getManyAndCount();
   }
 
-  async retrieve(id: string, config?: FindConfig<Bundle>): Promise<Bundle> {
-    const query = buildQuery(
-      {
-        id,
-      },
-      config
-    );
-
+  async retrieve(
+    id: string,
+    selector?: Selector<Bundle>,
+    config?: FindConfig<Bundle>
+  ): Promise<Bundle> {
     const bundleRepo = this.activeManager_.withRepository(
       this.bundleRepository_
     );
 
-    return bundleRepo.findOneOrFail(query);
+    return bundleRepo.findOneOrFail(
+      buildQuery(
+        {
+          ...selector,
+          id,
+        },
+        config
+      )
+    );
   }
 
   async create(data: {
@@ -304,13 +309,17 @@ export default class BundleService extends TransactionBaseService {
     return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);
 
-      const { id } = await this.retrieve(bundleId, { select: ["id"] });
+      const { id } = await this.retrieve(bundleId, {}, { select: ["id"] });
 
       await bundleRepo.addProducts(id, productIds);
 
-      const result = await this.retrieve(id, {
-        relations: ["products"],
-      });
+      const result = await this.retrieve(
+        id,
+        {},
+        {
+          relations: ["products"],
+        }
+      );
 
       await this.eventBus_
         .withTransaction(manager)
@@ -327,13 +336,17 @@ export default class BundleService extends TransactionBaseService {
     return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);
 
-      const { id } = await this.retrieve(bundleId, { select: ["id"] });
+      const { id } = await this.retrieve(bundleId, {}, { select: ["id"] });
 
       await bundleRepo.removeProducts(id, productIds);
 
-      const result = await this.retrieve(id, {
-        relations: ["products"],
-      });
+      const result = await this.retrieve(
+        id,
+        {},
+        {
+          relations: ["products"],
+        }
+      );
 
       await this.eventBus_
         .withTransaction(manager)

@@ -1,5 +1,6 @@
-import BundleService from "../../../../services/bundle";
 import { cleanResponseData } from "@medusajs/medusa";
+import { BundleStatus } from "../../../../models/bundle";
+import BundleService from "../../../../services/bundle";
 
 /**
  * @oas [get] /store/bundles/{id}
@@ -31,7 +32,9 @@ export default async (req, res) => {
    * cleanResponseData(bundle.products) and selecting only published products,
    * there's a /store/bundles/{id}/products endpoint for that.
    */
-  const bundle = await bundleService.retrieve(id);
+  const bundle = await bundleService.retrieve(id, {
+    status: BundleStatus.PUBLISHED,
+  });
 
   res.json({
     bundle: cleanResponseData(bundle, [

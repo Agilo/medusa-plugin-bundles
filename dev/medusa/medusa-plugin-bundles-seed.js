@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs");
-const { GracefulShutdownServer, getConfigFile } = require("medusa-core-utils");
+const { GracefulShutdownServer } = require("medusa-core-utils");
 
 const loaders = require("@medusajs/medusa/dist/loaders/index").default;
 
@@ -16,6 +16,18 @@ const loaders = require("@medusajs/medusa/dist/loaders/index").default;
       expressApp: app,
       isTest: false,
     });
+
+    // TODO: read port from config?
+    const port = 9000;
+
+    const server = GracefulShutdownServer.create(
+      app.listen(port, (err) => {
+        if (err) {
+          return;
+        }
+        console.log(`Server is ready on port: ${port}`);
+      })
+    );
 
     const manager = container.resolve("manager");
 
@@ -192,6 +204,9 @@ const loaders = require("@medusajs/medusa/dist/loaders/index").default;
           .addProducts(bundle.id, b.products);
       }
     });
+
+    await server.shutdown();
+    process.exit(0);
   }
 
   await seed(

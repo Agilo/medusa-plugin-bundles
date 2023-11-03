@@ -11,7 +11,7 @@ import useBundleTableColumn from "./use-bundle-column";
 const BundleTable = () => {
   const { t } = useTranslation();
 
-  const limit = 10;
+  const limit = 15;
   const [query, setQuery] = useState("");
   const [offset, setOffset] = useState(0);
   const [numPages, setNumPages] = useState(0);

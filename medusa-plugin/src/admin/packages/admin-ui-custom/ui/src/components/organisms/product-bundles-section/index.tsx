@@ -19,7 +19,7 @@ const ProductBundlesSection = ({ product }: Props) => {
         <h2 className="inter-large-semibold mb-base">
           {t("product-bundles-section-bundles", "Bundles")}{" "}
           <span className="inter-large-regular text-grey-50">
-            {bundles && `(${bundles.length})`}
+            {bundles && `(${count})`}
           </span>
         </h2>
         {isLoading ? <div>Loading...</div> : <BundlesTable bundles={bundles} />}

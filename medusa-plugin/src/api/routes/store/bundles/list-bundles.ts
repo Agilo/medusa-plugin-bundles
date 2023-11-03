@@ -53,7 +53,10 @@ export default async (req, res) => {
   req.filterableFields["status"] = "published";
 
   const [bundles, count] = await bundleService.listAndCount(
-    req.filterableFields,
+    {
+      ...req.filterableFields,
+      product_status: ["published"],
+    },
     req.listConfig
   );
 

@@ -45,6 +45,7 @@ export default class BundleService extends TransactionBaseService {
       q?: string;
       status?: "draft" | "published";
       product_id?: string[];
+      product_status?: ProductStatus[];
       handle?: string[];
     } = {},
     config: {
@@ -72,7 +73,9 @@ export default class BundleService extends TransactionBaseService {
       const products = await productRepo.find({
         where: {
           id: In(selector.product_id),
-          status: ProductStatus.PUBLISHED,
+          ...(selector.product_status
+            ? { status: In(selector.product_status) }
+            : {}),
         },
         relations: ["bundles"],
       });

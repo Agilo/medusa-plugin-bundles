@@ -11,7 +11,11 @@ type Props = {
 const ProductBundlesSection = ({ product }: Props) => {
   const { t } = useTranslation();
 
-  const { bundles, isLoading } = useAdminBundles({ product_id: [product.id] });
+  // TODO: Add pagination?
+  const { bundles, count, isLoading } = useAdminBundles({
+    product_id: [product.id],
+    limit: 100,
+  });
 
   return (
     <Section title="Bundles">

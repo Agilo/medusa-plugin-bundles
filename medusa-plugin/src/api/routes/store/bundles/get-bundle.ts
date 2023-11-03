@@ -26,7 +26,12 @@ export default async (req, res) => {
   const { id } = req.params;
   const bundleService: BundleService = req.scope.resolve("bundleService");
 
-  const bundle = await bundleService.retrieve(id, { relations: ["products"] });
+  /**
+   * We don't want to include products relation here because we don't want to deal with
+   * cleanResponseData(bundle.products) and selecting only published products,
+   * there's a /store/bundles/{id}/products endpoint for that.
+   */
+  const bundle = await bundleService.retrieve(id);
 
   res.json({
     bundle: cleanResponseData(bundle, [
@@ -34,7 +39,7 @@ export default async (req, res) => {
       "title",
       "description",
       "status",
-      "products",
+      // "products",
       "created_at",
       "updated_at",
     ]),

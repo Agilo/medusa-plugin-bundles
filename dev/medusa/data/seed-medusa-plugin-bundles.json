@@ -923,8 +923,8 @@
       ]
     },
     {
-      "id": "prod_medusacoffeemug",
-      "title": "Medusa Coffee Mug",
+      "id": "prod_medusacoffeemug01",
+      "title": "Medusa Coffee Mug 01",
       "categories": [
         {
           "id": "pcat_merch"
@@ -935,7 +935,1676 @@
       ],
       "subtitle": null,
       "description": "Every programmer's best friend.",
-      "handle": "coffee-mug",
+      "handle": "coffee-mug-01",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug02",
+      "title": "Medusa Coffee Mug 02",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-02",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug03",
+      "title": "Medusa Coffee Mug 03",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-03",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug04",
+      "title": "Medusa Coffee Mug 04",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-04",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug05",
+      "title": "Medusa Coffee Mug 05",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-05",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug06",
+      "title": "Medusa Coffee Mug 06",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-06",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug07",
+      "title": "Medusa Coffee Mug 07",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-07",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug08",
+      "title": "Medusa Coffee Mug 08",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-08",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug09",
+      "title": "Medusa Coffee Mug 09",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-09",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug10",
+      "title": "Medusa Coffee Mug 10",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-10",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug11",
+      "title": "Medusa Coffee Mug 11",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-11",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    }
+    ,
+    {
+      "id": "prod_medusacoffeemug12",
+      "title": "Medusa Coffee Mug 12",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-12",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    }
+    ,
+    {
+      "id": "prod_medusacoffeemug13",
+      "title": "Medusa Coffee Mug 13",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-13",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug14",
+      "title": "Medusa Coffee Mug 14",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-14",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug15",
+      "title": "Medusa Coffee Mug 15",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-15",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug16",
+      "title": "Medusa Coffee Mug 16",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-16",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug17",
+      "title": "Medusa Coffee Mug 17",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-17",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug18",
+      "title": "Medusa Coffee Mug 18",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-18",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug19",
+      "title": "Medusa Coffee Mug 19",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-19",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug20",
+      "title": "Medusa Coffee Mug 20",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-20",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug21",
+      "title": "Medusa Coffee Mug 21",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-21",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug22",
+      "title": "Medusa Coffee Mug 22",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-22",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug23",
+      "title": "Medusa Coffee Mug 23",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-23",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug24",
+      "title": "Medusa Coffee Mug 24",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-24",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug25",
+      "title": "Medusa Coffee Mug 25",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-25",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug26",
+      "title": "Medusa Coffee Mug 26",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-26",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug27",
+      "title": "Medusa Coffee Mug 27",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-27",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug28",
+      "title": "Medusa Coffee Mug 28",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-28",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug29",
+      "title": "Medusa Coffee Mug 29",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-29",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug30",
+      "title": "Medusa Coffee Mug 30",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-30",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug31",
+      "title": "Medusa Coffee Mug 31",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-31",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug32",
+      "title": "Medusa Coffee Mug 32",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-32",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug33",
+      "title": "Medusa Coffee Mug 33",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-33",
+      "is_giftcard": false,
+      "weight": 400,
+      "images": [
+        "https://medusa-public-images.s3.eu-west-1.amazonaws.com/coffee-mug.png"
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "values": [
+            "One Size"
+          ]
+        }
+      ],
+      "variants": [
+        {
+          "title": "One Size",
+          "prices": [
+            {
+              "currency_code": "eur",
+              "amount": 1000
+            },
+            {
+              "currency_code": "usd",
+              "amount": 1200
+            }
+          ],
+          "options": [
+            {
+              "value": "One Size"
+            }
+          ],
+          "inventory_quantity": 100,
+          "manage_inventory": true
+        }
+      ]
+    },
+    {
+      "id": "prod_medusacoffeemug34",
+      "title": "Medusa Coffee Mug 34",
+      "status": "draft",
+      "categories": [
+        {
+          "id": "pcat_merch"
+        },
+        {
+          "id": "pcat_hidden_featured"
+        }
+      ],
+      "subtitle": null,
+      "description": "Every programmer's best friend.",
+      "handle": "coffee-mug-34",
       "is_giftcard": false,
       "weight": 400,
       "images": [
@@ -1012,29 +2681,267 @@
   ],
   "bundles": [
     {
-      "title": "Coffee Mugs",
-      "handle": "coffee-mugs",
+      "id": "bundle_coffeemugs01",
+      "title": "Coffee Mugs 01",
+      "status": "published",
+      "handle": "coffee-mugs-01",
       "description": "Best coffee mugs.",
       "products": [
-        "prod_medusacoffeemug"
+        "prod_medusacoffeemug01",
+        "prod_medusacoffeemug02",
+        "prod_medusacoffeemug03",
+        "prod_medusacoffeemug04",
+        "prod_medusacoffeemug05",
+        "prod_medusacoffeemug06",
+        "prod_medusacoffeemug07",
+        "prod_medusacoffeemug08",
+        "prod_medusacoffeemug09",
+        "prod_medusacoffeemug10",
+        "prod_medusacoffeemug11",
+        "prod_medusacoffeemug12",
+        "prod_medusacoffeemug13",
+        "prod_medusacoffeemug14",
+        "prod_medusacoffeemug15",
+        "prod_medusacoffeemug16",
+        "prod_medusacoffeemug17",
+        "prod_medusacoffeemug18",
+        "prod_medusacoffeemug19",
+        "prod_medusacoffeemug20",
+        "prod_medusacoffeemug21",
+        "prod_medusacoffeemug22",
+        "prod_medusacoffeemug23",
+        "prod_medusacoffeemug24",
+        "prod_medusacoffeemug25",
+        "prod_medusacoffeemug26",
+        "prod_medusacoffeemug27",
+        "prod_medusacoffeemug28",
+        "prod_medusacoffeemug29",
+        "prod_medusacoffeemug30",
+        "prod_medusacoffeemug31",
+        "prod_medusacoffeemug32",
+        "prod_medusacoffeemug33",
+        "prod_medusacoffeemug34"
       ]
     },
     {
-      "title": "Medusa Outfit 1",
-      "handle": "medusa-outfit-1",
-      "description": "Medusa Outfit 1.",
+      "id": "bundle_coffeemugs02",
+      "title": "Coffee Mugs 02",
+      "status": "published",
+      "handle": "coffee-mugs-02",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01",
+        "prod_medusacoffeemug02"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs03",
+      "title": "Coffee Mugs 03",
+      "status": "published",
+      "handle": "coffee-mugs-03",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01",
+        "prod_medusacoffeemug02"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs04",
+      "title": "Coffee Mugs 04",
+      "status": "published",
+      "handle": "coffee-mugs-04",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs05",
+      "title": "Coffee Mugs 05",
+      "status": "published",
+      "handle": "coffee-mugs-05",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs06",
+      "title": "Coffee Mugs 06",
+      "status": "published",
+      "handle": "coffee-mugs-06",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs07",
+      "title": "Coffee Mugs 07",
+      "status": "published",
+      "handle": "coffee-mugs-07",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs08",
+      "title": "Coffee Mugs 08",
+      "status": "published",
+      "handle": "coffee-mugs-08",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs09",
+      "title": "Coffee Mugs 09",
+      "status": "published",
+      "handle": "coffee-mugs-09",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs10",
+      "title": "Coffee Mugs 10",
+      "status": "published",
+      "handle": "coffee-mugs-10",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs11",
+      "title": "Coffee Mugs 11",
+      "status": "draft",
+      "handle": "coffee-mugs-11",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01",
+        "prod_medusacoffeemug02",
+        "prod_medusacoffeemug03",
+        "prod_medusacoffeemug04",
+        "prod_medusacoffeemug05",
+        "prod_medusacoffeemug06",
+        "prod_medusacoffeemug07",
+        "prod_medusacoffeemug08",
+        "prod_medusacoffeemug09",
+        "prod_medusacoffeemug10",
+        "prod_medusacoffeemug11",
+        "prod_medusacoffeemug12",
+        "prod_medusacoffeemug13",
+        "prod_medusacoffeemug14",
+        "prod_medusacoffeemug15",
+        "prod_medusacoffeemug16",
+        "prod_medusacoffeemug17",
+        "prod_medusacoffeemug18",
+        "prod_medusacoffeemug19",
+        "prod_medusacoffeemug20",
+        "prod_medusacoffeemug21",
+        "prod_medusacoffeemug22",
+        "prod_medusacoffeemug23",
+        "prod_medusacoffeemug24",
+        "prod_medusacoffeemug25",
+        "prod_medusacoffeemug26",
+        "prod_medusacoffeemug27",
+        "prod_medusacoffeemug28",
+        "prod_medusacoffeemug29",
+        "prod_medusacoffeemug30",
+        "prod_medusacoffeemug31",
+        "prod_medusacoffeemug32",
+        "prod_medusacoffeemug33",
+        "prod_medusacoffeemug34"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs12",
+      "title": "Coffee Mugs 12",
+      "status": "draft",
+      "handle": "coffee-mugs-12",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01",
+        "prod_medusacoffeemug02"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs13",
+      "title": "Coffee Mugs 13",
+      "status": "draft",
+      "handle": "coffee-mugs-13",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01",
+        "prod_medusacoffeemug02"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs14",
+      "title": "Coffee Mugs 14",
+      "status": "draft",
+      "handle": "coffee-mugs-14",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_coffeemugs15",
+      "title": "Coffee Mugs 15",
+      "status": "draft",
+      "handle": "coffee-mugs-15",
+      "description": "Best coffee mugs.",
+      "products": [
+        "prod_medusacoffeemug01"
+      ]
+    },
+    {
+      "id": "bundle_winteroutfit",
+      "title": "Medusa Winter Outfit",
+      "handle": "medusa-winter-outfit",
+      "status": "published",
+      "description": "Medusa Winter Outfit.",
+      "products": [
+        "prod_medusasweatpants",
+        "prod_medusahoodie"
+      ]
+    },
+    {
+      "id": "bundle_springoutfit",
+      "title": "Medusa Spring Outfit",
+      "handle": "medusa-spring-outfit",
+      "status": "published",
+      "description": "Medusa Spring Outfit.",
+      "products": [
+        "prod_medusasweatpants",
+        "prod_medusalongsleeve"
+      ]
+    },
+    {
+      "id": "bundle_summeroutfit",
+      "title": "Medusa Summer Outfit",
+      "handle": "medusa-summer-outfit",
+      "status": "published",
+      "description": "Medusa Summer Outfit.",
       "products": [
         "prod_medusashorts",
         "prod_medusatshirt"
       ]
     },
     {
-      "title": "Medusa Outfit 2",
-      "handle": "medusa-outfit-2",
-      "description": "Medusa Outfit 2.",
+      "id": "bundle_autumnoutfit",
+      "title": "Medusa Autumn Outfit",
+      "handle": "medusa-autumn-outfit",
+      "status": "published",
+      "description": "Medusa Autumn Outfit.",
       "products": [
-        "prod_medusasweatpants",
-        "prod_medusalongsleeve"
+        "prod_medusashorts",
+        "prod_medusasweatshirt"
       ]
     }
   ]

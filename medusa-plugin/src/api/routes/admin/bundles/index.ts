@@ -1,10 +1,14 @@
 import {
   PaginatedResponse,
+  Product,
   authenticate,
+  defaultAdminProductFields,
+  defaultAdminProductRelations,
   transformBody,
   transformQuery,
   wrapHandler,
 } from "@medusajs/medusa";
+import { PricedProduct } from "@medusajs/medusa/dist/types/pricing";
 import cors from "cors";
 import { Router } from "express";
 import { parseCorsOrigins } from "medusa-core-utils";
@@ -12,7 +16,7 @@ import { Bundle } from "../../../../models/bundle";
 import { AdminPostProductsToBundleReq } from "./add-products";
 import { AdminPostBundlesReq } from "./create-bundle";
 import { AdminGetBundlesParams } from "./list-bundles";
-import { AdminListBundlesProductsParams } from "./list-products";
+import { AdminGetBundlesBundleProductsParams } from "./list-products";
 import { AdminDeleteProductsFromBundleReq } from "./remove-products";
 import { AdminPostBundlesBundleReq } from "./update-bundle";
 
@@ -61,7 +65,9 @@ export default function adminRoutes(router: Router, admin_cors: string) {
 
   adminRouter.get(
     "/:id/products",
-    transformQuery(AdminListBundlesProductsParams, {
+    transformQuery(AdminGetBundlesBundleProductsParams, {
+      defaultRelations: defaultAdminProductRelations,
+      defaultFields: defaultAdminProductFields,
       isList: true,
     }),
     wrapHandler(require("./list-products").default)
@@ -176,4 +182,45 @@ export type AdminDeleteProductsFromBundleRes = {
  */
 export type AdminBundlesListRes = PaginatedResponse & {
   bundles: Bundle[];
+};
+
+/**
+ * @schema AdminBundlesBundleProductsListRes
+ * type: object
+ * x-expanded-relations:
+ *   field: products
+ *   relations:
+ *     - collection
+ *     - images
+ *     - options
+ *     - tags
+ *     - type
+ *     - variants
+ *     - variants.options
+ *     - variants.prices
+ *   totals:
+ *     - variants.purchasable
+ * required:
+ *   - products
+ *   - count
+ *   - offset
+ *   - limit
+ * properties:
+ *   products:
+ *     type: array
+ *     description: An array of products details.
+ *     items:
+ *       $ref: "#/components/schemas/PricedProduct"
+ *   count:
+ *     type: integer
+ *     description: The total number of items available
+ *   offset:
+ *     type: integer
+ *     description: The number of products skipped when retrieving the products.
+ *   limit:
+ *     type: integer
+ *     description: The number of items per page
+ */
+export type AdminBundlesBundleProductsListRes = PaginatedResponse & {
+  products: (PricedProduct | Product)[];
 };

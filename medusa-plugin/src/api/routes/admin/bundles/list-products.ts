@@ -1,23 +1,313 @@
-import { IsString, IsNumber, IsOptional } from "class-validator";
-import { Type } from "class-transformer";
-import { Request, Response } from "express";
+import {
+  AdminGetProductsParams,
+  PricingService,
+  ProductService,
+  ProductVariantInventoryService,
+  SalesChannelService,
+} from "@medusajs/medusa";
+import { IInventoryService } from "@medusajs/types";
 import BundleService from "../../../../services/bundle";
 
-export default async (req: Request, res: Response) => {
+/**
+ * @oas [get] /admin/products
+ * operationId: "GetProducts"
+ * summary: "List Products"
+ * description: "Retrieve a list of products. The products can be filtered by fields such as `q` or `status`. The products can also be sorted or paginated."
+ * x-authenticated: true
+ * parameters:
+ *   - (query) q {string} term to search products' title, description, variants' title and sku, and collections' title.
+ *   - (query) discount_condition_id {string} Filter by the ID of a discount condition. Only products that this discount condition is applied to will be retrieved.
+ *   - in: query
+ *     name: id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product IDs.
+ *     schema:
+ *       oneOf:
+ *         - type: string
+ *           description: ID of the product.
+ *         - type: array
+ *           items:
+ *             type: string
+ *             description: ID of a product.
+ *   - in: query
+ *     name: status
+ *     style: form
+ *     explode: false
+ *     description: Filter by status.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *         enum: [draft, proposed, published, rejected]
+ *   - in: query
+ *     name: collection_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product collection IDs. Only products that are associated with the specified collections will be retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: tags
+ *     style: form
+ *     explode: false
+ *     description: Filter by product tag IDs. Only products that are associated with the specified tags will be retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: price_list_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by IDs of price lists. Only products that these price lists are applied to will be retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: sales_channel_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by sales channel IDs. Only products that are available in the specified sales channels will be retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: type_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product type IDs. Only products that are associated with the specified types will be retrieved.
+ *     schema:
+ *       type: array
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: category_id
+ *     style: form
+ *     explode: false
+ *     description: Filter by product category IDs. Only products that are associated with the specified categories will be retrieved.
+ *     schema:
+ *       type: array
+ *       x-featureFlag: "product_categories"
+ *       items:
+ *         type: string
+ *   - in: query
+ *     name: include_category_children
+ *     style: form
+ *     explode: false
+ *     description: whether to include product category children when filtering by `category_id`
+ *     schema:
+ *       type: boolean
+ *       x-featureFlag: "product_categories"
+ *   - (query) title {string} Filter by title.
+ *   - (query) description {string} Filter by description.
+ *   - (query) handle {string} Filter by handle.
+ *   - (query) is_giftcard {boolean} Whether to retrieve gift cards or regular products.
+ *   - in: query
+ *     name: created_at
+ *     description: Filter by a creation date range.
+ *     schema:
+ *       type: object
+ *       properties:
+ *         lt:
+ *            type: string
+ *            description: filter by dates less than this date
+ *            format: date
+ *         gt:
+ *            type: string
+ *            description: filter by dates greater than this date
+ *            format: date
+ *         lte:
+ *            type: string
+ *            description: filter by dates less than or equal to this date
+ *            format: date
+ *         gte:
+ *            type: string
+ *            description: filter by dates greater than or equal to this date
+ *            format: date
+ *   - in: query
+ *     name: updated_at
+ *     description: Filter by an update date range.
+ *     schema:
+ *       type: object
+ *       properties:
+ *         lt:
+ *            type: string
+ *            description: filter by dates less than this date
+ *            format: date
+ *         gt:
+ *            type: string
+ *            description: filter by dates greater than this date
+ *            format: date
+ *         lte:
+ *            type: string
+ *            description: filter by dates less than or equal to this date
+ *            format: date
+ *         gte:
+ *            type: string
+ *            description: filter by dates greater than or equal to this date
+ *            format: date
+ *   - in: query
+ *     name: deleted_at
+ *     description: Filter by a deletion date range.
+ *     schema:
+ *       type: object
+ *       properties:
+ *         lt:
+ *            type: string
+ *            description: filter by dates less than this date
+ *            format: date
+ *         gt:
+ *            type: string
+ *            description: filter by dates greater than this date
+ *            format: date
+ *         lte:
+ *            type: string
+ *            description: filter by dates less than or equal to this date
+ *            format: date
+ *         gte:
+ *            type: string
+ *            description: filter by dates greater than or equal to this date
+ *            format: date
+ *   - (query) offset=0 {integer} The number of products to skip when retrieving the products.
+ *   - (query) limit=50 {integer} Limit the number of products returned.
+ *   - (query) expand {string} Comma-separated relations that should be expanded in the returned products.
+ *   - (query) fields {string} Comma-separated fields that should be included in the returned products.
+ *   - (query) order {string} A product field to sort-order the retrieved products by.
+ * x-codegen:
+ *   method: list
+ *   queryParams: AdminGetBundlesBundleProductsParams
+ * security:
+ *   - api_token: []
+ *   - cookie_auth: []
+ * tags:
+ *   - Products
+ * responses:
+ *   200:
+ *     description: OK
+ *     content:
+ *       application/json:
+ *         schema:
+ *           $ref: "#/components/schemas/AdminBundlesBundleProductsListRes"
+ *   "400":
+ *     $ref: "#/components/responses/400_error"
+ *   "401":
+ *     $ref: "#/components/responses/unauthorized"
+ *   "404":
+ *     $ref: "#/components/responses/not_found_error"
+ *   "409":
+ *     $ref: "#/components/responses/invalid_state_error"
+ *   "422":
+ *     $ref: "#/components/responses/invalid_request_error"
+ *   "500":
+ *     $ref: "#/components/responses/500_error"
+ */
+export default async (req, res) => {
   const { id } = req.params;
-  const { skip, take } = req.listConfig;
 
   const bundleService: BundleService = req.scope.resolve("bundleService");
+  const productService: ProductService = req.scope.resolve("productService");
+  const inventoryService: IInventoryService | undefined =
+    req.scope.resolve("inventoryService");
+  const productVariantInventoryService: ProductVariantInventoryService =
+    req.scope.resolve("productVariantInventoryService");
+  const salesChannelService: SalesChannelService = req.scope.resolve(
+    "salesChannelService"
+  );
+  // const featureFlagRouter = req.scope.resolve("featureFlagRouter");
+  const pricingService: PricingService = req.scope.resolve("pricingService");
 
-  const [products, count] = await bundleService.listAndCountProducts(
-    {
-      bundle_id: id,
-      ...req.filterableFields,
-    },
-    // req.listConfig
+  const { skip, take, relations } = req.listConfig;
+
+  const bundleProductIds = await bundleService.listProductIds(id);
+
+  if (req.filterableFields.id && typeof req.filterableFields.id === "string") {
+    req.filterableFields.id = [req.filterableFields.id];
+  }
+
+  if (req.filterableFields.id && Array.isArray(req.filterableFields.id)) {
+    // intersection
+    req.filterableFields.id = req.filterableFields.id.filter((id) =>
+      bundleProductIds.includes(id)
+    );
+  } else {
+    req.filterableFields.id = bundleProductIds;
+  }
+
+  if (!req.filterableFields.id.length) {
+    res.json({
+      products: [],
+      count: 0,
+      offset: skip,
+      limit: take,
+    });
+    return;
+  }
+
+  let rawProducts;
+  let count;
+
+  // if (featureFlagRouter.isFeatureEnabled(IsolateProductDomainFeatureFlag.key)) {
+  //   const [products, count_] =
+  //     await listAndCountProductWithIsolatedProductModule(
+  //       req,
+  //       req.filterableFields,
+  //       req.listConfig
+  //     );
+
+  //   rawProducts = products;
+  //   count = count_;
+  // } else {
+  //   const [products, count_] = await productService.listAndCount(
+  //     req.filterableFields,
+  //     req.listConfig
+  //   );
+
+  //   rawProducts = products;
+  //   count = count_;
+  // }
+
+  {
+    const [products, count_] = await productService.listAndCount(
+      req.filterableFields,
+      req.listConfig
+    );
+
+    rawProducts = products;
+    count = count_;
+  }
+
+  let products = rawProducts;
+
+  // We only set prices if variants.prices are requested
+  const shouldSetPricing = ["variants", "variants.prices"].every((relation) =>
+    relations?.includes(relation)
   );
 
-  res.status(200).json({
+  if (shouldSetPricing) {
+    products = await pricingService.setProductPrices(rawProducts);
+  }
+
+  // We only set availability if variants are requested
+  const shouldSetAvailability = relations?.includes("variants");
+
+  if (inventoryService && shouldSetAvailability) {
+    const [salesChannelsIds] = await salesChannelService.listAndCount(
+      {},
+      { select: ["id"] }
+    );
+
+    products = await productVariantInventoryService.setProductAvailability(
+      products,
+      salesChannelsIds.map((salesChannel) => salesChannel.id)
+    );
+  }
+
+  res.json({
     products,
     count,
     offset: skip,
@@ -25,19 +315,4 @@ export default async (req: Request, res: Response) => {
   });
 };
 
-export class AdminListBundlesProductsParams {
-  @IsString()
-  @IsOptional()
-  @Type(() => String)
-  q?: string;
-
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  offset?: number = 0;
-
-  @IsNumber()
-  @IsOptional()
-  @Type(() => Number)
-  limit?: number = 10;
-}
+export class AdminGetBundlesBundleProductsParams extends AdminGetProductsParams {}

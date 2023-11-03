@@ -13,7 +13,7 @@ const ProductBundlesSection = ({ product }: Props) => {
 
   // TODO: Add pagination?
   const { bundles, count, isLoading } = useAdminBundles({
-    product_id: [product.id],
+    product_id: product.id,
     limit: 100,
   });
 

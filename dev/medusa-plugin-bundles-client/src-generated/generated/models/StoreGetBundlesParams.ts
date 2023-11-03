@@ -17,13 +17,13 @@ export interface StoreGetBundlesParams {
    */
   limit?: number;
   /**
-   * Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
+   * Filter by product ID. When provided, only bundles that contain the specified product are retrieved.
    */
-  product_id?: Array<string>;
+  product_id?: string;
   /**
-   * Filter by handles
+   * Filter by handle.
    */
-  handle?: Array<string>;
+  handle?: string;
 };
 
 

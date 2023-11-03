@@ -1,6 +1,6 @@
 import { cleanResponseData } from "@medusajs/medusa";
 import { Type } from "class-transformer";
-import { IsArray, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 import BundleService from "../../../../services/bundle";
 
 /**
@@ -13,24 +13,8 @@ import BundleService from "../../../../services/bundle";
  *   - (query) q {string} term used to search bundles' title and description.
  *   - (query) offset=0 {integer} The number of bundles to skip when retrieving the bundles.
  *   - (query) limit=10 {integer} Limit the number of bundles returned.
- *   - in: query
- *     name: product_id
- *     style: form
- *     explode: false
- *     description: Filter by product IDs. When provided, only bundles that contain the specified products are retrieved.
- *     schema:
- *       type: array
- *       items:
- *         type: string
- *   - in: query
- *     name: handle
- *     style: form
- *     explode: false
- *     description: Filter by handles
- *     schema:
- *       type: array
- *       items:
- *         type: string
+ *   - (query) product_id {string} Filter by product ID. When provided, only bundles that contain the specified product are retrieved.
+ *   - (query) handle {string} Filter by handle.
  * x-codegen:
  *   method: list
  *   queryParams: StoreGetBundlesParams
@@ -84,11 +68,13 @@ export class StoreGetBundlesParams {
   @Type(() => Number)
   limit?: number = 10;
 
-  @IsArray()
+  @IsString()
   @IsOptional()
-  product_id?: string[];
+  @Type(() => String)
+  product_id: string;
 
+  @IsString()
   @IsOptional()
-  @IsArray()
-  handle?: string[];
+  @Type(() => String)
+  handle?: string;
 }

@@ -10,7 +10,7 @@ import BundleService from "../../../../services/bundle";
 
 /**
  * @oas [get] /admin/products
- * operationId: "GetProducts"
+ * operationId: "AdminGetBundlesBundleProducts"
  * summary: "List Products"
  * description: "Retrieve a list of products. The products can be filtered by fields such as `q` or `status`. The products can also be sorted or paginated."
  * x-authenticated: true

@@ -2,6 +2,7 @@ import {
   EventBusService,
   FindConfig,
   ProductStatus,
+  Selector,
   TransactionBaseService,
   buildQuery,
 } from "@medusajs/medusa";
@@ -44,7 +45,7 @@ export default class BundleService extends TransactionBaseService {
     selector: {
       q?: string;
       status?: "draft" | "published";
-      product_id?: string[];
+      product_id?: string;
       product_status?: ProductStatus[];
       handle?: string[];
     } = {},
@@ -66,13 +67,13 @@ export default class BundleService extends TransactionBaseService {
       .skip(config.skip)
       .take(config.take);
 
-    if (selector.product_id && selector.product_id.length) {
+    if (selector.product_id) {
       const productRepo = this.activeManager_.withRepository(
         this.productRepository_
       );
       const products = await productRepo.find({
         where: {
-          id: In(selector.product_id),
+          id: selector.product_id,
           ...(selector.product_status
             ? { status: In(selector.product_status) }
             : {}),

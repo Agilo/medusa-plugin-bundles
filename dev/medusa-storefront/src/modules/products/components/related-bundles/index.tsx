@@ -10,7 +10,7 @@ type RelatedBundlesProps = {
 
 const RelatedBundles = ({ product }: RelatedBundlesProps) => {
   const { bundles, isLoading } = useBundles({
-    product_id: [product.id!],
+    product_id: product.id!,
     limit: 8,
   })
 

@@ -1,0 +1,42 @@
+{
+  "data": {
+    "bundles": [
+      {
+        "description": "Medusa Autumn Outfit.",
+        "handle": "medusa-autumn-outfit",
+        "id": "bundle_autumnoutfit",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Medusa Autumn Outfit",
+      },
+      {
+        "description": "Medusa Spring Outfit.",
+        "handle": "medusa-spring-outfit",
+        "id": "bundle_springoutfit",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Medusa Spring Outfit",
+      },
+      {
+        "description": "Medusa Summer Outfit.",
+        "handle": "medusa-summer-outfit",
+        "id": "bundle_summeroutfit",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Medusa Summer Outfit",
+      },
+      {
+        "description": "Medusa Winter Outfit.",
+        "handle": "medusa-winter-outfit",
+        "id": "bundle_winteroutfit",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Medusa Winter Outfit",
+      },
+    ],
+    "count": 14,
+    "limit": 5,
+    "offset": 10,
+  },
+  "status": 200,
+}

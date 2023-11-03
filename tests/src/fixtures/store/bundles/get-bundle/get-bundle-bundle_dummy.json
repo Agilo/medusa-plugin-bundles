@@ -1,0 +1,8 @@
+{
+  "data": {
+    "code": "unknown_error",
+    "message": "An unknown error occurred.",
+    "type": "unknown_error",
+  },
+  "status": 500,
+}

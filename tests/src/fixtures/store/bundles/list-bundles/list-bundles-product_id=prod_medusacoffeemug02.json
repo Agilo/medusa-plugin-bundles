@@ -1,0 +1,34 @@
+{
+  "data": {
+    "bundles": [
+      {
+        "description": "Best coffee mugs.",
+        "handle": "coffee-mugs-01",
+        "id": "bundle_coffeemugs01",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Coffee Mugs 01",
+      },
+      {
+        "description": "Best coffee mugs.",
+        "handle": "coffee-mugs-02",
+        "id": "bundle_coffeemugs02",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Coffee Mugs 02",
+      },
+      {
+        "description": "Best coffee mugs.",
+        "handle": "coffee-mugs-03",
+        "id": "bundle_coffeemugs03",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Coffee Mugs 03",
+      },
+    ],
+    "count": 3,
+    "limit": 10,
+    "offset": 0,
+  },
+  "status": 200,
+}

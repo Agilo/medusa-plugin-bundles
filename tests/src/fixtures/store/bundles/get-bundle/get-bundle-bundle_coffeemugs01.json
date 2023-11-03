@@ -1,0 +1,11 @@
+{
+  "data": {
+    "bundle": {
+      "description": "Best coffee mugs.",
+      "id": "bundle_coffeemugs01",
+      "status": "published",
+      "title": "Coffee Mugs 01",
+    },
+  },
+  "status": 200,
+}

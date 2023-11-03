@@ -1,0 +1,50 @@
+{
+  "data": {
+    "bundles": [
+      {
+        "description": "Best coffee mugs.",
+        "handle": "coffee-mugs-06",
+        "id": "bundle_coffeemugs06",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Coffee Mugs 06",
+      },
+      {
+        "description": "Best coffee mugs.",
+        "handle": "coffee-mugs-07",
+        "id": "bundle_coffeemugs07",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Coffee Mugs 07",
+      },
+      {
+        "description": "Best coffee mugs.",
+        "handle": "coffee-mugs-08",
+        "id": "bundle_coffeemugs08",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Coffee Mugs 08",
+      },
+      {
+        "description": "Best coffee mugs.",
+        "handle": "coffee-mugs-09",
+        "id": "bundle_coffeemugs09",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Coffee Mugs 09",
+      },
+      {
+        "description": "Best coffee mugs.",
+        "handle": "coffee-mugs-10",
+        "id": "bundle_coffeemugs10",
+        "status": "published",
+        "thumbnail": null,
+        "title": "Coffee Mugs 10",
+      },
+    ],
+    "count": 14,
+    "limit": 5,
+    "offset": 5,
+  },
+  "status": 200,
+}

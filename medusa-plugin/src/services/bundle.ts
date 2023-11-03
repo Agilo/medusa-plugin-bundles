@@ -123,6 +123,7 @@ export default class BundleService extends TransactionBaseService {
   }
 
   async create(data: {
+    id?: string;
     title: string;
     handle?: string;
     description?: string;

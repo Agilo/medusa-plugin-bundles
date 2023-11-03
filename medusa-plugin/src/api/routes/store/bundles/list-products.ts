@@ -218,11 +218,7 @@ export default async (req, res) => {
   } = req.filterableFields;
   const listConfig = req.listConfig;
 
-  // console.log("listConfig", listConfig);
-
   const bundleProductIds = await bundleService.listProductIds(id);
-  // console.log("bundleProductIds", bundleProductIds);
-  // console.log("filterableFields1", filterableFields);
 
   if (filterableFields.id && typeof filterableFields.id === "string") {
     filterableFields.id = [filterableFields.id];
@@ -236,8 +232,6 @@ export default async (req, res) => {
   } else {
     filterableFields.id = bundleProductIds;
   }
-
-  // console.log("filterableFields2", filterableFields);
 
   if (!filterableFields.id.length) {
     res.json({

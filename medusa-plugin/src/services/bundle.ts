@@ -61,6 +61,7 @@ export default class BundleService extends TransactionBaseService {
 
     let qb = bundleRepo
       .createQueryBuilder(`bundle`)
+      .orderBy(`bundle.title`, `ASC`)
       .skip(config.skip)
       .take(config.take);
 
@@ -226,6 +227,7 @@ export default class BundleService extends TransactionBaseService {
       .createQueryBuilder("product")
       .leftJoin("product.bundles", "bundle")
       .where("bundle.id = :id", { id: selector.bundle_id })
+      .orderBy(`product.title`, `ASC`)
       .skip(config.skip)
       .take(config.take);
 

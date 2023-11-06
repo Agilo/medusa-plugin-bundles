@@ -13,7 +13,7 @@ function testAndSanitizeData(data: any) {
   recursiveStripTimestamps(data);
 }
 
-describe("store-get-bundle", () => {
+describe("/store/bundles/get-bundle", () => {
   it("should return a bundle", async () => {
     const id = "bundle_coffeemugs01";
     const response = await fetch(`${config.storeApiUrl}/store/bundles/${id}`);

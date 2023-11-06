@@ -18,9 +18,6 @@ describe("store-get-bundle", () => {
     const response = await fetch(`${config.storeApiUrl}/store/bundles/${id}`);
     const data = await response.json();
 
-    console.log(typeof data);
-    console.log(data);
-
     testAndSanitizeData(data);
 
     expect({ data, status: response.status }).toMatchFileSnapshot(

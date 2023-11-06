@@ -1,6 +1,6 @@
 import { cleanResponseData } from "@medusajs/medusa";
 import { Type } from "class-transformer";
-import { IsNumber, IsOptional, IsString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 import BundleService from "../../../../services/bundle";
 
 /**
@@ -70,11 +70,13 @@ export class StoreGetBundlesParams {
 
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   @Type(() => String)
-  product_id: string;
+  product_id?: string;
 
   @IsString()
   @IsOptional()
+  @IsNotEmpty()
   @Type(() => String)
   handle?: string;
 }

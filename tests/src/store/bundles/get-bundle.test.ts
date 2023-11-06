@@ -1,15 +1,16 @@
-import { describe, expect, expectTypeOf, it } from "vitest";
+import { isObject } from "lodash";
+import { describe, expect, it } from "vitest";
 import config from "../../config";
+import { recursiveStripTimestamps } from "../../utils";
 
 function testAndSanitizeData(data: any) {
-  expectTypeOf(data).toBeObject();
-  expectTypeOf(data.bundle).toBeObject();
+  expect(isObject(data)).toBe(true);
+  expect(isObject(data.bundle)).toBe(true);
 
-  expectTypeOf(data.bundle.created_at).toBeString();
-  expectTypeOf(data.bundle.updated_at).toBeString();
+  expect(typeof data.bundle.created_at).toBe("string");
+  expect(typeof data.bundle.updated_at).toBe("string");
 
-  delete data.bundle["created_at"];
-  delete data.bundle["updated_at"];
+  recursiveStripTimestamps(data);
 }
 
 describe("store-get-bundle", () => {
@@ -25,8 +26,8 @@ describe("store-get-bundle", () => {
     );
   });
 
-  it("should not return a bundle which is draft", async () => {
-    const id = "bundle_coffeemugs11";
+  it("should return a 404 not found response because bundle does not exist", async () => {
+    const id = "bundle_dummy";
     const response = await fetch(`${config.storeApiUrl}/store/bundles/${id}`);
     const data = await response.json();
 
@@ -35,8 +36,8 @@ describe("store-get-bundle", () => {
     );
   });
 
-  it("should not return a bundle which does not exist", async () => {
-    const id = "bundle_dummy";
+  it("should return a 404 not found response because bundle is not published", async () => {
+    const id = "bundle_coffeemugs11";
     const response = await fetch(`${config.storeApiUrl}/store/bundles/${id}`);
     const data = await response.json();
 

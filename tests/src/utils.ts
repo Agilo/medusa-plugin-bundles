@@ -1,16 +1,26 @@
 import { isArray, isObject } from "lodash";
 
-export function recursiveStripTimestamps(data: any) {
+/**
+ * Recursively strip object properties, useful for timestamps, IDs, nested IDs, etc.
+ */
+export function recursiveStripProps(
+  data: any,
+  props: string[],
+  path: string[] = ["data"]
+) {
+  // console.log(path.join("."));
   if (isArray(data)) {
-    data.map((value) => recursiveStripTimestamps(value));
+    data.map((value) => recursiveStripProps(value, props, path));
   } else if (isObject(data)) {
-    if ("created_at" in data) {
-      delete data["created_at"];
-    }
-    if ("updated_at" in data) {
-      delete data["updated_at"];
-    }
-    Object.entries(data).map((value) => recursiveStripTimestamps(value));
+    Object.entries(data).map(([key, value]) => {
+      if (props.includes([...path, key].join("."))) {
+        // console.log(`stripping ${[...path, key].join(".")}`);
+        // @ts-ignore
+        delete data[key];
+      } else {
+        recursiveStripProps(value, props, [...path, key]);
+      }
+    });
   } else {
     // noop
   }

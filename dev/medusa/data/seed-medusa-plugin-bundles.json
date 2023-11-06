@@ -8,7 +8,8 @@
   "users": [
     {
       "email": "admin@medusa-test.com",
-      "password": "supersecret"
+      "password": "supersecret",
+      "api_token": "supersecret_token"
     }
   ],
   "regions": [

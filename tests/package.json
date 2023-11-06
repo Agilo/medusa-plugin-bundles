@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "devDependencies": {
+    "lodash": "^4.17.21",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vitest": "^0.34.6"

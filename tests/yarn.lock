@@ -1156,6 +1156,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "lodash@npm:4.17.21"
+  checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
+  languageName: node
+  linkType: hard
+
 "loupe@npm:^2.3.6":
   version: 2.3.7
   resolution: "loupe@npm:2.3.7"
@@ -1213,6 +1220,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "medusa-plugin-bundles-tests@workspace:."
   dependencies:
+    lodash: ^4.17.21
     typescript: ^5.0.2
     vite: ^4.4.5
     vitest: ^0.34.6

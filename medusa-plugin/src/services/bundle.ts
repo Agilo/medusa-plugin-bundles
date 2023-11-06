@@ -106,8 +106,8 @@ export default class BundleService extends TransactionBaseService {
       });
     }
 
-    if (selector.handle && selector.handle.length) {
-      qb.andWhere("bundle.handle IN (:...handle)", { handle: selector.handle });
+    if (selector.handle) {
+      qb.andWhere("bundle.handle = :handle", { handle: selector.handle });
     }
 
     return qb.getManyAndCount();

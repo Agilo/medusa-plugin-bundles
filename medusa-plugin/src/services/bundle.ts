@@ -6,6 +6,7 @@ import {
   TransactionBaseService,
   buildQuery,
 } from "@medusajs/medusa";
+import { MedusaError, isDefined } from "medusa-core-utils";
 import { Brackets, In, Repository } from "typeorm";
 import { Bundle, BundleStatus } from "../models/bundle";
 import { Product } from "../models/product";
@@ -117,19 +118,38 @@ export default class BundleService extends TransactionBaseService {
     selector?: Selector<Bundle>,
     config?: FindConfig<Bundle>
   ): Promise<Bundle> {
+    if (!isDefined(id)) {
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
+        `"bundleId" must be defined`
+      );
+    }
+
+    return await this.retrieve_({ ...selector, id }, config);
+  }
+
+  async retrieve_(
+    selector: Selector<Bundle>,
+    config: FindConfig<Bundle>
+  ): Promise<Bundle> {
     const bundleRepo = this.activeManager_.withRepository(
       this.bundleRepository_
     );
 
-    return bundleRepo.findOneOrFail(
-      buildQuery(
-        {
-          ...selector,
-          id,
-        },
-        config
-      )
-    );
+    const bundle = await bundleRepo.findOne(buildQuery(selector, config));
+
+    if (!bundle) {
+      const selectorConstraints = Object.entries(selector)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(", ");
+
+      throw new MedusaError(
+        MedusaError.Types.NOT_FOUND,
+        `Bundle with ${selectorConstraints} was not found`
+      );
+    }
+
+    return bundle;
   }
 
   async create(data: {

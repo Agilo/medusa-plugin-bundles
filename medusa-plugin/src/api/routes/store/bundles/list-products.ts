@@ -7,6 +7,7 @@ import {
   cleanResponseData,
   defaultStoreCategoryScope,
 } from "@medusajs/medusa";
+import { BundleStatus } from "../../../../models/bundle";
 import BundleService from "../../../../services/bundle";
 
 /**
@@ -217,6 +218,11 @@ export default async (req, res) => {
     ...filterableFields
   } = req.filterableFields;
   const listConfig = req.listConfig;
+
+  // just check that the bundle exists and is published
+  await bundleService.retrieve(id, {
+    status: BundleStatus.PUBLISHED,
+  });
 
   const bundleProductIds = await bundleService.listProductIds(id);
 

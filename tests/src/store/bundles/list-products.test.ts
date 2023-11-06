@@ -1,10 +1,41 @@
 import { isArray, isObject } from "lodash";
 import { describe, expect, it } from "vitest";
 import config from "../../config";
-import { recursiveStripTimestamps } from "../../utils";
+import { recursiveStripProps } from "../../utils";
 
 function testAndSanitizeData(data: any) {
-  recursiveStripTimestamps(data);
+  recursiveStripProps(data, [
+    "data.products.created_at",
+    "data.products.images.created_at",
+    "data.products.images.id",
+    "data.products.images.updated_at",
+    "data.products.options.created_at",
+    "data.products.options.id",
+    "data.products.options.updated_at",
+    "data.products.options.values.created_at",
+    "data.products.options.values.id",
+    "data.products.options.values.option_id",
+    "data.products.options.values.updated_at",
+    "data.products.options.values.variant_id",
+    "data.products.profile_id",
+    "data.products.profiles.created_at",
+    "data.products.profiles.id",
+    "data.products.profiles.updated_at",
+    "data.products.updated_at",
+    "data.products.updated_at",
+    "data.products.variants.created_at",
+    "data.products.variants.id",
+    "data.products.variants.options.created_at",
+    "data.products.variants.options.id",
+    "data.products.variants.options.option_id",
+    "data.products.variants.options.updated_at",
+    "data.products.variants.options.variant_id",
+    "data.products.variants.prices.created_at",
+    "data.products.variants.prices.id",
+    "data.products.variants.prices.updated_at",
+    "data.products.variants.prices.variant_id",
+    "data.products.variants.updated_at",
+  ]);
 
   expect(isObject(data)).toBe(true);
   expect(isArray(data.products)).toBe(true);

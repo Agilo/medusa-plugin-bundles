@@ -1,7 +1,7 @@
 import { isObject } from "lodash";
 import { describe, expect, it } from "vitest";
 import config from "../../config";
-import { recursiveStripTimestamps } from "../../utils";
+import { recursiveStripProps } from "../../utils";
 
 function testAndSanitizeData(data: any) {
   expect(isObject(data)).toBe(true);
@@ -10,7 +10,10 @@ function testAndSanitizeData(data: any) {
   expect(typeof data.bundle.created_at).toBe("string");
   expect(typeof data.bundle.updated_at).toBe("string");
 
-  recursiveStripTimestamps(data);
+  recursiveStripProps(data, [
+    "data.bundle.created_at",
+    "data.bundle.updated_at",
+  ]);
 }
 
 describe("/store/bundles/get-bundle", () => {

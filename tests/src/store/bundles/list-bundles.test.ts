@@ -1,10 +1,13 @@
 import { isArray, isObject } from "lodash";
 import { describe, expect, it } from "vitest";
 import config from "../../config";
-import { recursiveStripTimestamps } from "../../utils";
+import { recursiveStripProps } from "../../utils";
 
 function testAndSanitizeData(data: any) {
-  recursiveStripTimestamps(data);
+  recursiveStripProps(data, [
+    "data.bundles.created_at",
+    "data.bundles.updated_at",
+  ]);
 
   expect(isObject(data)).toBe(true);
   expect(isArray(data.bundles)).toBe(true);

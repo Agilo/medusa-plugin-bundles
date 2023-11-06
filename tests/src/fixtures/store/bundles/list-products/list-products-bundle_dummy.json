@@ -1,9 +1,7 @@
 {
   "data": {
-    "count": 0,
-    "limit": 100,
-    "offset": 0,
-    "products": [],
+    "message": "Bundle with status: published, id: bundle_dummy was not found",
+    "type": "not_found",
   },
-  "status": 200,
+  "status": 404,
 }

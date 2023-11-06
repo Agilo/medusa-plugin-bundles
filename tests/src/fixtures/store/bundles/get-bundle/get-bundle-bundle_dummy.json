@@ -1,8 +1,7 @@
 {
   "data": {
-    "code": "unknown_error",
-    "message": "An unknown error occurred.",
-    "type": "unknown_error",
+    "message": "Bundle with status: published, id: bundle_dummy was not found",
+    "type": "not_found",
   },
-  "status": 500,
+  "status": 404,
 }

@@ -1,7 +1,7 @@
 import path from "path";
 import { execa } from "execa";
 import * as url from "url";
-import replace from "replace-in-file";
+// import replace from "replace-in-file";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const rootDir = path.resolve(__dirname, "..", "..");
@@ -34,8 +34,8 @@ const oasOperationIds = {
       "--type",
       type,
       ...(type === "admin"
-        ? ["--paths", "./medusa-plugin/src/"]
-        : ["--paths", "./medusa-plugin/src/"]),
+        ? ["--paths", "./medusa-plugin-bundles/src/"]
+        : ["--paths", "./medusa-plugin-bundles/src/"]),
     ],
     {
       cwd: rootDir,
@@ -74,7 +74,7 @@ const oasOperationIds = {
       `./.oas/filtered-${type}.oas.json`,
       "--out-dir",
       type === "admin"
-        ? "./medusa-plugin/src/admin/packages/admin-client/src-generated/generated"
+        ? "./medusa-plugin-bundles/src/admin/packages/admin-client/src-generated/generated"
         : `./dev/medusa-plugin-bundles-client/src-generated/generated`,
       "--clean",
     ],
@@ -92,7 +92,7 @@ const oasOperationIds = {
   //     files:
   //       type === "admin"
   //         ? [
-  //             `./medusa-plugin/src/admin/packages/generated/${type}-client/**/*.{ts,tsx}`,
+  //             `./medusa-plugin-bundles/src/admin/packages/generated/${type}-client/**/*.{ts,tsx}`,
   //           ]
   //         : [`./dev/${type}-client/src/generated/**/*.{ts,tsx}`],
   //     from: / from ("|')react\-query("|');?$/gm,

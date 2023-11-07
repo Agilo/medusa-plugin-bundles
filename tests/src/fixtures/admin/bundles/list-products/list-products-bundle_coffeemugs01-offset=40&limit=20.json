@@ -1,0 +1,9 @@
+{
+  "data": {
+    "count": 34,
+    "limit": 20,
+    "offset": 40,
+    "products": [],
+  },
+  "status": 200,
+}

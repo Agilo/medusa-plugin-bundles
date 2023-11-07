@@ -223,6 +223,9 @@ export default async (req, res) => {
 
   const { skip, take, relations } = req.listConfig;
 
+  // just check that the bundle exists
+  await bundleService.retrieve(id);
+
   const bundleProductIds = await bundleService.listProductIds(id);
 
   if (req.filterableFields.id && typeof req.filterableFields.id === "string") {

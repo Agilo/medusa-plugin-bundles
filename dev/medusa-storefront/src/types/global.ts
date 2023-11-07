@@ -1,4 +1,5 @@
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
+import { Bundle } from "medusa-plugin-bundles-client"
 import { NextPage } from "next"
 import { AppProps } from "next/app"
 import { ReactElement, ReactNode } from "react"
@@ -64,6 +65,13 @@ export type ProductPreviewType = {
 export type InfiniteProductPage = {
   response: {
     products: PricedProduct[]
+    count: number
+  }
+}
+
+export type InfiniteBundlePage = {
+  response: {
+    bundles: Bundle[]
     count: number
   }
 }

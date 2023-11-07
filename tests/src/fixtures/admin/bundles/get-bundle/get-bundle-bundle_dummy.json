@@ -1,0 +1,7 @@
+{
+  "data": {
+    "message": "Bundle with id: bundle_dummy was not found",
+    "type": "not_found",
+  },
+  "status": 404,
+}

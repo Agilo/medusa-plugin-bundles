@@ -29,7 +29,7 @@ const BundleDetailTemplate: React.FC<BundleDetailTemplateProps> = ({
     isFetchingNextPage,
     refetch,
   } = useInfiniteQuery(
-    [`get_bundle_products`, bundle.handle],
+    [`get_bundle_products`, bundle.handle, cart?.id],
     ({ pageParam }) =>
       getProductsByBundleHandle({
         pageParam,

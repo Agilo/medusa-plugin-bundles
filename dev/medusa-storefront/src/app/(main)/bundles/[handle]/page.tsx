@@ -8,7 +8,9 @@ type Props = {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { bundles } = await getBundleByHandle(params.handle)
+  const { bundles } = await getBundleByHandle(params.handle).catch((err) => {
+    notFound()
+  })
 
   const bundle = bundles[0]
 
@@ -23,9 +25,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BundlePage({ params }: Props) {
-  const { bundles } = await getBundleByHandle(params.handle)
+  const { bundles } = await getBundleByHandle(params.handle).catch((err) => {
+    notFound()
+  })
 
   const bundle = bundles[0]
+
+  if (!bundle) {
+    notFound()
+  }
 
   return <BundleDetailTemplate bundle={bundle} />
 }

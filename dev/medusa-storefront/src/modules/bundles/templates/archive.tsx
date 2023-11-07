@@ -3,7 +3,7 @@
 import { getBundlesList } from "@lib/data"
 import { getNumberOfBundleSkeletons } from "@lib/util/get-number-of-skeletons"
 import repeat from "@lib/util/repeat"
-import BundlePreview from "@modules/products/components/bundle-preview"
+import BundlePreview from "@modules/bundles/components/bundle-preview"
 import SkeletonBundlePreview from "@modules/skeletons/components/skeleton-bundle-preview"
 import { useInfiniteQuery } from "@tanstack/react-query"
 import React, { useEffect } from "react"

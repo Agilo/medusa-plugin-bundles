@@ -10,7 +10,7 @@ import ImageGallery from "@modules/products/components/image-gallary"
 import MobileActions from "@modules/products/components/mobile-actions"
 import ProductOnboardingCta from "@modules/products/components/product-onboarding-cta"
 import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
-import RelatedBundles from "@modules/products/components/related-bundles"
+import RelatedBundles from "@modules/bundles/components/related-bundles"
 
 type ProductTemplateProps = {
   product: PricedProduct

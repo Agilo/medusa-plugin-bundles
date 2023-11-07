@@ -12,7 +12,7 @@
 1. Copy `.env.example` to `.env` and edit if needed
 2. `docker-compose up`
 3. Open a new terminal tab
-4. Install dependencies in all packages (this will take a few minutes): `yarn install && cd medusa-plugin && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..`
+4. Install dependencies in all packages (this will take a few minutes): `yarn install && cd medusa-plugin-bundles && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..`
 5. Seed the database: `cd dev/medusa && yarn run seed && cd ../..`
 6. Run the migrations: `cd dev/medusa && medusa migrations run && cd ../..`
 7. `yarn run start`
@@ -30,8 +30,8 @@ supersecret
 Unfortunately DX when generating migrations which extend or relate to core entities is not great, so here's a workflow that works for me:
 
 1. Make sure `yarn run start` is running
-2. If needed, copy and edit `medusa-plugin/.env.example` to `medusa-plugin/.env`
-3. Edit/create migration files in `medusa-plugin/src/migrations`
+2. If needed, copy and edit `medusa-plugin-bundles/.env.example` to `medusa-plugin-bundles/.env`
+3. Edit/create migration files in `medusa-plugin-bundles/src/migrations`
 4. `npx typeorm migration:generate -d datasource.js src/migrations/BundleUpdate` - this will auto generate a bunch of migrations in `src/migrations/<timestamp>-BundleUpdate.ts` file for you, the migration file will contain migrations for both core medusa entities + your plugin entities
 5. `npx typeorm migration:create src/migrations/BundleUpdate` - this will generate an empty migration file for you, you can then cherry pick the migrations you want to run from the previously auto generated file and copy them over to this file, after that you can delete the auto generated file
 6. In the `dev/medusa` dir run `medusa migrations run`

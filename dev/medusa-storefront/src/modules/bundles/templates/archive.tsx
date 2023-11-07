@@ -1,7 +1,7 @@
 "use client"
 
 import { getBundlesList } from "@lib/data"
-import getNumberOfSkeletons from "@lib/util/get-number-of-skeletons"
+import { getNumberOfBundleSkeletons } from "@lib/util/get-number-of-skeletons"
 import repeat from "@lib/util/repeat"
 import BundlePreview from "@modules/products/components/bundle-preview"
 import SkeletonBundlePreview from "@modules/skeletons/components/skeleton-bundle-preview"
@@ -51,13 +51,13 @@ const BundleArchiveTemplate: React.FC = () => {
         )}
         {isLoading &&
           !infiniteData &&
-          repeat(8).map((index) => (
+          repeat(12).map((index) => (
             <li key={index}>
               <SkeletonBundlePreview />
             </li>
           ))}
         {isFetchingNextPage &&
-          repeat(getNumberOfSkeletons(infiniteData?.pages as any)).map(
+          repeat(getNumberOfBundleSkeletons(infiniteData?.pages as any)).map(
             (index) => (
               <li key={index}>
                 <SkeletonBundlePreview />

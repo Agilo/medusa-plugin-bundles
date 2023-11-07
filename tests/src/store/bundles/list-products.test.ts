@@ -50,7 +50,7 @@ describe("/store/bundles/list-products", () => {
     const id = "bundle_coffeemugs01";
     const qs = "offset=0&limit=10";
     const response = await fetch(
-      `${config.storeApiUrl}/store/bundles/${id}/products?${qs}`
+      `${config.apiUrl}/store/bundles/${id}/products?${qs}`
     );
     const data = await response.json();
 
@@ -65,7 +65,7 @@ describe("/store/bundles/list-products", () => {
     const id = "bundle_coffeemugs01";
     const qs = "offset=10&limit=10";
     const response = await fetch(
-      `${config.storeApiUrl}/store/bundles/${id}/products?${qs}`
+      `${config.apiUrl}/store/bundles/${id}/products?${qs}`
     );
     const data = await response.json();
 
@@ -80,7 +80,7 @@ describe("/store/bundles/list-products", () => {
     const id = "bundle_coffeemugs01";
     const qs = "offset=20&limit=10";
     const response = await fetch(
-      `${config.storeApiUrl}/store/bundles/${id}/products?${qs}`
+      `${config.apiUrl}/store/bundles/${id}/products?${qs}`
     );
     const data = await response.json();
 
@@ -96,7 +96,7 @@ describe("/store/bundles/list-products", () => {
     const qs =
       "id[]=prod_medusacoffeemug01&id[]=prod_medusacoffeemug02&id[]=prod_medusacoffeemug18";
     const response = await fetch(
-      `${config.storeApiUrl}/store/bundles/${id}/products?${qs}`
+      `${config.apiUrl}/store/bundles/${id}/products?${qs}`
     );
     const data = await response.json();
 
@@ -111,7 +111,7 @@ describe("/store/bundles/list-products", () => {
     const id = "bundle_coffeemugs01";
     const qs = "id[]=prod_dummy";
     const response = await fetch(
-      `${config.storeApiUrl}/store/bundles/${id}/products?${qs}`
+      `${config.apiUrl}/store/bundles/${id}/products?${qs}`
     );
     const data = await response.json();
 
@@ -125,7 +125,7 @@ describe("/store/bundles/list-products", () => {
   it("should return a 404 not found response because bundle does not exist", async () => {
     const id = "bundle_dummy";
     const response = await fetch(
-      `${config.storeApiUrl}/store/bundles/${id}/products`
+      `${config.apiUrl}/store/bundles/${id}/products`
     );
     const data = await response.json();
 
@@ -137,7 +137,7 @@ describe("/store/bundles/list-products", () => {
   it("should return a 404 not found response because bundle is not published", async () => {
     const id = "bundle_coffeemugs11";
     const response = await fetch(
-      `${config.storeApiUrl}/store/bundles/${id}/products`
+      `${config.apiUrl}/store/bundles/${id}/products`
     );
     const data = await response.json();
 

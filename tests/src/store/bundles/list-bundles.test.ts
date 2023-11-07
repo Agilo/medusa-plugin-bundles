@@ -19,7 +19,7 @@ function testAndSanitizeData(data: any) {
 
 describe("/store/bundles/list-bundles", () => {
   it("should return default first page of bundles", async () => {
-    const response = await fetch(`${config.storeApiUrl}/store/bundles`);
+    const response = await fetch(`${config.apiUrl}/store/bundles`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -32,7 +32,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return first page of bundles", async () => {
     const qs = "offset=0&limit=5";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -45,7 +45,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return second page of bundles", async () => {
     const qs = "offset=5&limit=5";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -58,7 +58,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return third page of bundles", async () => {
     const qs = "offset=10&limit=5";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -71,7 +71,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return fourth page of bundles", async () => {
     const qs = "offset=15&limit=5";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     expect({ data, status: response.status }).toMatchFileSnapshot(
@@ -82,7 +82,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return a list of searched bundles", async () => {
     const qs = "q=coffee&offset=0&limit=100";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -95,7 +95,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return a list of bundles that contain product_id", async () => {
     const qs = "product_id=prod_medusacoffeemug02";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -108,7 +108,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return an empty list of bundles because product_id does not exist", async () => {
     const qs = "product_id=prod_dummy";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -121,7 +121,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return a single bundle by handle", async () => {
     const qs = "handle=coffee-mugs-02";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -134,7 +134,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return an empty list of bundles because handle does not exist", async () => {
     const qs = "handle=coffee-mugs-dummy";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -147,7 +147,7 @@ describe("/store/bundles/list-bundles", () => {
   it("should return an empty list of bundles because bundle with handle is not published", async () => {
     const qs = "handle=coffee-mugs-11";
 
-    const response = await fetch(`${config.storeApiUrl}/store/bundles?${qs}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles?${qs}`);
     const data = await response.json();
 
     testAndSanitizeData(data);

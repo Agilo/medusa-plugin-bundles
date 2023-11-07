@@ -1,7 +1,6 @@
 const config = {
-  adminApiUrl: "http://localhost:7001",
-  adminApiToken: "supersecret_token",
-  storeApiUrl: "http://localhost:9000",
+  apiUrl: "http://localhost:9000",
+  apiToken: "supersecret_token",
 };
 
 export default config;

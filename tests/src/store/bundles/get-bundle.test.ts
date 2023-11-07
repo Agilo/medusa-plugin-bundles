@@ -19,7 +19,7 @@ function testAndSanitizeData(data: any) {
 describe("/store/bundles/get-bundle", () => {
   it("should return a bundle", async () => {
     const id = "bundle_coffeemugs01";
-    const response = await fetch(`${config.storeApiUrl}/store/bundles/${id}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles/${id}`);
     const data = await response.json();
 
     testAndSanitizeData(data);
@@ -31,7 +31,7 @@ describe("/store/bundles/get-bundle", () => {
 
   it("should return a 404 not found response because bundle does not exist", async () => {
     const id = "bundle_dummy";
-    const response = await fetch(`${config.storeApiUrl}/store/bundles/${id}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles/${id}`);
     const data = await response.json();
 
     expect({ data, status: response.status }).toMatchFileSnapshot(
@@ -41,7 +41,7 @@ describe("/store/bundles/get-bundle", () => {
 
   it("should return a 404 not found response because bundle is not published", async () => {
     const id = "bundle_coffeemugs11";
-    const response = await fetch(`${config.storeApiUrl}/store/bundles/${id}`);
+    const response = await fetch(`${config.apiUrl}/store/bundles/${id}`);
     const data = await response.json();
 
     expect({ data, status: response.status }).toMatchFileSnapshot(

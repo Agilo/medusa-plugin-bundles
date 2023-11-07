@@ -1,0 +1,38 @@
+name: Tests
+
+on:
+  pull_request: ~
+  push:
+
+jobs:
+  tests:
+    name: "Tests"
+    runs-on: ubuntu-latest
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install test dependencies
+        run: yarn install && cd medusa-plugin-bundles && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..
+
+      - name: Run the project
+        run: yarn run start
+
+      # - name: Install test dependencies
+      #   run: cd ../tests && yarn run test

@@ -267,7 +267,7 @@ export async function getCollectionByHandle(handle: string) {
 export async function getBundleByHandle(handle: string) {
   const data = await medusaRequest("GET", "/bundles", {
     query: {
-      handle: [handle],
+      handle: handle,
     },
   })
     .then((res) => res.body)

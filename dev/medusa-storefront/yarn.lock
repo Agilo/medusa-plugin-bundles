@@ -6446,14 +6446,14 @@ __metadata:
 
 "medusa-plugin-bundles-client@file:../medusa-plugin-bundles-client::locator=medusa-storefront%40workspace%3A.":
   version: 0.0.0
-  resolution: "medusa-plugin-bundles-client@file:../medusa-plugin-bundles-client#../medusa-plugin-bundles-client::hash=288403&locator=medusa-storefront%40workspace%3A."
+  resolution: "medusa-plugin-bundles-client@file:../medusa-plugin-bundles-client#../medusa-plugin-bundles-client::hash=b673a4&locator=medusa-storefront%40workspace%3A."
   peerDependencies:
     "@medusajs/medusa": ^1.12.0
     "@tanstack/react-query": 4.22.0
     medusa-react: ^9.0.0
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 389fe38191a0e082fff3cebb96ba80c37b805d94577bb44ba93eeccdb2785ae01ae2bda0aaa6685681d7ce20a61bb0224dab1ae6820555c14b980e82aff5a3cc
+  checksum: 5e9ae3a15d18724b65d9ec8ef378107b30f6be4c3525bef741da4408839c689a2e0e64bd7b70057dd4c3c76a5e478991637716ebe805359950fce771582974a0
   languageName: node
   linkType: hard
 

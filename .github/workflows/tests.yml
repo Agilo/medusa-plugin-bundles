@@ -29,7 +29,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install test dependencies
-        run: yarn install && cd medusa-plugin-bundles && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..
+        run: npm i yalc -g
+
+      - name: Install test dependencies
+        run: yarn install && yarn run setup
 
       - name: Run the project
         run: yarn run start

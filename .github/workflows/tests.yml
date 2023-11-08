@@ -55,15 +55,15 @@ jobs:
       - name: Install dependencies
         run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add medusa-plugin-bundles && yarn install
 
-      - name: Setup .env
-        run: cp dev/medusa/.env.example dev/medusa/.env
+      # - name: Setup .env
+      #   run: cp dev/medusa/.env.example dev/medusa/.env
 
-      - uses: cschleiden/replace-tokens@v1
-        with:
-          files: "dev/medusa/.env"
-        env:
-          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+      # - uses: cschleiden/replace-tokens@v1
+      #   with:
+      #     files: "dev/medusa/.env"
+      #   env:
+      #     DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+      #     REDIS_HOST: ${{ secrets.REDIS_HOST }}
 
       - name: Run migrations
         run: cd dev/medusa && medusa migrations run

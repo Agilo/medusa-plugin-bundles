@@ -4,15 +4,16 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "setup": "cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add medusa-plugin-bundles && yarn install && cd ../medusa-plugin-bundles-client && yarn install && yalc publish && cd ../medusa-storefront && yalc add medusa-plugin-bundles-client && yarn install && cd ../..",
     "generate:medusa-api:admin": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./dev/scripts/generate-medusa-client.ts admin",
     "generate:medusa-api:store": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./dev/scripts/generate-medusa-client.ts store && cd dev/medusa-plugin-bundles-client && yarn run prepare",
     "generate:medusa-api": "yarn run generate:medusa-api:admin && yarn run generate:medusa-api:store",
-    "rsync:medusa": "rsync -aP --delete --exclude=node_modules medusa-plugin-bundles/ dev/medusa/node_modules/medusa-plugin-bundles/",
-    "rsync:storefront": "rsync -aP --delete --exclude=node_modules dev/medusa-plugin-bundles-client/ dev/medusa-storefront/node_modules/medusa-plugin-bundles-client/",
-    "rsync": "yarn run rsync:medusa && yarn run rsync:storefront",
-    "watch:medusa-plugin-bundles": "nodemon -e js,jsx,ts,tsx --watch \"medusa-plugin-bundles/src\" --spawn --exec \"cd medusa-plugin-bundles && yarn run prepare && cd .. && yarn run rsync:medusa && cd dev/medusa && yarn run dev\" --delay 1 --verbose",
-    "watch:medusa-plugin-bundles-client": "nodemon -e js,jsx,ts,tsx --watch \"dev/medusa-plugin-bundles-client/src\" --spawn --exec \"cd dev/medusa-plugin-bundles-client && yarn run prepare && cd ../.. && yarn run rsync:storefront && cd dev/medusa-storefront && rm -rf .next && yarn run dev\" --delay 1 --verbose",
-    "start": "cd medusa-plugin-bundles && yarn run prepare && cd .. && cd dev/medusa-plugin-bundles-client && yarn run prepare && cd ../.. && yarn run rsync && cd dev/medusa && yarn run build && cd ../.. && concurrently \"yarn run watch:medusa-plugin-bundles\" \"yarn run watch:medusa-plugin-bundles-client\" --timings --prefix \"[{index}] [{time}] =>\""
+    "sync:medusa": "cd medusa-plugin-bundles && yalc publish --no-scripts --push",
+    "sync:storefront": "cd dev/medusa-plugin-bundles-client && yalc publish --no-scripts --push",
+    "sync": "yarn run sync:medusa && yarn run sync:storefront",
+    "watch:medusa-plugin-bundles": "nodemon -e js,jsx,ts,tsx --watch \"medusa-plugin-bundles/src\" --spawn --exec \"cd medusa-plugin-bundles && yarn run prepare && cd .. && yarn run sync:medusa && cd dev/medusa && yarn run dev\" --delay 1 --verbose",
+    "watch:medusa-plugin-bundles-client": "nodemon -e js,jsx,ts,tsx --watch \"dev/medusa-plugin-bundles-client/src\" --spawn --exec \"cd dev/medusa-plugin-bundles-client && yarn run prepare && cd ../.. && yarn run sync:storefront && cd dev/medusa-storefront && rm -rf .next && yarn run dev\" --delay 1 --verbose",
+    "start": "cd medusa-plugin-bundles && yalc publish && cd .. && cd dev/medusa-plugin-bundles-client && yalc publish && cd ../.. && yarn run sync && cd dev/medusa && yarn run build && cd ../.. && concurrently \"yarn run watch:medusa-plugin-bundles\" \"yarn run watch:medusa-plugin-bundles-client\" --timings --prefix \"[{index}] [{time}] =>\""
   },
   "dependencies": {
     "@medusajs/medusa-oas-cli": "file:.yalc/@medusajs/medusa-oas-cli",

@@ -6,13 +6,16 @@
 - node 20
 - Medusa CLI tool: `npm install @medusajs/medusa-cli -g`
 - yarn (v3)
+- yalc: `npm install yalc -g`
 
 ## Getting started
 
+### Initial setup
+
 1. Copy `.env.example` to `.env` and edit if needed
-2. `docker-compose up`
+2. `docker compose up`
 3. Open a new terminal tab
-4. Install dependencies in all packages (this will take a few minutes): `yarn install && cd medusa-plugin-bundles && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..`
+4. Install dependencies in all packages: `yarn install && yarn run setup`
 5. Seed the database: `cd dev/medusa && yarn run seed && cd ../..`
 6. Run the migrations: `cd dev/medusa && medusa migrations run && cd ../..`
 7. `yarn run start`
@@ -24,6 +27,10 @@ Default credentials for Medusa Admin are:
 admin@medusa-test.com
 supersecret
 ```
+
+### Development
+
+After the initial setup you can simply run `docker compose up` and `yarn run start`.
 
 ### Migration workflow
 

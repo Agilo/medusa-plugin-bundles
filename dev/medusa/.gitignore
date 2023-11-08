@@ -24,3 +24,6 @@ build
 !.yarn/versions
 
 /docker/postgresql/data
+
+/.yalc/
+/yalc.lock

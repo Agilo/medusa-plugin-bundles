@@ -4,9 +4,9 @@
 
 - docker
 - node 20
-- Medusa CLI tool: `npm install @medusajs/medusa-cli -g`
+- Medusa CLI tool: `npm i @medusajs/medusa-cli -g`
 - yarn (v3)
-- yalc: `npm install yalc -g`
+- yalc: `npm i yalc -g`
 
 ## Getting started
 
@@ -16,8 +16,8 @@
 2. `docker compose up`
 3. Open a new terminal tab
 4. Install dependencies in all packages: `yarn install && yarn run setup`
-5. Seed the database: `cd dev/medusa && yarn run seed && cd ../..`
-6. Run the migrations: `cd dev/medusa && medusa migrations run && cd ../..`
+5. Run the migrations: `cd dev/medusa && medusa migrations run && cd ../..`
+6. Seed the database: `cd dev/medusa && yarn run seed:medusa-plugin-bundles && cd ../..`
 7. `yarn run start`
 8. Medusa Admin is now available at http://localhost:7001 and Medusa Storefront at http://localhost:8000
 

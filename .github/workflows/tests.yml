@@ -14,6 +14,8 @@ jobs:
       # Label used to access the service container
       postgres:
         image: postgres:16.0
+        ports:
+          - 5432:5432
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres

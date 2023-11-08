@@ -28,14 +28,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install test dependencies
+      - name: Install dependencies
         run: npm i yalc -g
 
-      - name: Install test dependencies
-        run: yarn install && yarn run setup
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Install dependencies
+        run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add medusa-plugin-bundles && yarn install
 
       - name: Run the project
-        run: yarn run start
+        run: cd dev/medusa && yarn run start
 
       # - name: Install test dependencies
       #   run: cd ../tests && yarn run test

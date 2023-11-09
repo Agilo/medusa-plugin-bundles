@@ -21,18 +21,18 @@ class ExampleSubscriber {
   }
 
   handleBundleUpdated = async (data: any) => {
-    this.logger.debug("ExampleSubscriber::handleBundleUpdated");
-    this.logger.debug(JSON.stringify(data));
+    // this.logger.debug("ExampleSubscriber::handleBundleUpdated");
+    // this.logger.debug(JSON.stringify(data));
   };
 
   handleBundleCreated = async (data: any) => {
-    this.logger.debug("ExampleSubscriber::handleBundleCreated");
-    this.logger.debug(JSON.stringify(data));
+    // this.logger.debug("ExampleSubscriber::handleBundleCreated");
+    // this.logger.debug(JSON.stringify(data));
   };
 
   handleBundleDeleted = async (data: any) => {
-    this.logger.debug("ExampleSubscriber::handleBundleDeleted");
-    this.logger.debug(JSON.stringify(data));
+    // this.logger.debug("ExampleSubscriber::handleBundleDeleted");
+    // this.logger.debug(JSON.stringify(data));
   };
 
   // handleUserUpdated = async (data: any) => {

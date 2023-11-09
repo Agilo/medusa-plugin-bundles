@@ -28,13 +28,13 @@ function terminate() {
 (async () => {
   // start medusa server
 
-  const medusa = execa("yarn", ["run", "start"], {
+  const medusa = execa("medusa", ["start"], {
     cwd: "dev/medusa",
     stdio: "inherit",
     timeout: 60 * 1000,
   });
 
-  console.log('mark1');
+  console.log("mark1");
 
   // const medusa = execa("sleep", ["50"], {
   //   cwd: "dev/medusa",
@@ -42,7 +42,7 @@ function terminate() {
   //   timeout: 60 * 1000,
   // });
 
-  console.log('mark2');
+  console.log("mark2");
 
   // wait for API to be ready
 
@@ -52,12 +52,12 @@ function terminate() {
       timeout: 60 * 1000,
     });
   } catch (err) {
-    console.log('mark2.1');
+    console.log("mark2.1");
     medusa.pid && (await terminate(medusa.pid, "SIGKILL"));
     throw err;
   }
 
-  console.log('mark3');
+  console.log("mark3");
 
   // run tests
 
@@ -67,9 +67,9 @@ function terminate() {
     timeout: 60 * 1000,
   });
 
-  console.log('mark4');
+  console.log("mark4");
 
   medusa.pid && (await terminate(medusa.pid, "SIGKILL"));
-  console.log('mark5');
+  console.log("mark5");
   process.exit(tests.exitCode);
 })();

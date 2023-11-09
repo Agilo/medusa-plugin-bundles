@@ -61,8 +61,15 @@ jobs:
       - name: Seed the database
         run: cd dev/medusa && yarn run seed:medusa-plugin-bundles
 
-      - name: Run the project
-        run: cd dev/medusa && yarn run start
+      - name: background-action
+        uses: JarvusInnovations/background-action@v1.0.3
+        with:
+          run: cd dev/medusa && yarn run start
+          wait-on: http://localhost:9000/store/bundles/bundle_coffeemugs01
+          wait-for: 1m
 
-      # - name: Install test dependencies
-      #   run: cd ../tests && yarn run test
+      - name: Install test dependencies
+        run: cd tests && yarn install
+
+      - name: Run tests
+        run: cd tests && yarn run test

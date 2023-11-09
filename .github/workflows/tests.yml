@@ -58,6 +58,9 @@ jobs:
       - name: Install dependencies
         run: cd tests && yarn install
 
+      - name: Build medusa
+        run: cd dev/medusa && yarn run build:server
+
       - name: Run migrations
         run: cd dev/medusa && medusa migrations run
 

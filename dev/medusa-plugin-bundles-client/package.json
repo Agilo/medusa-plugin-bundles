@@ -1,5 +1,6 @@
 {
   "name": "medusa-plugin-bundles-client",
+  "version": "0.0.1",
   "packageManager": "yarn@3.6.3",
   "scripts": {
     "build": "tsup src/index.ts",
@@ -42,9 +43,9 @@
     "react": "^16.8 || ^17.0 || ^18.0",
     "react-dom": "^16.8 || ^17.0 || ^18.0"
   },
-  "private": true,
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",

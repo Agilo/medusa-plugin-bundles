@@ -13,11 +13,13 @@ jobs:
     services:
       # Label used to access the service container
       postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
+        image: postgres:16.0
+        ports:
+          - 5432:5432
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: medusa-docker
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -25,14 +27,51 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
+        image: redis
+        ports:
+          - 6379:6379
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install test dependencies
-        run: yarn install && cd medusa-plugin-bundles && yarn install && cd ../dev/medusa && yarn install && cd ../medusa-storefront && yarn install && cd ../..
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "yarn"
+          cache-dependency-path: "**/yarn.lock"
 
-      - name: Run the project
-        run: yarn run start
+      - name: Install dependencies
+        run: npm i @medusajs/medusa-cli -g
 
-      # - name: Install test dependencies
-      #   run: cd ../tests && yarn run test
+      - name: Install dependencies
+        run: npm i yalc -g
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Install dependencies
+        run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add medusa-plugin-bundles && yarn install
+
+      - name: Install dependencies
+        run: cd tests && yarn install
+
+      - name: Build medusa
+        run: cd dev/medusa && yarn run build:server
+
+      - name: Run migrations
+        run: cd dev/medusa && medusa migrations run
+
+      - name: Seed the database
+        run: cd dev/medusa && yarn run seed:medusa-plugin-bundles
+
+      - name: Run server and tests
+        run: yarn run test-ci

@@ -18,9 +18,15 @@ function testAndSanitizeData(data: any) {
     "data.products.options.values.updated_at",
     "data.products.options.values.variant_id",
     "data.products.profile_id",
+    "data.products.profile.created_at",
+    "data.products.profile.id",
+    "data.products.profile.updated_at",
     "data.products.profiles.created_at",
     "data.products.profiles.id",
     "data.products.profiles.updated_at",
+    "data.products.sales_channels.created_at",
+    "data.products.sales_channels.id",
+    "data.products.sales_channels.updated_at",
     "data.products.updated_at",
     "data.products.updated_at",
     "data.products.variants.created_at",
@@ -175,6 +181,8 @@ describe("/admin/bundles/list-products", () => {
       }
     );
     const data = await response.json();
+
+    testAndSanitizeData(data);
 
     expect({ data, status: response.status }).toMatchFileSnapshot(
       `../../fixtures/admin/bundles/list-products/list-products-${id}.json`

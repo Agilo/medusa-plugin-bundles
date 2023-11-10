@@ -37,13 +37,10 @@
         ],
         "origin_country": null,
         "profile": {
-          "created_at": "2023-11-07T14:27:06.745Z",
           "deleted_at": null,
-          "id": "sp_01HEN2W3CNKPBJGYTJKS4WT430",
           "metadata": null,
           "name": "Default Shipping Profile",
           "type": "default",
-          "updated_at": "2023-11-07T14:27:06.745Z",
         },
         "profiles": [
           {
@@ -55,14 +52,11 @@
         ],
         "sales_channels": [
           {
-            "created_at": "2023-11-07T14:27:06.745Z",
             "deleted_at": null,
             "description": "Created by Medusa",
-            "id": "sc_01HEN2W3DEF8CGV755E55S581B",
             "is_disabled": false,
             "metadata": null,
             "name": "Default Sales Channel",
-            "updated_at": "2023-11-07T14:27:06.745Z",
           },
         ],
         "status": "published",
@@ -168,13 +162,10 @@
         ],
         "origin_country": null,
         "profile": {
-          "created_at": "2023-11-07T14:27:06.745Z",
           "deleted_at": null,
-          "id": "sp_01HEN2W3CNKPBJGYTJKS4WT430",
           "metadata": null,
           "name": "Default Shipping Profile",
           "type": "default",
-          "updated_at": "2023-11-07T14:27:06.745Z",
         },
         "profiles": [
           {
@@ -186,14 +177,11 @@
         ],
         "sales_channels": [
           {
-            "created_at": "2023-11-07T14:27:06.745Z",
             "deleted_at": null,
             "description": "Created by Medusa",
-            "id": "sc_01HEN2W3DEF8CGV755E55S581B",
             "is_disabled": false,
             "metadata": null,
             "name": "Default Sales Channel",
-            "updated_at": "2023-11-07T14:27:06.745Z",
           },
         ],
         "status": "published",
@@ -299,13 +287,10 @@
         ],
         "origin_country": null,
         "profile": {
-          "created_at": "2023-11-07T14:27:06.745Z",
           "deleted_at": null,
-          "id": "sp_01HEN2W3CNKPBJGYTJKS4WT430",
           "metadata": null,
           "name": "Default Shipping Profile",
           "type": "default",
-          "updated_at": "2023-11-07T14:27:06.745Z",
         },
         "profiles": [
           {
@@ -317,14 +302,11 @@
         ],
         "sales_channels": [
           {
-            "created_at": "2023-11-07T14:27:06.745Z",
             "deleted_at": null,
             "description": "Created by Medusa",
-            "id": "sc_01HEN2W3DEF8CGV755E55S581B",
             "is_disabled": false,
             "metadata": null,
             "name": "Default Sales Channel",
-            "updated_at": "2023-11-07T14:27:06.745Z",
           },
         ],
         "status": "draft",

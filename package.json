@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@medusajs/medusa-oas-cli": "file:.yalc/@medusajs/medusa-oas-cli",
-    "concurrently": "^8.2.1",
+    "concurrently": "^8.2.2",
     "execa": "^8.0.1",
     "fs-extra": "^11.1.1",
     "nodemon": "^3.0.1",

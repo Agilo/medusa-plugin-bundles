@@ -1,7 +1,7 @@
-import { useAdminCustomQuery } from "medusa-react";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePagination, useTable } from "react-table";
+import { useAdminBundleProducts } from "../../../../../../admin-client";
 import Medusa from "../../../../../../admin-ui-custom/ui/src/services/api";
 import Button from "../../../../../../admin-ui/ui/src/components/fundamentals/button";
 import TrashIcon from "../../../../../../admin-ui/ui/src/components/fundamentals/icons/trash-icon";
@@ -31,18 +31,14 @@ const ViewProductsTable: React.FC<ViewProductsTableProps> = ({
   const [showDelete, setShowDelete] = useState(false);
   const [idToDelete, setIdToDelete] = useState<string | undefined>(undefined);
 
-  // TODO: create admin-client hook for this
-  const { data, isLoading, refetch } = useAdminCustomQuery(
-    `/bundles/${bundleId}/products`,
-    ["bundles", bundleId, "products"],
+  const { products, count, isLoading, refetch } = useAdminBundleProducts(
+    bundleId,
     {
       q: debouncedSearchTerm,
       limit,
       offset,
     }
   );
-
-  const { products, count } = data ?? {};
 
   useEffect(() => {
     refetch(); // Ensure we get the latest data

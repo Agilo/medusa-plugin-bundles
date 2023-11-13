@@ -1,8 +1,9 @@
-import { AdminProductsListTagsRes } from "@medusajs/medusa";
 import { Response } from "@medusajs/medusa-js";
 import { useQuery } from "@tanstack/react-query";
 import { useMedusa } from "medusa-react";
 import qs from "qs";
+import { AdminBundlesBundleProductsListRes } from "src/api/routes/admin/bundles";
+import { AdminGetBundlesBundleProductsParams } from "src/api/routes/admin/bundles/list-products";
 import {
   AdminBundlesListRes,
   AdminBundlesRes,
@@ -13,23 +14,31 @@ import { queryKeysFactory } from "../utils/queryKeysFactory";
 
 const ADMIN_BUNDLES_QUERY_KEY = `admin_bundles` as const;
 
-export const adminBundleKeys = queryKeysFactory(ADMIN_BUNDLES_QUERY_KEY);
+export const adminBundleKeys = {
+  ...queryKeysFactory(ADMIN_BUNDLES_QUERY_KEY),
+  detailProducts(id: string, query?: any) {
+    return [
+      ...this.detail(id),
+      "products" as const,
+      { ...(query || {}) },
+    ] as const;
+  },
+};
 
-type BundlesQueryKeys = typeof adminBundleKeys;
+type BundleQueryKeys = typeof adminBundleKeys;
 
 export const useAdminBundles = (
   query?: AdminGetBundlesParams,
   options?: UseQueryOptionsWrapper<
     Response<AdminBundlesListRes>,
     Error,
-    ReturnType<BundlesQueryKeys["list"]>
+    ReturnType<BundleQueryKeys["list"]>
   >
 ) => {
   const { client } = useMedusa();
 
   let path = "/admin/bundles";
 
-  // TODO: importing qs causes an error, fix this
   if (query) {
     const queryString = qs.stringify(query);
     path = `/admin/bundles?${queryString}`;
@@ -48,7 +57,7 @@ export const useAdminBundle = (
   options?: UseQueryOptionsWrapper<
     Response<AdminBundlesRes>,
     Error,
-    ReturnType<BundlesQueryKeys["detail"]>
+    ReturnType<BundleQueryKeys["detail"]>
   >
 ) => {
   const { client } = useMedusa();
@@ -60,18 +69,29 @@ export const useAdminBundle = (
   return { ...data, ...rest } as const;
 };
 
-export const useAdminProductTagUsage = (
+export const useAdminBundleProducts = (
+  id: string,
+  query?: AdminGetBundlesBundleProductsParams,
   options?: UseQueryOptionsWrapper<
-    Response<AdminProductsListTagsRes>,
+    Response<AdminBundlesBundleProductsListRes>,
     Error,
-    ReturnType<BundlesQueryKeys["detail"]>
+    ReturnType<BundleQueryKeys["detailProducts"]>
   >
 ) => {
   const { client } = useMedusa();
+
+  let path = `/store/bundles/${id}/products`;
+
+  if (query) {
+    const queryString = qs.stringify(query);
+    path = `/admin/bundles/${id}/products?${queryString}`;
+  }
+
   const { data, ...rest } = useQuery(
-    adminBundleKeys.detail("tags"),
-    () => client.admin.products.listTags(),
+    adminBundleKeys.detailProducts(id, query),
+    () => client.client.request("GET", path),
     options
   );
+
   return { ...data, ...rest } as const;
 };

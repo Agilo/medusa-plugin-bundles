@@ -124,7 +124,6 @@ Docker services are defined in `docker-compose.yml` file.
 - `postgres` - PostgreSQL database server for Medusa available on localhost:5432, you can change credentials and port in `.env` and `dev/medusa/.env` files
 - `pgadmin` - pgAdmin available on http://localhost:5050
 - `redis` - Redis server for Medusa available on localhost:6379
-- `admin` - Medusa Admin available on http://localhost:9000
 
 ## Additional Resources
 

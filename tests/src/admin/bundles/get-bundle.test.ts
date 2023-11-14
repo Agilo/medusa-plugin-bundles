@@ -19,6 +19,16 @@ function testAndSanitizeData(data: any) {
 }
 
 describe("/admin/bundles/get-bundle", () => {
+  it("should return 401 unauthorized", async () => {
+    const id = "bundle_coffeemugs01";
+    const response = await fetch(`${config.apiUrl}/admin/bundles/${id}`);
+    const data = await response.text();
+
+    expect({ data, status: response.status }).toMatchFileSnapshot(
+      `../../fixtures/admin/bundles/get-bundle/get-bundle-401-${id}.json`
+    );
+  });
+
   it("should return a bundle", async () => {
     const id = "bundle_coffeemugs01";
     const response = await fetch(`${config.apiUrl}/admin/bundles/${id}`, {

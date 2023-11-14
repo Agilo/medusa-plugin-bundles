@@ -18,6 +18,15 @@ function testAndSanitizeData(data: any) {
 }
 
 describe("/admin/bundles/list-bundles", () => {
+  it("should return 401 unauthorized", async () => {
+    const response = await fetch(`${config.apiUrl}/admin/bundles`);
+    const data = await response.text();
+
+    expect({ data, status: response.status }).toMatchFileSnapshot(
+      `../../fixtures/admin/bundles/list-bundles/list-bundles-401.json`
+    );
+  });
+
   it("should return default first page of bundles", async () => {
     const response = await fetch(`${config.apiUrl}/admin/bundles`, {
       headers: {

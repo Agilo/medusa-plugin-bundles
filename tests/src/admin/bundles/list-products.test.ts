@@ -52,6 +52,18 @@ function testAndSanitizeData(data: any) {
 }
 
 describe("/admin/bundles/list-products", () => {
+  it("should return 401 unauthorized", async () => {
+    const id = "bundle_coffeemugs01";
+    const response = await fetch(
+      `${config.apiUrl}/admin/bundles/${id}/products`
+    );
+    const data = await response.text();
+
+    expect({ data, status: response.status }).toMatchFileSnapshot(
+      `../../fixtures/admin/bundles/list-products/list-products-401-${id}.json`
+    );
+  });
+
   it("should return first page of products", async () => {
     const id = "bundle_coffeemugs01";
     const qs = "offset=0&limit=20";

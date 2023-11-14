@@ -7,11 +7,15 @@ on:
 jobs:
   tests:
     name: "Tests"
-    runs-on: ubuntu-latest
 
-    # Service containers to run with `container-job`
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node-version: [18, 20]
+
+    runs-on: ${{ matrix.os }}
+
     services:
-      # Label used to access the service container
       postgres:
         image: postgres:16.0
         ports:
@@ -27,9 +31,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-      # Label used to access the service container
       redis:
-        # Docker Hub image
         image: redis
         ports:
           - 6379:6379
@@ -45,7 +47,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: "yarn"
           cache-dependency-path: "**/yarn.lock"
 

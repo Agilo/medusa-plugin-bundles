@@ -84,7 +84,7 @@ jobs:
         with:
           node-version: 20
           cache: "yarn"
-          cache-dependency-path: "**/yarn.lock"
+          cache-dependency-path: "medusa-plugin-bundles/yarn.lock"
           registry-url: "https://registry.npmjs.org"
       - run: cd medusa-plugin-bundles && yarn npm publish
         env:

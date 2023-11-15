@@ -80,12 +80,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: 20
           cache: "yarn"
           cache-dependency-path: "medusa-plugin-bundles/yarn.lock"
-          registry-url: "https://registry.npmjs.org"
-      - run: cd medusa-plugin-bundles && yarn npm publish
+
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: "medusa-plugin-bundles/.yarnrc.yml"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: cd medusa-plugin-bundles && yarn npm publish
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # doesn't work

@@ -1,6 +1,6 @@
 {
   "name": "@agilo/medusa-plugin-bundles",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "A starter for Medusa projects.",
   "author": "Ivo Limic <ivo@agilo.co>",
   "license": "MIT",

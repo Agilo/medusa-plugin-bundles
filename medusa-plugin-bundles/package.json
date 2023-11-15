@@ -1,7 +1,8 @@
 {
   "name": "@agilo/medusa-plugin-bundles",
   "version": "1.0.0-alpha.3",
-  "description": "A starter for Medusa projects.",
+  "description": "Group products together in product bundles.",
+  "homepage": "https://github.com/Agilo/medusa-plugin-bundles",
   "author": "Ivo Limic <ivo@agilo.co>",
   "license": "MIT",
   "keywords": [

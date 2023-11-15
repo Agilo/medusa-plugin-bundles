@@ -75,7 +75,7 @@ jobs:
   #     - name: Run server and tests
   #       run: yarn run test-ci
 
-  publish:
+  publish-medusa-plugin-bundles:
     # needs: test
     runs-on: ubuntu-latest
     steps:
@@ -94,5 +94,28 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - run: cd medusa-plugin-bundles && yarn npm publish
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # doesn't work
+
+  publish-medusa-plugin-bundles-client:
+    # needs: test
+    needs: publish-medusa-plugin-bundles
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "yarn"
+          cache-dependency-path: "dev/medusa-plugin-bundles-client/yarn.lock"
+
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: "dev/medusa-plugin-bundles-client/.yarnrc.yml"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: cd dev/medusa-plugin-bundles-client && yarn npm publish
         # env:
         #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # doesn't work

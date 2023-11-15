@@ -5833,12 +5833,12 @@ __metadata:
   linkType: hard
 
 "axios-retry@npm:^3.1.9":
-  version: 3.8.1
-  resolution: "axios-retry@npm:3.8.1"
+  version: 3.9.0
+  resolution: "axios-retry@npm:3.9.0"
   dependencies:
     "@babel/runtime": ^7.15.4
     is-retry-allowed: ^2.2.0
-  checksum: 9233523d34987838504b1ea9d5f90025bf9d1210e10c3851c28d1e97be9f0c2dd401ddc9f0568759c79426533795de9c54bb8429720ace641032c51fef71cb0f
+  checksum: 0438cdeb96e51de09df1acb256d4e87eb2de37cac4f82bd1be86898290acdbfa39b9e123521218543e8450b7345b582a2343959e20fdcea127a31d83591cb11f
   languageName: node
   linkType: hard
 
@@ -6704,9 +6704,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001561
-  resolution: "caniuse-lite@npm:1.0.30001561"
-  checksum: 949829fe037e23346595614e01d362130245920503a12677f2506ce68e1240360113d6383febed41e8aa38cd0f5fd9c69c21b0af65a71c0246d560db489f1373
+  version: 1.0.30001562
+  resolution: "caniuse-lite@npm:1.0.30001562"
+  checksum: 414ed45ae47a432607be1c9588bd478440acb033e46ede74c97501bfdb9ba4b1615e221d3ce7c7be55e1e0834725fd1ce5bf5e037bb9dd384c8e85b5e83dc6d1
   languageName: node
   linkType: hard
 
@@ -8301,9 +8301,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.535":
-  version: 1.4.581
-  resolution: "electron-to-chromium@npm:1.4.581"
-  checksum: 9f7e890d756a043a500628fae40636e8f33fa88f01540621e55d2c380d3b0ff63b1b836818c1cf1cce9528a7a5d98d01ca4ecd3dd8d28dc88d3c8218460f9212
+  version: 1.4.583
+  resolution: "electron-to-chromium@npm:1.4.583"
+  checksum: 4fd0c79993613d3a8da18a15197e02750910e0d3005a706aa81ae5c83321694b35879d0e26e63fc6aa30746cfad53fd939641cf592f97ea9c010c89e93dd6ee0
   languageName: node
   linkType: hard
 

@@ -6,8 +6,8 @@ __metadata:
   cacheKey: 8
 
 "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles::locator=medusa%40workspace%3A.":
-  version: 0.1.0
-  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=281c67&locator=medusa%40workspace%3A."
+  version: 1.0.0-alpha.0
+  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=bd5c72&locator=medusa%40workspace%3A."
   dependencies:
     axios: ^0.24.0
     medusa-core-utils: ^1.2.0
@@ -23,7 +23,7 @@ __metadata:
     react-i18next: ^12.3.1
     react-router-dom: ^6.13.0
     typeorm: ^0.3.16
-  checksum: d95da4f2f2ce21c45c0c639159996c15de4b2f691716848924860c8ced2be3993e241606ce48194c132fd921b77cf118f79a802688e2638ddc13890ca94bcd17
+  checksum: 9f5ab911c0158eeceff6da45b760a656c5b9b83861b6a0d8454b1f4cebad1bdb5bd2d9ae724b9efad38001620e3809f48b4e465fa7f810f19b23753fe8775b84
   languageName: node
   linkType: hard
 
@@ -2322,13 +2322,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/ecma402-abstract@npm:1.17.4":
-  version: 1.17.4
-  resolution: "@formatjs/ecma402-abstract@npm:1.17.4"
+"@formatjs/ecma402-abstract@npm:1.18.0":
+  version: 1.18.0
+  resolution: "@formatjs/ecma402-abstract@npm:1.18.0"
   dependencies:
-    "@formatjs/intl-localematcher": 0.5.1
+    "@formatjs/intl-localematcher": 0.5.2
     tslib: ^2.4.0
-  checksum: cd3c669e339252db61a2238d5852bba553935bb4bdf10216b9cbfe4691f439a77c72c7fc9d4f86713394c2c54ec8c703fb5cdadb71bfa186655431352b2e0e51
+  checksum: 22be7f02397d565de621bba5d57135bf7a360b4f3f04e7d75194854f47c22fa8cc2e43ede2c6d1dea885d3cb5df6f58e82ea7ba457a7b3e208403372cd6b90f3
   languageName: node
   linkType: hard
 
@@ -2341,33 +2341,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@formatjs/icu-messageformat-parser@npm:2.7.2":
-  version: 2.7.2
-  resolution: "@formatjs/icu-messageformat-parser@npm:2.7.2"
+"@formatjs/icu-messageformat-parser@npm:2.7.3":
+  version: 2.7.3
+  resolution: "@formatjs/icu-messageformat-parser@npm:2.7.3"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.17.4
-    "@formatjs/icu-skeleton-parser": 1.6.4
+    "@formatjs/ecma402-abstract": 1.18.0
+    "@formatjs/icu-skeleton-parser": 1.7.0
     tslib: ^2.4.0
-  checksum: b6b793573f22a78eded9b7c5731a058a97b0f2b7fb47536951d15018c4dbcec61cbde5203af287abe6205724cbdef757a067af701a6d99c38a6142df92d161a9
+  checksum: 3efd07e26dfd768cfb4ebee72787f150eb7c65849610d0b08b09ffd26f127ce2a7027dc901a3a2ee536597a26bce289bff3f3d9de8247c274e364c0666f685d6
   languageName: node
   linkType: hard
 
-"@formatjs/icu-skeleton-parser@npm:1.6.4":
-  version: 1.6.4
-  resolution: "@formatjs/icu-skeleton-parser@npm:1.6.4"
+"@formatjs/icu-skeleton-parser@npm:1.7.0":
+  version: 1.7.0
+  resolution: "@formatjs/icu-skeleton-parser@npm:1.7.0"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.17.4
+    "@formatjs/ecma402-abstract": 1.18.0
     tslib: ^2.4.0
-  checksum: 776b6cf73a8f5333c873e83b4c3a3f2aa63847c7c440af2fa6296db970a0d9524c3b5691a5d20327fbcf04cd5a0ea3ea3b829520cfa538019ab2576e9d96e026
+  checksum: a461d95b0a39a52d2acb776cb60818188f32ca5d8be7d97440b892bb30564e852410c3fffe96c4c5e6793934f3f694958da8297bd7e3b0cbe114f11223a57013
   languageName: node
   linkType: hard
 
-"@formatjs/intl-localematcher@npm:0.5.1":
-  version: 0.5.1
-  resolution: "@formatjs/intl-localematcher@npm:0.5.1"
+"@formatjs/intl-localematcher@npm:0.5.2":
+  version: 0.5.2
+  resolution: "@formatjs/intl-localematcher@npm:0.5.2"
   dependencies:
     tslib: ^2.4.0
-  checksum: 8a2a00f6a794d9fb1a0e605e80e69e44271b8f34465e9436c198719338084ce71a0e8e73610d9c751eea15586c5a24ef539bd2b18d8bee94971cf920fc08cc2b
+  checksum: a741d69e9d3b71bee19726484de4a296711d96dc27f588d995b9e2079d3bc5d06370b6e84136003197d558d45f9faf507321627a78d8cd986705b78ec701c016
   languageName: node
   linkType: hard
 
@@ -5033,8 +5033,8 @@ __metadata:
   linkType: hard
 
 "@segment/analytics-next@npm:^1.51.1":
-  version: 1.59.0
-  resolution: "@segment/analytics-next@npm:1.59.0"
+  version: 1.60.0
+  resolution: "@segment/analytics-next@npm:1.60.0"
   dependencies:
     "@lukeed/uuid": ^2.0.0
     "@segment/analytics-core": 1.3.2
@@ -5047,7 +5047,7 @@ __metadata:
     spark-md5: ^3.0.1
     tslib: ^2.4.1
     unfetch: ^4.1.0
-  checksum: 4691b6c834f4b6a60336986104f7b57cf2a721358d262c7a20a110500bcff6f3ce002d8044b125ccc23f27a5b342d988ad8df33f897911043522dcc3878055c1
+  checksum: 02e168b5699dce8f24512c88a3b0171d4ebd6b5cbc81d067a7a621456a11bb2614247f35ed5497aa10def5ec4ab3d286ed3c4fd42b3261e015ae42da9671c6e6
   languageName: node
   linkType: hard
 
@@ -7706,12 +7706,12 @@ __metadata:
   linkType: hard
 
 "axios-retry@npm:^3.1.9":
-  version: 3.8.1
-  resolution: "axios-retry@npm:3.8.1"
+  version: 3.9.0
+  resolution: "axios-retry@npm:3.9.0"
   dependencies:
     "@babel/runtime": ^7.15.4
     is-retry-allowed: ^2.2.0
-  checksum: 9233523d34987838504b1ea9d5f90025bf9d1210e10c3851c28d1e97be9f0c2dd401ddc9f0568759c79426533795de9c54bb8429720ace641032c51fef71cb0f
+  checksum: 0438cdeb96e51de09df1acb256d4e87eb2de37cac4f82bd1be86898290acdbfa39b9e123521218543e8450b7345b582a2343959e20fdcea127a31d83591cb11f
   languageName: node
   linkType: hard
 
@@ -8247,9 +8247,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001538, caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001561
-  resolution: "caniuse-lite@npm:1.0.30001561"
-  checksum: 949829fe037e23346595614e01d362130245920503a12677f2506ce68e1240360113d6383febed41e8aa38cd0f5fd9c69c21b0af65a71c0246d560db489f1373
+  version: 1.0.30001562
+  resolution: "caniuse-lite@npm:1.0.30001562"
+  checksum: 414ed45ae47a432607be1c9588bd478440acb033e46ede74c97501bfdb9ba4b1615e221d3ce7c7be55e1e0834725fd1ce5bf5e037bb9dd384c8e85b5e83dc6d1
   languageName: node
   linkType: hard
 
@@ -9700,9 +9700,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.535":
-  version: 1.4.581
-  resolution: "electron-to-chromium@npm:1.4.581"
-  checksum: 9f7e890d756a043a500628fae40636e8f33fa88f01540621e55d2c380d3b0ff63b1b836818c1cf1cce9528a7a5d98d01ca4ecd3dd8d28dc88d3c8218460f9212
+  version: 1.4.583
+  resolution: "electron-to-chromium@npm:1.4.583"
+  checksum: 4fd0c79993613d3a8da18a15197e02750910e0d3005a706aa81ae5c83321694b35879d0e26e63fc6aa30746cfad53fd939641cf592f97ea9c010c89e93dd6ee0
   languageName: node
   linkType: hard
 
@@ -11476,14 +11476,14 @@ __metadata:
   linkType: hard
 
 "intl-messageformat@npm:^10.1.0":
-  version: 10.5.7
-  resolution: "intl-messageformat@npm:10.5.7"
+  version: 10.5.8
+  resolution: "intl-messageformat@npm:10.5.8"
   dependencies:
-    "@formatjs/ecma402-abstract": 1.17.4
+    "@formatjs/ecma402-abstract": 1.18.0
     "@formatjs/fast-memoize": 2.2.0
-    "@formatjs/icu-messageformat-parser": 2.7.2
+    "@formatjs/icu-messageformat-parser": 2.7.3
     tslib: ^2.4.0
-  checksum: 2f0bb4520b2e69f6ad83ba04ce907fc8b953e5d52a52414997ebb1da4af60123e50962f2c8687ce6e7f49eae7c81afca69769a35f70ef01fd18e24c2302e3c78
+  checksum: f0fc0c4ce4f711ac46227e1b41e1494bfadfd047e4581299ef4fbf79dcbd85fcc9851e7051432a02239fab9673c212a50f03060b5f83a930c286d4ba6c2261de
   languageName: node
   linkType: hard
 
@@ -16803,9 +16803,9 @@ __metadata:
   linkType: hard
 
 "std-env@npm:^3.0.1":
-  version: 3.4.3
-  resolution: "std-env@npm:3.4.3"
-  checksum: bef186fb2baddda31911234b1e58fa18f181eb6930616aaec3b54f6d5db65f2da5daaa5f3b326b98445a7d50ca81d6fe8809ab4ebab85ecbe4a802f1b40921bf
+  version: 3.5.0
+  resolution: "std-env@npm:3.5.0"
+  checksum: 8eba87eab2d6933e0575f13a65a359952a2e3e8c4d24eb55beac5500fe0403b3482c7b59a5de8d035ae13d390c76dd6c677772f9d2a89ea7cf39ae267b71bdd3
   languageName: node
   linkType: hard
 
@@ -17404,8 +17404,8 @@ __metadata:
   linkType: hard
 
 "ts-loader@npm:^9.2.6":
-  version: 9.5.0
-  resolution: "ts-loader@npm:9.5.0"
+  version: 9.5.1
+  resolution: "ts-loader@npm:9.5.1"
   dependencies:
     chalk: ^4.1.0
     enhanced-resolve: ^5.0.0
@@ -17415,7 +17415,7 @@ __metadata:
   peerDependencies:
     typescript: "*"
     webpack: ^5.0.0
-  checksum: a319575faa07145917a7050ac6be7e7f8d97745c6b6ecf8097ac51cebd2d459e8f8b2519d0c39066a065f4d73ae331d2aba9de3d62ea38bc59fd84395794d428
+  checksum: 7cf396e656d905388ea2a9b5e82f16d3c955fda8d3df2fbf219f4bee16ff50a3c995c44ae3e584634e9443f056cec70bb3151add3917ffb4588ecd7394bac0ec
   languageName: node
   linkType: hard
 

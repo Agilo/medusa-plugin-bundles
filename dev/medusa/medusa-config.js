@@ -60,7 +60,7 @@ const plugins = [
     },
   },
   {
-    resolve: "medusa-plugin-bundles",
+    resolve: "@agilo/medusa-plugin-bundles",
     options: {
       enableUI: true,
     },

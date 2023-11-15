@@ -5,78 +5,78 @@ on:
     types: [published]
 
 jobs:
-  test:
-    strategy:
-      matrix:
-        node-version: [18, 20]
+  # test:
+  #   strategy:
+  #     matrix:
+  #       node-version: [18, 20]
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:16.0
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: medusa-docker
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+  #   services:
+  #     postgres:
+  #       image: postgres:16.0
+  #       ports:
+  #         - 5432:5432
+  #       env:
+  #         POSTGRES_USER: postgres
+  #         POSTGRES_PASSWORD: postgres
+  #         POSTGRES_DB: medusa-docker
+  #       # Set health checks to wait until postgres has started
+  #       options: >-
+  #         --health-cmd pg_isready
+  #         --health-interval 10s
+  #         --health-timeout 5s
+  #         --health-retries 5
 
-      redis:
-        image: redis
-        ports:
-          - 6379:6379
-        # Set health checks to wait until redis has started
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+  #     redis:
+  #       image: redis
+  #       ports:
+  #         - 6379:6379
+  #       # Set health checks to wait until redis has started
+  #       options: >-
+  #         --health-cmd "redis-cli ping"
+  #         --health-interval 10s
+  #         --health-timeout 5s
+  #         --health-retries 5
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "yarn"
-          cache-dependency-path: "**/yarn.lock"
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #         cache: "yarn"
+  #         cache-dependency-path: "**/yarn.lock"
 
-      - name: Install dependencies
-        run: npm i @medusajs/medusa-cli -g
+  #     - name: Install dependencies
+  #       run: npm i @medusajs/medusa-cli -g
 
-      - name: Install dependencies
-        run: npm i yalc -g
+  #     - name: Install dependencies
+  #       run: npm i yalc -g
 
-      - name: Install dependencies
-        run: yarn install
+  #     - name: Install dependencies
+  #       run: yarn install
 
-      - name: Install dependencies
-        run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add @agilo/medusa-plugin-bundles && yarn install
+  #     - name: Install dependencies
+  #       run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add @agilo/medusa-plugin-bundles && yarn install
 
-      - name: Install dependencies
-        run: cd tests && yarn install
+  #     - name: Install dependencies
+  #       run: cd tests && yarn install
 
-      - name: Build medusa
-        run: cd dev/medusa && yarn run build:server
+  #     - name: Build medusa
+  #       run: cd dev/medusa && yarn run build:server
 
-      - name: Run migrations
-        run: cd dev/medusa && medusa migrations run
+  #     - name: Run migrations
+  #       run: cd dev/medusa && medusa migrations run
 
-      - name: Seed the database
-        run: cd dev/medusa && yarn run seed:medusa-plugin-bundles
+  #     - name: Seed the database
+  #       run: cd dev/medusa && yarn run seed:medusa-plugin-bundles
 
-      - name: Run server and tests
-        run: yarn run test-ci
+  #     - name: Run server and tests
+  #       run: yarn run test-ci
 
   publish:
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

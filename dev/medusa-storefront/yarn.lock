@@ -12,6 +12,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@agilo/medusa-plugin-bundles-client@file:.yalc/@agilo/medusa-plugin-bundles-client::locator=medusa-storefront%40workspace%3A.":
+  version: 0.1.0
+  resolution: "@agilo/medusa-plugin-bundles-client@file:.yalc/@agilo/medusa-plugin-bundles-client#.yalc/@agilo/medusa-plugin-bundles-client::hash=e11cfb&locator=medusa-storefront%40workspace%3A."
+  peerDependencies:
+    "@medusajs/medusa": ^1.12.0
+    "@tanstack/react-query": 4.22.0
+    medusa-react: ^9.0.0
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 7f896c3b3197b3fa339438a6337ae410336e2838546312f43a7f76a6c43616f00f1aeb2e272ec3b74a280442fd77023d75e14bb95bb3d85484795f4cd1ff8047
+  languageName: node
+  linkType: hard
+
 "@algolia/cache-browser-local-storage@npm:4.20.0":
   version: 4.20.0
   resolution: "@algolia/cache-browser-local-storage@npm:4.20.0"
@@ -6386,19 +6399,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"medusa-plugin-bundles-client@file:.yalc/medusa-plugin-bundles-client::locator=medusa-storefront%40workspace%3A.":
-  version: 0.0.1
-  resolution: "medusa-plugin-bundles-client@file:.yalc/medusa-plugin-bundles-client#.yalc/medusa-plugin-bundles-client::hash=585030&locator=medusa-storefront%40workspace%3A."
-  peerDependencies:
-    "@medusajs/medusa": ^1.12.0
-    "@tanstack/react-query": 4.22.0
-    medusa-react: ^9.0.0
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: b96162cb3bc2c4f6097ab9da43a824c0c933a7b8b8bc96aab397d9db36bb78883ae35ad3742c83bbd38e75c9f0dec46cdecfe78d0bd223635eb434da8a9ac525
-  languageName: node
-  linkType: hard
-
 "medusa-react@npm:^9.0.0":
   version: 9.0.11
   resolution: "medusa-react@npm:9.0.11"
@@ -6417,6 +6417,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "medusa-storefront@workspace:."
   dependencies:
+    "@agilo/medusa-plugin-bundles-client": "file:.yalc/@agilo/medusa-plugin-bundles-client"
     "@babel/core": ^7.17.5
     "@headlessui/react": ^1.6.1
     "@hookform/error-message": ^2.0.0
@@ -6441,7 +6442,6 @@ __metadata:
     eslint: 8.10.0
     eslint-config-next: ^13.4.5
     lodash: ^4.17.21
-    medusa-plugin-bundles-client: "file:.yalc/medusa-plugin-bundles-client"
     medusa-react: ^9.0.0
     next: ^13.4.5
     postcss: ^8.4.8

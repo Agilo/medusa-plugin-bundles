@@ -5,6 +5,46 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@agilo/medusa-plugin-bundles-client@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@agilo/medusa-plugin-bundles-client@workspace:."
+  dependencies:
+    "@babel/core": ^7.16.0
+    "@medusajs/medusa": ^1.17.1
+    "@storybook/addon-essentials": ^6.3.12
+    "@storybook/addon-links": ^6.3.12
+    "@storybook/addons": ^6.3.12
+    "@storybook/react": ^6.3.12
+    "@tanstack/react-query": 4.22.0
+    "@testing-library/react": ^13.4.0
+    "@testing-library/react-hooks": ^8.0.1
+    "@types/jest": ^27.0.3
+    "@types/react": ^17.0.53
+    "@types/react-dom": ^17.0.18
+    axios: ^0.24.0
+    babel-loader: ^8.2.3
+    cross-env: ^5.2.1
+    jest: ^29.4.1
+    jest-environment-jsdom: ^29.4.1
+    medusa-react: ^9.0.0
+    msw: ^0.35.0
+    msw-storybook-addon: ^1.5.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-is: ^17.0.2
+    react-json-view: ^1.21.3
+    ts-jest: ^29.0.5
+    tslib: ^2.3.1
+    tsup: 6.7.0
+  peerDependencies:
+    "@medusajs/medusa": ^1.12.0
+    "@tanstack/react-query": 4.22.0
+    medusa-react: ^9.0.0
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  languageName: unknown
+  linkType: soft
+
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
@@ -12784,46 +12824,6 @@ __metadata:
   checksum: 2afd8e8ecfae3de11b307b8874949293b28fc7693726b3b893b88f0954acb494147614976f838ed543c1fb3682b7fca67a8a33545da99ade141a3fd42cef9bd2
   languageName: node
   linkType: hard
-
-"medusa-plugin-bundles-client@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "medusa-plugin-bundles-client@workspace:."
-  dependencies:
-    "@babel/core": ^7.16.0
-    "@medusajs/medusa": ^1.17.1
-    "@storybook/addon-essentials": ^6.3.12
-    "@storybook/addon-links": ^6.3.12
-    "@storybook/addons": ^6.3.12
-    "@storybook/react": ^6.3.12
-    "@tanstack/react-query": 4.22.0
-    "@testing-library/react": ^13.4.0
-    "@testing-library/react-hooks": ^8.0.1
-    "@types/jest": ^27.0.3
-    "@types/react": ^17.0.53
-    "@types/react-dom": ^17.0.18
-    axios: ^0.24.0
-    babel-loader: ^8.2.3
-    cross-env: ^5.2.1
-    jest: ^29.4.1
-    jest-environment-jsdom: ^29.4.1
-    medusa-react: ^9.0.0
-    msw: ^0.35.0
-    msw-storybook-addon: ^1.5.0
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    react-is: ^17.0.2
-    react-json-view: ^1.21.3
-    ts-jest: ^29.0.5
-    tslib: ^2.3.1
-    tsup: 6.7.0
-  peerDependencies:
-    "@medusajs/medusa": ^1.12.0
-    "@tanstack/react-query": 4.22.0
-    medusa-react: ^9.0.0
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  languageName: unknown
-  linkType: soft
 
 "medusa-react@npm:^9.0.0":
   version: 9.0.11

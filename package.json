@@ -7,7 +7,7 @@
     "generate:medusa-api:admin": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./dev/scripts/generate-medusa-client.ts admin",
     "generate:medusa-api:store": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./dev/scripts/generate-medusa-client.ts store && cd dev/medusa-plugin-bundles-client && yarn run prepare",
     "generate:medusa-api": "yarn run generate:medusa-api:admin && yarn run generate:medusa-api:store",
-    "setup": "cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add medusa-plugin-bundles && yarn install && cd ../medusa-plugin-bundles-client && yarn install && yalc publish && cd ../medusa-storefront && yalc add medusa-plugin-bundles-client && yarn install && cd ../../tests && yarn install && cd ..",
+    "setup": "cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add @agilo/medusa-plugin-bundles && yarn install && cd ../medusa-plugin-bundles-client && yarn install && yalc publish && cd ../medusa-storefront && yalc add @agilo/medusa-plugin-bundles-client && yarn install && cd ../../tests && yarn install && cd ..",
     "start": "cd medusa-plugin-bundles && yalc publish && cd .. && cd dev/medusa-plugin-bundles-client && yalc publish && cd ../.. && yarn run sync && cd dev/medusa && yarn run build && cd ../.. && concurrently \"yarn run watch:medusa-plugin-bundles\" \"yarn run watch:medusa-plugin-bundles-client\" --timings --prefix \"[{index}] [{time}] =>\"",
     "sync:medusa": "cd medusa-plugin-bundles && yalc publish --no-scripts --push",
     "sync:storefront": "cd dev/medusa-plugin-bundles-client && yalc publish --no-scripts --push",

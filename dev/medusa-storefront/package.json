@@ -20,6 +20,7 @@
     "@types/react": "17.0.40"
   },
   "dependencies": {
+    "@agilo/medusa-plugin-bundles-client": "file:.yalc/@agilo/medusa-plugin-bundles-client",
     "@headlessui/react": "^1.6.1",
     "@hookform/error-message": "^2.0.0",
     "@medusajs/medusa-js": "^6.0.3",
@@ -32,7 +33,6 @@
     "@tanstack/react-query": "^4.22.4",
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",
-    "medusa-plugin-bundles-client": "file:.yalc/medusa-plugin-bundles-client",
     "medusa-react": "^9.0.0",
     "next": "^13.4.5",
     "react": "^18.2.0",

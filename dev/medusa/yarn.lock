@@ -6,8 +6,8 @@ __metadata:
   cacheKey: 8
 
 "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles::locator=medusa%40workspace%3A.":
-  version: 1.0.0-alpha.0
-  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=bd5c72&locator=medusa%40workspace%3A."
+  version: 1.0.0-alpha.2
+  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=07d26f&locator=medusa%40workspace%3A."
   dependencies:
     axios: ^0.24.0
     medusa-core-utils: ^1.2.0
@@ -23,7 +23,7 @@ __metadata:
     react-i18next: ^12.3.1
     react-router-dom: ^6.13.0
     typeorm: ^0.3.16
-  checksum: 9f5ab911c0158eeceff6da45b760a656c5b9b83861b6a0d8454b1f4cebad1bdb5bd2d9ae724b9efad38001620e3809f48b4e465fa7f810f19b23753fe8775b84
+  checksum: ec498aa0b963f5fa310783ad783716fef46f24b703632fe6058926e8af7cfa65364574a3d5225cfc3026bfb84a2b504ae1be92de125bfc79e97106a03457a041
   languageName: node
   linkType: hard
 
@@ -5033,8 +5033,8 @@ __metadata:
   linkType: hard
 
 "@segment/analytics-next@npm:^1.51.1":
-  version: 1.60.0
-  resolution: "@segment/analytics-next@npm:1.60.0"
+  version: 1.61.0
+  resolution: "@segment/analytics-next@npm:1.61.0"
   dependencies:
     "@lukeed/uuid": ^2.0.0
     "@segment/analytics-core": 1.3.2
@@ -5047,7 +5047,7 @@ __metadata:
     spark-md5: ^3.0.1
     tslib: ^2.4.1
     unfetch: ^4.1.0
-  checksum: 02e168b5699dce8f24512c88a3b0171d4ebd6b5cbc81d067a7a621456a11bb2614247f35ed5497aa10def5ec4ab3d286ed3c4fd42b3261e015ae42da9671c6e6
+  checksum: e0d2d3d3a0b98320bbef1ac726c275607b51b555525325d883266bb4029a97187a3b4fe224f9338b7a292cfad055b2d21ff71f5db98b5e72c9b4317aada60572
   languageName: node
   linkType: hard
 

@@ -58,7 +58,7 @@ jobs:
         run: yarn install
 
       - name: Install dependencies
-        run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add medusa-plugin-bundles && yarn install
+        run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add @agilo/medusa-plugin-bundles && yarn install
 
       - name: Install dependencies
         run: cd tests && yarn install

@@ -1,6 +1,6 @@
 # Medusa Bundles
 
-Group products together and sell them as a bundle.
+Group products together in product bundles.
 
 <p>
   <a href="./LICENSE">
@@ -16,8 +16,8 @@ Group products together and sell them as a bundle.
 
 ## Features
 
-- Group products together in bundles from the admin dashboard.
-- Use plugin Store API endpoints to list bundles in your storefront.
+- Group products together in product bundles from the admin dashboard.
+- Use plugin Store API endpoints to list product bundles in your storefront.
 
 ---
 

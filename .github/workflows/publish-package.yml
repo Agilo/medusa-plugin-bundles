@@ -93,7 +93,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: cd medusa-plugin-bundles && yarn npm publish
+      # manually running prepare script because yarn v3 doesn't run it when publishing like npm does
+      - run: cd medusa-plugin-bundles && yarn install && yarn run prepare && yarn npm publish
         # env:
         #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # doesn't work
 
@@ -116,6 +117,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: cd dev/medusa-plugin-bundles-client && yarn npm publish
+      # manually running prepare script because yarn v3 doesn't run it when publishing like npm does
+      - run: cd dev/medusa-plugin-bundles-client && yarn install && yarn run prepare && yarn npm publish
         # env:
         #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # doesn't work

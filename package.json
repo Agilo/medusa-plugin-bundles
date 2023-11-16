@@ -1,5 +1,9 @@
 {
   "name": "medusa-bundles",
+  "description": "Monorepo for @agilo/medusa-plugin-bundles",
+  "homepage": "https://github.com/Agilo/medusa-plugin-bundles",
+  "author": "Ivo Limić <ivo@agilo.co>",
+  "license": "MIT",
   "packageManager": "yarn@3.6.3",
   "private": true,
   "type": "module",

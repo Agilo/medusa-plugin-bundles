@@ -13,15 +13,15 @@ __metadata:
   linkType: hard
 
 "@agilo/medusa-plugin-bundles-client@file:.yalc/@agilo/medusa-plugin-bundles-client::locator=medusa-storefront%40workspace%3A.":
-  version: 1.0.0-alpha.9
-  resolution: "@agilo/medusa-plugin-bundles-client@file:.yalc/@agilo/medusa-plugin-bundles-client#.yalc/@agilo/medusa-plugin-bundles-client::hash=87e9c6&locator=medusa-storefront%40workspace%3A."
+  version: 1.0.0-alpha.10
+  resolution: "@agilo/medusa-plugin-bundles-client@file:.yalc/@agilo/medusa-plugin-bundles-client#.yalc/@agilo/medusa-plugin-bundles-client::hash=9a7310&locator=medusa-storefront%40workspace%3A."
   peerDependencies:
     "@medusajs/medusa": ^1.12.0
     "@tanstack/react-query": 4.22.0
     medusa-react: ^9.0.0
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 379f8decc788106f021d99a37d8aa20dfdd1676bf051213c5b3fb03120a20cb8dc63d783e43c5161041ef8b176e850e00a1827938ec1696e06cd5fe6fa6f34ac
+  checksum: 8596603e31d4041ba3d3a55d974d7eb443ed79b57e59c087d3c96b6ba89f32de1fb7aea6c10dd215b17b15f655a570b506d1c872df678544482bd639d1cef20d
   languageName: node
   linkType: hard
 

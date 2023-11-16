@@ -1,6 +1,6 @@
 # Medusa Bundles Client
 
-A React library that provides a set of hooks for interacting seamlessly with the [Medusa Bundles](https://github.com/Agilo/medusa-plugin-bundles) plugin Store API endpoints. It can be used to build custom React-based storefronts.
+A React library that provides a set of hooks for interacting seamlessly with the [@agilo/medusa-plugin-bundles](https://github.com/Agilo/medusa-plugin-bundles) Store API endpoints. It can be used to build custom React-based storefronts.
 
 <p>
   <a href="./LICENSE">

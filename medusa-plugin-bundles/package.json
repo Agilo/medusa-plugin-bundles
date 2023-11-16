@@ -1,6 +1,6 @@
 {
   "name": "@agilo/medusa-plugin-bundles",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Group products together in product bundles.",
   "homepage": "https://github.com/Agilo/medusa-plugin-bundles",
   "author": "Ivo Limic <ivo@agilo.co>",
@@ -20,6 +20,7 @@
     "build:admin": "cross-env medusa-admin build",
     "watch": "cross-env tsc --watch",
     "prepare": "cross-env NODE_ENV=production yarn run build:server && medusa-admin bundle",
+    "prepack": "yarn run prepare",
     "test": "cross-env jest",
     "seed": "cross-env medusa seed -f ./data/seed.json",
     "start": "cross-env yarn run build && medusa start",

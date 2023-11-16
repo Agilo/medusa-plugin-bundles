@@ -32,7 +32,7 @@ Group products together in product bundles.
 1\. Run the following command in the directory of the Medusa backend:
 
 ```bash
-npm i medusa-plugin-bundles
+npm i @agilo/medusa-plugin-bundles
 ```
 
 2\. In `medusa-config.js` add the following at the end of the `plugins` array:
@@ -69,7 +69,7 @@ npm run start
 
 3\. Implement your storefront.
 
-- Either use our `medusa-react` hooks from the `medusa-plugin-bundles-client` to list bundles in your storefront.
+- Either use `medusa-react` hooks from the [`@agilo/medusa-plugin-bundles-client`](https://github.com/Agilo/medusa-plugin-bundles/tree/master/dev/medusa-plugin-bundles-client) to list bundles in your storefront.
 - Or directly consume the Store API endpoints that the plugin adds to Medusa.
 
 ## Contributing

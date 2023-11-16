@@ -7,15 +7,15 @@ __metadata:
 
 "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles::locator=medusa%40workspace%3A.":
   version: 1.0.0-alpha.10
-  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=b8f76b&locator=medusa%40workspace%3A."
+  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=ba0ac0&locator=medusa%40workspace%3A."
   dependencies:
     axios: ^0.24.0
     medusa-core-utils: ^1.2.0
   peerDependencies:
     "@medusajs/admin": ^7.1.1
     "@medusajs/medusa": ^1.16.0
-    "@tanstack/react-query": 4.22.0
-    medusa-react: ^9.0.0
+    "@tanstack/react-query": ^4.22.0
+    medusa-react: ^9.0.5
     qs: ^6.10.3
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -23,7 +23,7 @@ __metadata:
     react-i18next: ^12.3.1
     react-router-dom: ^6.13.0
     typeorm: ^0.3.16
-  checksum: 2580821a7d44337a1c5797098401fbd8b2156811e98381cec19e4e7582a4ac10878d2c47de96db87c42afb49789ec7302021cedc5ed5d37d6c2c1b34ef4dad4f
+  checksum: 51335c6501271b9dd9b75c529c3c44ca314f1679df9982f8abc760644a647dda609b9418f52da86fcb30e76b1afe78b45b34d34f7c254438f3b16ea7d17651c7
   languageName: node
   linkType: hard
 

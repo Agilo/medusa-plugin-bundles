@@ -16,36 +16,36 @@ __metadata:
     "@medusajs/medusa": ^1.16.0
     "@radix-ui/react-dialog": ^1.0.4
     "@radix-ui/react-portal": ^1.0.2
-    "@tanstack/react-query": 4.22.0
-    "@types/express": ^4.17.13
+    "@tanstack/react-query": ^4.22.0
+    "@types/express": ^4.17.17
     "@types/jest": ^27.4.0
     "@types/node": ^17.0.8
     "@types/react-table": ^7.7.9
     axios: ^0.24.0
     class-validator: ^0.14.0
-    cross-env: ^7.0.3
+    cross-env: ^5.2.1
     dotenv: 16.0.3
     eslint: ^6.8.0
     jest: ^27.3.1
     medusa-core-utils: ^1.2.0
     medusa-interfaces: ^1.3.7
-    medusa-react: ^9.0.0
+    medusa-react: ^9.0.5
     react-dom: ^18.2.0
     react-hook-form: 7.38.0
     react-i18next: ^12.3.1
     react-query: ^3.39.3
     react-router-dom: ^6.13.0
     react-table: ^7.7.0
-    rimraf: ^3.0.2
+    rimraf: ^5.0.1
     ts-jest: ^27.0.7
     ts-loader: ^9.2.6
     typeorm: ^0.3.16
-    typescript: ^4.5.2
+    typescript: ^4.4.4
   peerDependencies:
     "@medusajs/admin": ^7.1.1
     "@medusajs/medusa": ^1.16.0
-    "@tanstack/react-query": 4.22.0
-    medusa-react: ^9.0.0
+    "@tanstack/react-query": ^4.22.0
+    medusa-react: ^9.0.5
     qs: ^6.10.3
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -6530,6 +6530,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.36.1":
+  version: 4.36.1
+  resolution: "@tanstack/query-core@npm:4.36.1"
+  checksum: 47672094da20d89402d9fe03bb7b0462be73a76ff9ca715169738bc600a719d064d106d083a8eedae22a2c22de22f87d5eb5d31ef447aba771d9190f2117ed10
+  languageName: node
+  linkType: hard
+
 "@tanstack/react-query@npm:4.22.0":
   version: 4.22.0
   resolution: "@tanstack/react-query@npm:4.22.0"
@@ -6546,6 +6553,25 @@ __metadata:
     react-native:
       optional: true
   checksum: b146774b44a79dd5a6412d981ce04790e66da5a36f907a03c85c36f50a38fb4e4dfbfca7b1561c86b39fb0df1c0c1ae0a0ef2930c06b444da3f430b9bad450f1
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.22.0":
+  version: 4.36.1
+  resolution: "@tanstack/react-query@npm:4.36.1"
+  dependencies:
+    "@tanstack/query-core": 4.36.1
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: 1aff0a476859386f8d32253fa0d0bde7b81769a6d4d4d9cbd78778f0f955459a3bdb7ee27a0d2ee7373090f12998b45df80db0b5b313bd0a7a39d36c6e8e51c5
   languageName: node
   linkType: hard
 
@@ -6714,7 +6740,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:*, @types/express@npm:^4.17.13":
+"@types/express@npm:*, @types/express@npm:^4.17.13, @types/express@npm:^4.17.17":
   version: 4.17.21
   resolution: "@types/express@npm:4.17.21"
   dependencies:
@@ -8918,18 +8944,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-env@npm:^7.0.3":
-  version: 7.0.3
-  resolution: "cross-env@npm:7.0.3"
-  dependencies:
-    cross-spawn: ^7.0.1
-  bin:
-    cross-env: src/bin/cross-env.js
-    cross-env-shell: src/bin/cross-env-shell.js
-  checksum: 26f2f3ea2ab32617f57effb70d329c2070d2f5630adc800985d8b30b56e8bf7f5f439dd3a0358b79cee6f930afc23cf8e23515f17ccfb30092c6b62c6b630a79
-  languageName: node
-  linkType: hard
-
 "cross-fetch@npm:4.0.0":
   version: 4.0.0
   resolution: "cross-fetch@npm:4.0.0"
@@ -8961,7 +8975,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.1, cross-spawn@npm:^7.0.3":
+"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
   dependencies:
@@ -10708,7 +10722,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.2.2, glob@npm:^10.3.10":
+"glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.3.7":
   version: 10.3.10
   resolution: "glob@npm:10.3.10"
   dependencies:
@@ -13038,7 +13052,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"medusa-react@npm:^9.0.0, medusa-react@npm:^9.0.11":
+"medusa-react@npm:^9.0.11, medusa-react@npm:^9.0.5":
   version: 9.0.11
   resolution: "medusa-react@npm:9.0.11"
   dependencies:
@@ -16071,6 +16085,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rimraf@npm:^5.0.1":
+  version: 5.0.5
+  resolution: "rimraf@npm:5.0.5"
+  dependencies:
+    glob: ^10.3.7
+  bin:
+    rimraf: dist/esm/bin.mjs
+  checksum: d66eef829b2e23b16445f34e73d75c7b7cf4cbc8834b04720def1c8f298eb0753c3d76df77325fad79d0a2c60470525d95f89c2475283ad985fd7441c32732d1
+  languageName: node
+  linkType: hard
+
 "rollup-plugin-esbuild@npm:5.0.0":
   version: 5.0.0
   resolution: "rollup-plugin-esbuild@npm:5.0.0"
@@ -17490,7 +17515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.5.2":
+"typescript@npm:^4.4.4":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -17500,7 +17525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.5.2#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.4.4#~builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"
   bin:

@@ -1,6 +1,6 @@
 {
   "name": "@agilo/medusa-plugin-bundles-client",
-  "version": "1.0.0-alpha.6",
+  "version": "1.0.0-alpha.7",
   "packageManager": "yarn@3.6.3",
   "homepage": "https://github.com/Agilo/medusa-plugin-bundles/tree/master/dev/medusa-plugin-bundles-client",
   "scripts": {
@@ -35,7 +35,8 @@
     "react-json-view": "^1.21.3",
     "ts-jest": "^29.0.5",
     "tslib": "^2.3.1",
-    "tsup": "6.7.0"
+    "tsup": "6.7.0",
+    "typescript": "^5.2.2"
   },
   "peerDependencies": {
     "@medusajs/medusa": "^1.12.0",

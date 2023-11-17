@@ -2,11 +2,11 @@ import { Response } from "@medusajs/medusa-js";
 import { useQuery } from "@tanstack/react-query";
 import { useMedusa } from "medusa-react";
 import qs from "qs";
-import { AdminBundlesBundleProductsListRes } from "src/api/routes/admin/bundles";
-import { AdminGetBundlesBundleProductsParams } from "src/api/routes/admin/bundles/list-products";
 import {
+  AdminBundlesBundleProductsListRes,
   AdminBundlesListRes,
   AdminBundlesRes,
+  AdminGetBundlesBundleProductsParams,
   AdminGetBundlesParams,
 } from "../../../generated/models";
 import { UseQueryOptionsWrapper } from "../../types";

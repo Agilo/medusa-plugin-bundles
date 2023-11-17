@@ -2,11 +2,13 @@
 /* tslint:disable */
 /* eslint-disable */
 export type { Address } from './Address';
+export type { AdminBundlesBundleProductsListRes } from './AdminBundlesBundleProductsListRes';
 export type { AdminBundlesDeleteRes } from './AdminBundlesDeleteRes';
 export type { AdminBundlesListRes } from './AdminBundlesListRes';
 export type { AdminBundlesRes } from './AdminBundlesRes';
 export type { AdminDeleteProductsFromBundleReq } from './AdminDeleteProductsFromBundleReq';
 export type { AdminDeleteProductsFromBundleRes } from './AdminDeleteProductsFromBundleRes';
+export type { AdminGetBundlesBundleProductsParams } from './AdminGetBundlesBundleProductsParams';
 export type { AdminGetBundlesParams } from './AdminGetBundlesParams';
 export type { AdminPostBundlesBundleReq } from './AdminPostBundlesBundleReq';
 export type { AdminPostBundlesReq } from './AdminPostBundlesReq';
@@ -25,6 +27,7 @@ export type { Discount } from './Discount';
 export type { DiscountCondition } from './DiscountCondition';
 export type { DiscountRule } from './DiscountRule';
 export type { DraftOrder } from './DraftOrder';
+export type { Error } from './Error';
 export type { Fulfillment } from './Fulfillment';
 export type { FulfillmentItem } from './FulfillmentItem';
 export type { FulfillmentProvider } from './FulfillmentProvider';
@@ -35,6 +38,7 @@ export type { LineItem } from './LineItem';
 export type { LineItemAdjustment } from './LineItemAdjustment';
 export type { LineItemTaxLine } from './LineItemTaxLine';
 export type { MoneyAmount } from './MoneyAmount';
+export type { MultipleErrors } from './MultipleErrors';
 export type { Order } from './Order';
 export type { OrderEdit } from './OrderEdit';
 export type { OrderItemChange } from './OrderItemChange';
@@ -42,6 +46,8 @@ export type { Payment } from './Payment';
 export type { PaymentCollection } from './PaymentCollection';
 export type { PaymentProvider } from './PaymentProvider';
 export type { PaymentSession } from './PaymentSession';
+export type { PricedProduct } from './PricedProduct';
+export type { PricedVariant } from './PricedVariant';
 export type { PriceList } from './PriceList';
 export type { Product } from './Product';
 export type { ProductCategory } from './ProductCategory';

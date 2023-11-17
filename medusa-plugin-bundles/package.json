@@ -19,7 +19,7 @@
     "build:server": "cross-env yarn run clean && tsc -p tsconfig.server.json",
     "build:admin": "cross-env medusa-admin build",
     "watch": "cross-env tsc --watch",
-    "prepare": "cross-env NODE_ENV=production yarn run build:server && medusa-admin bundle",
+    "prepare": "cross-env NODE_ENV=production yarn run build:server && NODE_ENV=production medusa-admin bundle",
     "test": "cross-env jest",
     "seed": "cross-env medusa seed -f ./data/seed.json",
     "start": "cross-env yarn run build && medusa start",

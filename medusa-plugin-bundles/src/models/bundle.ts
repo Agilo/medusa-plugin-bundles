@@ -1,3 +1,6 @@
+import { BaseEntity } from "@medusajs/medusa";
+import { DbAwareColumn, generateEntityId } from "@medusajs/medusa/dist/utils";
+import { kebabCase } from "lodash";
 import {
   BeforeInsert,
   Column,
@@ -6,10 +9,7 @@ import {
   JoinTable,
   ManyToMany,
 } from "typeorm";
-import { BaseEntity } from "@medusajs/medusa";
-import { DbAwareColumn, generateEntityId } from "@medusajs/medusa/dist/utils";
 import { Product } from "./product";
-import _ from "lodash";
 
 export enum BundleStatus {
   DRAFT = "draft",
@@ -55,7 +55,7 @@ export class Bundle extends BaseEntity {
     this.id = generateEntityId(this.id, "bundle");
 
     if (!this.handle) {
-      this.handle = _.kebabCase(this.title);
+      this.handle = kebabCase(this.title);
     }
   }
 }

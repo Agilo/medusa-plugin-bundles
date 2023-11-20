@@ -5,7 +5,11 @@ on:
   push:
 
 jobs:
-  tests:
+  test:
+    strategy:
+      matrix:
+        node-version: [18, 20]
+
     runs-on: ubuntu-latest
 
     services:
@@ -40,7 +44,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: "yarn"
           cache-dependency-path: "**/yarn.lock"
 
@@ -54,7 +58,7 @@ jobs:
         run: yarn install
 
       - name: Install dependencies
-        run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add medusa-plugin-bundles && yarn install
+        run: cd medusa-plugin-bundles && yarn install && yalc publish && cd ../dev/medusa && yalc add @agilo/medusa-plugin-bundles && yarn install
 
       - name: Install dependencies
         run: cd tests && yarn install

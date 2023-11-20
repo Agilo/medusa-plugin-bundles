@@ -5,6 +5,43 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@agilo/medusa-plugin-bundles-client@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@agilo/medusa-plugin-bundles-client@workspace:."
+  dependencies:
+    "@babel/core": ^7.16.0
+    "@medusajs/medusa": ^1.16.0
+    "@storybook/addon-essentials": ^6.3.12
+    "@storybook/addon-links": ^6.3.12
+    "@storybook/addons": ^6.3.12
+    "@storybook/react": ^6.3.12
+    "@tanstack/react-query": ^4.22.0
+    "@testing-library/react": ^13.4.0
+    "@testing-library/react-hooks": ^8.0.1
+    "@types/jest": ^27.0.3
+    "@types/react": ^17.0.53
+    "@types/react-dom": ^17.0.18
+    axios: ^0.24.0
+    babel-loader: ^8.2.3
+    cross-env: ^5.2.1
+    jest: ^29.4.1
+    jest-environment-jsdom: ^29.4.1
+    medusa-react: ^9.0.5
+    msw: ^0.35.0
+    msw-storybook-addon: ^1.5.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-is: ^17.0.2
+    react-json-view: ^1.21.3
+    ts-jest: ^29.0.5
+    tslib: ^2.3.1
+    tsup: 6.7.0
+    typescript: ^5.2.2
+  peerDependencies:
+    medusa-react: ^9.0.5
+  languageName: unknown
+  linkType: soft
+
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.2.1
   resolution: "@ampproject/remapping@npm:2.2.1"
@@ -2441,7 +2478,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@medusajs/medusa@npm:^1.17.1":
+"@medusajs/medusa@npm:^1.16.0":
   version: 1.17.4
   resolution: "@medusajs/medusa@npm:1.17.4"
   dependencies:
@@ -4193,18 +4230,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:4.22.0":
-  version: 4.22.0
-  resolution: "@tanstack/query-core@npm:4.22.0"
-  checksum: d24c13f8e21b65380230055a6673ae670aca5ee550c2f9a24b89fd3ac5243b465bb25f61b29da8ca285fc7fb0f4c2f8add3864f742eafac5131e777f3e52767a
+"@tanstack/query-core@npm:4.36.1":
+  version: 4.36.1
+  resolution: "@tanstack/query-core@npm:4.36.1"
+  checksum: 47672094da20d89402d9fe03bb7b0462be73a76ff9ca715169738bc600a719d064d106d083a8eedae22a2c22de22f87d5eb5d31ef447aba771d9190f2117ed10
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:4.22.0":
-  version: 4.22.0
-  resolution: "@tanstack/react-query@npm:4.22.0"
+"@tanstack/react-query@npm:^4.22.0":
+  version: 4.36.1
+  resolution: "@tanstack/react-query@npm:4.36.1"
   dependencies:
-    "@tanstack/query-core": 4.22.0
+    "@tanstack/query-core": 4.36.1
     use-sync-external-store: ^1.2.0
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -4215,7 +4252,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: b146774b44a79dd5a6412d981ce04790e66da5a36f907a03c85c36f50a38fb4e4dfbfca7b1561c86b39fb0df1c0c1ae0a0ef2930c06b444da3f430b9bad450f1
+  checksum: 1aff0a476859386f8d32253fa0d0bde7b81769a6d4d4d9cbd78778f0f955459a3bdb7ee27a0d2ee7373090f12998b45df80db0b5b313bd0a7a39d36c6e8e51c5
   languageName: node
   linkType: hard
 
@@ -5793,12 +5830,12 @@ __metadata:
   linkType: hard
 
 "axios-retry@npm:^3.1.9":
-  version: 3.8.1
-  resolution: "axios-retry@npm:3.8.1"
+  version: 3.9.0
+  resolution: "axios-retry@npm:3.9.0"
   dependencies:
     "@babel/runtime": ^7.15.4
     is-retry-allowed: ^2.2.0
-  checksum: 9233523d34987838504b1ea9d5f90025bf9d1210e10c3851c28d1e97be9f0c2dd401ddc9f0568759c79426533795de9c54bb8429720ace641032c51fef71cb0f
+  checksum: 0438cdeb96e51de09df1acb256d4e87eb2de37cac4f82bd1be86898290acdbfa39b9e123521218543e8450b7345b582a2343959e20fdcea127a31d83591cb11f
   languageName: node
   linkType: hard
 
@@ -6664,9 +6701,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001561
-  resolution: "caniuse-lite@npm:1.0.30001561"
-  checksum: 949829fe037e23346595614e01d362130245920503a12677f2506ce68e1240360113d6383febed41e8aa38cd0f5fd9c69c21b0af65a71c0246d560db489f1373
+  version: 1.0.30001562
+  resolution: "caniuse-lite@npm:1.0.30001562"
+  checksum: 414ed45ae47a432607be1c9588bd478440acb033e46ede74c97501bfdb9ba4b1615e221d3ce7c7be55e1e0834725fd1ce5bf5e037bb9dd384c8e85b5e83dc6d1
   languageName: node
   linkType: hard
 
@@ -8261,9 +8298,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.535":
-  version: 1.4.581
-  resolution: "electron-to-chromium@npm:1.4.581"
-  checksum: 9f7e890d756a043a500628fae40636e8f33fa88f01540621e55d2c380d3b0ff63b1b836818c1cf1cce9528a7a5d98d01ca4ecd3dd8d28dc88d3c8218460f9212
+  version: 1.4.583
+  resolution: "electron-to-chromium@npm:1.4.583"
+  checksum: 4fd0c79993613d3a8da18a15197e02750910e0d3005a706aa81ae5c83321694b35879d0e26e63fc6aa30746cfad53fd939641cf592f97ea9c010c89e93dd6ee0
   languageName: node
   linkType: hard
 
@@ -12785,47 +12822,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"medusa-plugin-bundles-client@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "medusa-plugin-bundles-client@workspace:."
-  dependencies:
-    "@babel/core": ^7.16.0
-    "@medusajs/medusa": ^1.17.1
-    "@storybook/addon-essentials": ^6.3.12
-    "@storybook/addon-links": ^6.3.12
-    "@storybook/addons": ^6.3.12
-    "@storybook/react": ^6.3.12
-    "@tanstack/react-query": 4.22.0
-    "@testing-library/react": ^13.4.0
-    "@testing-library/react-hooks": ^8.0.1
-    "@types/jest": ^27.0.3
-    "@types/react": ^17.0.53
-    "@types/react-dom": ^17.0.18
-    axios: ^0.24.0
-    babel-loader: ^8.2.3
-    cross-env: ^5.2.1
-    jest: ^29.4.1
-    jest-environment-jsdom: ^29.4.1
-    medusa-react: ^9.0.0
-    msw: ^0.35.0
-    msw-storybook-addon: ^1.5.0
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    react-is: ^17.0.2
-    react-json-view: ^1.21.3
-    ts-jest: ^29.0.5
-    tslib: ^2.3.1
-    tsup: 6.7.0
-  peerDependencies:
-    "@medusajs/medusa": ^1.12.0
-    "@tanstack/react-query": 4.22.0
-    medusa-react: ^9.0.0
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  languageName: unknown
-  linkType: soft
-
-"medusa-react@npm:^9.0.0":
+"medusa-react@npm:^9.0.5":
   version: 9.0.11
   resolution: "medusa-react@npm:9.0.11"
   dependencies:
@@ -17710,6 +17707,26 @@ __metadata:
   version: 0.0.6
   resolution: "typedarray@npm:0.0.6"
   checksum: 33b39f3d0e8463985eeaeeacc3cb2e28bc3dfaf2a5ed219628c0b629d5d7b810b0eb2165f9f607c34871d5daa92ba1dc69f49051cf7d578b4cbd26c340b9d1b1
+  languageName: node
+  linkType: hard
+
+"typescript@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "typescript@npm:5.2.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 7912821dac4d962d315c36800fe387cdc0a6298dba7ec171b350b4a6e988b51d7b8f051317786db1094bd7431d526b648aba7da8236607febb26cf5b871d2d3c
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^5.2.2#~builtin<compat/typescript>":
+  version: 5.2.2
+  resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 0f4da2f15e6f1245e49db15801dbee52f2bbfb267e1c39225afdab5afee1a72839cd86000e65ee9d7e4dfaff12239d28beaf5ee431357fcced15fb08583d72ca
   languageName: node
   linkType: hard
 

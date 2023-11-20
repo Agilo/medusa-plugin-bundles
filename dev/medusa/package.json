@@ -28,6 +28,7 @@
     "dev:admin": "cross-env medusa-admin develop"
   },
   "dependencies": {
+    "@agilo/medusa-plugin-bundles": "file:.yalc/@agilo/medusa-plugin-bundles",
     "@medusajs/admin": "^7.1.1",
     "@medusajs/cache-inmemory": "^1.8.8",
     "@medusajs/cache-redis": "^1.8.8",
@@ -46,7 +47,6 @@
     "medusa-interfaces": "^1.3.7",
     "medusa-payment-manual": "^1.0.24",
     "medusa-payment-stripe": "^6.0.4",
-    "medusa-plugin-bundles": "file:.yalc/medusa-plugin-bundles",
     "prism-react-renderer": "^2.0.4",
     "typeorm": "^0.3.16"
   },

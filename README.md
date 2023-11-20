@@ -1,6 +1,6 @@
 # Medusa Bundles
 
-Group products together and sell them as a bundle.
+Group products together in product bundles.
 
 <p>
   <a href="./LICENSE">
@@ -16,8 +16,8 @@ Group products together and sell them as a bundle.
 
 ## Features
 
-- Group products together in bundles from the admin dashboard.
-- Use plugin Store API endpoints to list bundles in your storefront.
+- Group products together in product bundles from the admin dashboard.
+- Use plugin Store API endpoints to list product bundles in your storefront.
 
 ---
 
@@ -32,7 +32,7 @@ Group products together and sell them as a bundle.
 1\. Run the following command in the directory of the Medusa backend:
 
 ```bash
-npm i medusa-plugin-bundles
+npm i @agilo/medusa-plugin-bundles
 ```
 
 2\. In `medusa-config.js` add the following at the end of the `plugins` array:
@@ -41,7 +41,7 @@ npm i medusa-plugin-bundles
 const plugins = [
   // ...
   {
-    resolve: "medusa-plugin-bundles",
+    resolve: "@agilo/medusa-plugin-bundles",
     options: {
       enableUI: true,
     },
@@ -69,7 +69,7 @@ npm run start
 
 3\. Implement your storefront.
 
-- Either use our `medusa-react` hooks from the `medusa-plugin-bundles-client` to list bundles in your storefront.
+- Either use `medusa-react` hooks from the [`@agilo/medusa-plugin-bundles-client`](https://github.com/Agilo/medusa-plugin-bundles/tree/master/dev/medusa-plugin-bundles-client) to list bundles in your storefront.
 - Or directly consume the Store API endpoints that the plugin adds to Medusa.
 
 ## Contributing

@@ -13,13 +13,14 @@ const type = (["store", "admin"].includes(firstArg) ? firstArg : "store") as
 const oasOperationIds = {
   store: ["GetBundles", "GetBundlesBundle", "GetBundlesBundleProducts"],
   admin: [
-    "AdminPostProductsToBundle",
-    "DeleteProductsFromBundle",
     "AdminDeleteBundlesBundle",
     "AdminGetBundles",
     "AdminGetBundlesBundle",
+    "AdminGetBundlesBundleProducts",
     "AdminPostBundles",
     "AdminPostBundlesBundle",
+    "AdminPostProductsToBundle",
+    "DeleteProductsFromBundle",
   ],
 };
 

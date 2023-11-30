@@ -59,10 +59,10 @@ medusa migrations run
 
 ## Test the Plugin
 
-1\. Run the following command in the directory of the Medusa backend to run the backend:
+1\. Start your Medusa backend and admin dashboard, eg.:
 
 ```bash
-npm run start
+npm run dev
 ```
 
 2\. Visit Bundles in the admin dashboard to create a bundle.

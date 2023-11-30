@@ -59,10 +59,10 @@ medusa migrations run
 
 ## Test the Plugin
 
-1\. Run the following command in the directory of the Medusa backend to run the backend:
+1\. Start your Medusa backend and admin dashboard, eg.:
 
 ```bash
-npm run start
+npm run dev
 ```
 
 2\. Visit Bundles in the admin dashboard to create a bundle.
@@ -70,7 +70,10 @@ npm run start
 3\. Implement your storefront.
 
 - Either use `medusa-react` hooks from the [`@agilo/medusa-plugin-bundles-client`](https://github.com/Agilo/medusa-plugin-bundles/tree/master/dev/medusa-plugin-bundles-client) to list bundles in your storefront.
-- Or directly consume the Store API endpoints that the plugin adds to Medusa.
+- Or directly consume the Store API endpoints that the plugin adds to Medusa:
+  - http://localhost:9000/store/bundles - list bundles
+  - http://localhost:9000/store/bundles/:id - get bundle by id
+  - http://localhost:9000/store/bundles/:id/products - list products in bundle
 
 ## Contributing
 

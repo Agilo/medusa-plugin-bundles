@@ -34,16 +34,6 @@ function terminate() {
     timeout: 60 * 1000,
   });
 
-  console.log("mark1");
-
-  // const medusa = execa("sleep", ["50"], {
-  //   cwd: "dev/medusa",
-  //   stdio: "inherit",
-  //   timeout: 60 * 1000,
-  // });
-
-  console.log("mark2");
-
   // wait for API to be ready
 
   try {
@@ -52,12 +42,9 @@ function terminate() {
       timeout: 60 * 1000,
     });
   } catch (err) {
-    console.log("mark2.1");
     medusa.pid && (await terminate(medusa.pid, "SIGKILL"));
     throw err;
   }
-
-  console.log("mark3");
 
   // run tests
 
@@ -67,9 +54,6 @@ function terminate() {
     timeout: 60 * 1000,
   });
 
-  console.log("mark4");
-
   medusa.pid && (await terminate(medusa.pid, "SIGKILL"));
-  console.log("mark5");
   process.exit(tests.exitCode);
 })();

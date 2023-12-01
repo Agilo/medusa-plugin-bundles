@@ -152,4 +152,4 @@ This project is licensed under the [MIT License](./LICENSE).
 ## Credits
 
 MedusaWP is developed and maintained by [AGILO](https://agilo.co/).  
-Huge thanks to [all contributors](https://github.com/Agilo/medusa-wp/graphs/contributors).
+Huge thanks to [all contributors](https://github.com/Agilo/medusa-plugin-bundles/graphs/contributors).

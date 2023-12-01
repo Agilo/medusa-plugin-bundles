@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+
+  publish-medusa-plugin-bundles:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "yarn"
+          cache-dependency-path: "medusa-plugin-bundles/yarn.lock"
+
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: "medusa-plugin-bundles/.yarnrc.yml"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # manually running prepare script because yarn v3 doesn't run it when publishing like npm does
+      - run: cd medusa-plugin-bundles && yarn install && yarn run prepare && yarn npm publish
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # doesn't work with yarn v3
+
+  publish-medusa-plugin-bundles-client:
+    needs: publish-medusa-plugin-bundles
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "yarn"
+          cache-dependency-path: "dev/medusa-plugin-bundles-client/yarn.lock"
+
+      - uses: cschleiden/replace-tokens@v1
+        with:
+          files: "dev/medusa-plugin-bundles-client/.yarnrc.yml"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      # manually running prepare script because yarn v3 doesn't run it when publishing like npm does
+      - run: cd dev/medusa-plugin-bundles-client && yarn install && yarn run prepare && yarn npm publish
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} # doesn't work with yarn v3

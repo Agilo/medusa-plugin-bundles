@@ -1,8 +1,11 @@
-name: Tests
+name: Test
 
 on:
-  pull_request: ~
   push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+  workflow_call:
 
 jobs:
   test:

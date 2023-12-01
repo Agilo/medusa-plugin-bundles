@@ -83,32 +83,6 @@
     "react-table": "^7.7.0",
     "typeorm": "^0.3.16"
   },
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.spec.json"
-      }
-    },
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/node_modules/"
-    ],
-    "rootDir": "src",
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
-    "transform": {
-      ".ts": "ts-jest"
-    },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "./coverage",
-    "testEnvironment": "node"
-  },
   "exports": {
     "./package.json": "./package.json"
   },

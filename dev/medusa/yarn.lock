@@ -6,8 +6,8 @@ __metadata:
   cacheKey: 8
 
 "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles::locator=medusa%40workspace%3A.":
-  version: 1.0.0-alpha.14
-  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=04f167&locator=medusa%40workspace%3A."
+  version: 1.0.0-alpha.15
+  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=fb25f6&locator=medusa%40workspace%3A."
   dependencies:
     medusa-core-utils: ^1.2.0
   peerDependencies:
@@ -29,7 +29,7 @@ __metadata:
     react-router-dom: ^6.13.0
     react-table: ^7.7.0
     typeorm: ^0.3.16
-  checksum: e3e5d974d9c5b825cc70e029e5bd1bb41cc1e42d2e546b523f6f63c03acf2c2e3af577791dff5d297f5e3e7023b0be8cdf672d6c3059fc9c0fd821c47ebd5b34
+  checksum: 47cf9080566ea1684a5413fad4c1115ec2f4584422100eb801b1832241484ebe9b32dccdd019b78d8c5e151d251586e2eb00e12ecf2406b38f761a31427884dc
   languageName: node
   linkType: hard
 

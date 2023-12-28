@@ -7,29 +7,10 @@ __metadata:
 
 "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles::locator=medusa%40workspace%3A.":
   version: 1.0.0-alpha.15
-  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=fb25f6&locator=medusa%40workspace%3A."
+  resolution: "@agilo/medusa-plugin-bundles@file:.yalc/@agilo/medusa-plugin-bundles#.yalc/@agilo/medusa-plugin-bundles::hash=4e5c82&locator=medusa%40workspace%3A."
   dependencies:
     medusa-core-utils: ^1.2.0
-  peerDependencies:
-    "@medusajs/admin": ^7.1.1
-    "@medusajs/medusa": ^1.16.0
-    "@medusajs/medusa-js": ^6.0.4
-    "@radix-ui/react-dialog": ^1.0.2
-    "@radix-ui/react-portal": ^1.0.2
-    "@tanstack/react-query": ^4.22.0
-    axios: ^0.24.0
-    clsx: ^1.2.1
-    lodash: ^4.17.21
-    medusa-react: ^9.0.5
-    qs: ^6.10.3
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    react-hook-form: 7.38.0
-    react-i18next: ^12.3.1
-    react-router-dom: ^6.13.0
-    react-table: ^7.7.0
-    typeorm: ^0.3.16
-  checksum: 47cf9080566ea1684a5413fad4c1115ec2f4584422100eb801b1832241484ebe9b32dccdd019b78d8c5e151d251586e2eb00e12ecf2406b38f761a31427884dc
+  checksum: 07a5b006caab34af0d77da8eaa968f33242429cd57de271ff9dd2b289f593860c21ffc4b1dd003e24526a37e00973bc43202ea58b564e01802e02b988d3292d1
   languageName: node
   linkType: hard
 
@@ -13605,14 +13586,14 @@ __metadata:
   linkType: hard
 
 "msgpackr@npm:^1.6.2":
-  version: 1.9.9
-  resolution: "msgpackr@npm:1.9.9"
+  version: 1.10.1
+  resolution: "msgpackr@npm:1.10.1"
   dependencies:
     msgpackr-extract: ^3.0.2
   dependenciesMeta:
     msgpackr-extract:
       optional: true
-  checksum: b63182d99f479d79f0d082fd2688ce7cf699b1aee71e20f28591c30b48743bb57868fdd72656759a892891072d186d864702c756434520709e8fe7e0d350a119
+  checksum: e422d18b01051598b23701eebeb4b9e2c686b9c7826b20f564724837ba2b5cd4af74c91a549eaeaf8186645cc95e8196274a4a19442aa3286ac611b98069c194
   languageName: node
   linkType: hard
 

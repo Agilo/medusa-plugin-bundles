@@ -80,7 +80,7 @@ export const useAdminBundleProducts = (
 ) => {
   const { client } = useMedusa();
 
-  let path = `/store/bundles/${id}/products`;
+  let path = `/admin/bundles/${id}/products`;
 
   if (query) {
     const queryString = qs.stringify(query);

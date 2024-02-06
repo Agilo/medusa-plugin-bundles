@@ -95,8 +95,8 @@ Below you can find the [plugin development guide](#plugin-development) that will
 
 Follow these step-by-step instructions to run the project locally:
 
-1. `git clone https://github.com/Agilo/medusa-bundles.git` - clone the monorepo
-2. `cd medusa-bundles` - position into the project directory
+1. `git clone https://github.com/Agilo/medusa-plugin-bundles.git` - clone the monorepo
+2. `cd medusa-plugin-bundles` - position into the project directory
 3. `cp .env.example .env` - set up docker-compose environment variables
 4. `docker compose up` - start Medusa Docker containers
 5. Open a new terminal tab

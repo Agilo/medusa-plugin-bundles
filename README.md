@@ -4,7 +4,7 @@ Group products together in product bundles.
 
 <p>
   <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/license-MIT-blue" alt="MedusaWP is released under the MIT license." />
+    <img src="https://img.shields.io/badge/license-MIT-blue" alt="Medusa Bundles is released under the MIT license." />
   </a>
   <a href="https://nodejs.org/" target="_blank">
     <img src="https://img.shields.io/badge/Node.js-%5E20-brightgreen" alt="Node.js ^20">
@@ -151,5 +151,5 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ## Credits
 
-MedusaWP is developed and maintained by [AGILO](https://agilo.co/).  
+Medusa Bundles is developed and maintained by [AGILO](https://agilo.co/).  
 Huge thanks to [all contributors](https://github.com/Agilo/medusa-plugin-bundles/graphs/contributors).

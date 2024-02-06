@@ -332,6 +332,4 @@ export default class BundleService extends TransactionBaseService {
       return result;
     });
   }
-
-  // test comment
 }

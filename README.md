@@ -101,7 +101,7 @@ Follow these step-by-step instructions to run the project locally:
 4. `docker compose up` - start Medusa Docker containers
 5. Open a new terminal tab
 6. `yarn install && yarn run setup` - install dependencies in all packages
-7. `cd dev/medusa && medusa migrations run && cd ../..` - run the migrations
+7. `cd dev/medusa && npx medusa migrations run && cd ../..` - run the migrations
 8. `cd dev/medusa && yarn run seed:medusa-plugin-bundles && cd ../..` - seed the database
 9. `yarn run start` - build the packages and start the Medusa dev server and plugin watcher
 

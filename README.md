@@ -52,7 +52,7 @@ const plugins = [
 3\. Run the following command in the directory of the Medusa backend to run the migrations:
 
 ```bash
-medusa migrations run
+npx medusa migrations run
 ```
 
 ---
@@ -129,7 +129,7 @@ Unfortunately DX when generating migrations which extend or relate to core entit
 2. `cp medusa-plugin-bundles/.env.example medusa-plugin-bundles/.env` - copy and edit environment variables
 3. Edit/create migration files in `medusa-plugin-bundles/src/migrations`
 4. `npx typeorm migration:generate -d datasource.js src/migrations/BundleUpdate` - this will generate a migration file with a bunch of migrations in `src/migrations/<timestamp>-BundleUpdate.ts`, the migration file will contain migrations for both core medusa entities and your plugin entities. You can now cherry pick the migrations you want to run and delete the rest.
-5. In the `dev/medusa` dir run `medusa migrations run`
+5. In the `dev/medusa` dir run `npx medusa migrations run`
 
 #### Available Commands
 

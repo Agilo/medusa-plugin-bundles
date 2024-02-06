@@ -1,6 +1,6 @@
 {
   "name": "@agilo/medusa-plugin-bundles",
-  "version": "1.0.0-alpha.16",
+  "version": "1.0.0-alpha.17",
   "description": "Group products together in product bundles.",
   "homepage": "https://github.com/Agilo/medusa-plugin-bundles",
   "author": "Ivo Limić <ivo@agilo.co>",

@@ -282,49 +282,6 @@ export default class BundleService extends TransactionBaseService {
     return await bundleRepo.listProductIds(id);
   }
 
-  // async listProducts(
-  //   bundleId: string,
-  //   config?: FindConfig<Product>
-  // ): Promise<Product[]> {
-  //   const productRepo = this.activeManager_.getRepository(Product);
-
-  //   const query = buildQuery(
-  //     {
-  //       bundleId,
-  //     },
-  //     config
-  //   );
-
-  //   // const products = await productRepo.find({ relations: ["bundles"] });
-
-  //   return productRepo
-  //     .createQueryBuilder("product")
-  //     .leftJoin("product.bundles", "bundle")
-  //     .where("bundle.id = :id", { id: bundleId })
-  //     .getMany();
-
-  //   // const products = await productRepo
-  //   //   .createQueryBuilder("product")
-  //   //   .leftJoinAndSelect("product.bundles", "bundle")
-  //   //   .getMany();
-
-  //   // return products;
-
-  //   // const questions = await dataSource
-  //   //   .getRepository(Question)
-  //   //   .createQueryBuilder("question")
-  //   //   .leftJoinAndSelect("question.categories", "category")
-  //   //   .getMany();
-
-  //   // const bundle = await bundleRepo.findOne(query);
-
-  //   // if (!bundle) {
-  //   //   throw new MedusaError(MedusaError.Types.NOT_FOUND, "Post was not found");
-  //   // }
-
-  //   // return bundle;
-  // }
-
   async addProducts(bundleId: string, productIds: string[]): Promise<Bundle> {
     return await this.atomicPhase_(async (manager) => {
       const bundleRepo = manager.withRepository(this.bundleRepository_);

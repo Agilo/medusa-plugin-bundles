@@ -105,7 +105,7 @@ Follow these step-by-step instructions to run the project locally:
 8. `cd dev/medusa && yarn run seed:medusa-plugin-bundles && cd ../..` - seed the database
 9. `yarn run start` - build the packages and start the Medusa dev server and plugin watcher
 
-Medusa Admin is now available at http://localhost:7001 and Medusa Storefront at http://localhost:8000
+Medusa Admin is now available at http://localhost:7001 and Medusa Bundles admin screen is available at http://localhost:7001/a/bundles
 
 Default credentials for Medusa Admin are:
 
@@ -113,6 +113,11 @@ Default credentials for Medusa Admin are:
 admin@medusa-test.com
 supersecret
 ```
+
+Medusa Storefront is available at http://localhost:8000
+
+- http://localhost:8000/bundles - example bundle listing page
+- http://localhost:8000/bundles/medusa-winter-outfit - example bundle detail page
 
 Once you have the project running locally you can start making changes to the plugin in `medusa-plugin-bundles/src` and see them reflected in the Medusa Admin and Storefront.
 

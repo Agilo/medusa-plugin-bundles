@@ -6,12 +6,11 @@
   "author": "Ivo Limić <ivo@agilo.co>",
   "license": "MIT",
   "keywords": [
-    "sqlite",
-    "postgres",
-    "typescript",
+    "medusa",
+    "medusa-plugin",
+    "medusa-plugin-bundles",
     "ecommerce",
-    "headless",
-    "medusa"
+    "headless"
   ],
   "scripts": {
     "clean": "cross-env rimraf dist",

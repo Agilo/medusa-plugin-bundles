@@ -1,6 +1,6 @@
 {
   "name": "@agilo/medusa-plugin-bundles-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React library that provides a set of hooks for interacting seamlessly with the @agilo/medusa-plugin-bundles Store API endpoints.",
   "packageManager": "yarn@3.6.3",
   "homepage": "https://github.com/Agilo/medusa-plugin-bundles/tree/master/dev/medusa-plugin-bundles-client",
